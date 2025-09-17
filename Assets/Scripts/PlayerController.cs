@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     private Rigidbody2D _playerRigidbody2D;
     private Animator _PlayerAnimator;
     public float _playerSpeed;
@@ -12,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _playerDirection;
 
     private bool _isAttacking = false;
-    private Coroutine _attackCoroutine; // Referência para a coroutine
+    private Coroutine _attackCoroutine;
 
     void Start()
     {
@@ -85,20 +84,25 @@ public class PlayerController : MonoBehaviour
         {
             _isAttacking = true;
             _PlayerAnimator.SetTrigger("Ataque");
-            _playerSpeed = 0;
-            _playerDirection = Vector2.zero; // Para o Boneco não deslizar quando ataca.
-
-            // Para a coroutine anterior se ela existir e inicia uma nova
-            if (_attackCoroutine != null) StopCoroutine(_attackCoroutine);
-            _attackCoroutine = StartCoroutine(ResetAttackAfterDelay());
+            
+            SetAttackState(true); // <--- Adicione esta linha
+            
+            StartCoroutine(ResetAttackAfterDelay());
         }
     }
 
     private IEnumerator ResetAttackAfterDelay()
     {
         yield return new WaitForSeconds(0.5f);
+        
+        SetAttackState(false); // <--- Adicione esta linha
+    }
 
-        _isAttacking = false;
-        _playerSpeed = _playerInitialSpeed;
+    // <--- Adicione este novo método
+    private void SetAttackState(bool isAttacking)
+    {
+        _isAttacking = isAttacking;
+        _playerSpeed = isAttacking ? 0 : _playerInitialSpeed;
+        _playerRigidbody2D.isKinematic = isAttacking;
     }
 }
