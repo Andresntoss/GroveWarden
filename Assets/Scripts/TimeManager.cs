@@ -9,8 +9,9 @@ public class TimeManager : MonoBehaviour
     // ----- Variáveis Públicas (para ajustar no Inspector) -----
     [Header("Configurações de Tempo")]
     public float tempoTotalDia = 1200f; // 20 minutos em segundos (20 * 60)
-    public float tempoDia = 600f;       // 10 minutos (dia)
-    public float tempoNoite = 600f;     // 10 minutos (noite)
+    public float duracaoDiaPleno = 480f; // 8 horas (das 6h às 14h) em segundos
+    public float duracaoEntardecer = 240f; // 4 horas (das 14h às 18h) em segundos
+    public float duracaoNoite = 480f; // 8 horas (das 18h às 2h) em segundos
     
     [Header("Elementos de UI")]
     public TextMeshProUGUI relogioTexto;
@@ -19,8 +20,10 @@ public class TimeManager : MonoBehaviour
     [Header("Efeitos Visuais")]
     public Light2D direcionalLuz; // A luz direcional na sua cena (sol/lua)
     public float intensidadeDia = 1f;
+    public float intensidadeEntardecer = 0.5f; // Nova intensidade para o entardecer
     public float intensidadeNoite = 0.3f;
     public Color corDia = Color.white;
+    public Color corEntardecer = new Color(1f, 0.7f, 0.4f); // Uma cor alaranjada
     public Color corNoite = new Color(0.1f, 0.1f, 0.3f); // Um azul escuro
     
     // ----- Variáveis Privadas (para o sistema) -----
@@ -32,7 +35,7 @@ public class TimeManager : MonoBehaviour
     private int minutos = 0;
     
     // Flag para verificar se o tempo deve continuar correndo
-    private bool podeAvançarTempo = true;
+    private bool podeAvancarTempo = true;
     
     void Start()
     {
@@ -48,60 +51,55 @@ public class TimeManager : MonoBehaviour
     
     void Update()
     {
-        // Apenas avança o tempo se a flag 'podeAvançarTempo' for verdadeira
-        if (podeAvançarTempo)
+        if (podeAvancarTempo)
         {
-            // Aumenta o tempo a cada frame
             tempoAtual += Time.deltaTime;
         }
 
         // Converte o tempo do jogo para horas e minutos
-        float tempoDecorrenteDia = (tempoAtual / tempoTotalDia) * 24f;
+        float segundosPorHora = tempoTotalDia / 24f;
+        float tempoDecorrenteDia = tempoAtual / segundosPorHora;
         
-        // Adiciona 6 horas para começar o dia às 6 da manhã
         horas = 6 + (int)tempoDecorrenteDia;
         minutos = (int)((tempoDecorrenteDia - (int)tempoDecorrenteDia) * 60);
 
-        // Verifica se a hora atual atingiu o limite de 2 da manhã (26h no ciclo de 24h)
-        // Linha 47
         if (horas >= 26)
         {
-            // Se sim, para o relógio e a luz
-            podeAvançarTempo = false;
-            // E define a hora final para 2 da manhã
+            podeAvancarTempo = false;
             horas = 2;
             minutos = 0;
         }
         
-        // Ajusta a transição de luz entre dia e noite
-        float t = Mathf.Clamp01(tempoAtual / tempoDia);
-        if (tempoAtual <= tempoDia)
+        // --- Nova Lógica de Transição ---
+        if (horas >= 6 && horas < 14) // Dia Pleno (6h - 14h)
         {
-            // Transição para o dia
-            direcionalLuz.intensity = Mathf.Lerp(intensidadeNoite, intensidadeDia, t);
-            direcionalLuz.color = Color.Lerp(corNoite, corDia, t);
+            direcionalLuz.intensity = intensidadeDia;
+            direcionalLuz.color = corDia;
         }
-        else
+        else if (horas >= 14 && horas < 18) // Entardecer (14h - 18h)
         {
-            // Transição para a noite
-            t = Mathf.Clamp01((tempoAtual - tempoDia) / tempoNoite);
-            direcionalLuz.intensity = Mathf.Lerp(intensidadeDia, intensidadeNoite, t);
-            direcionalLuz.color = Color.Lerp(corDia, corNoite, t);
+            float t = (horas - 14 + (minutos / 60f)) / (18 - 14); // Normaliza o tempo de 0 a 1
+            direcionalLuz.intensity = Mathf.Lerp(intensidadeDia, intensidadeEntardecer, t);
+            direcionalLuz.color = Color.Lerp(corDia, corEntardecer, t);
+        }
+        else if (horas >= 18 || horas < 2) // Noite (18h - 2h do próximo dia)
+        {
+            float horasNoite = (horas >= 18) ? horas - 18 : horas + 6; // Calcula horas relativas à noite
+            float t = (horasNoite + (minutos / 60f)) / (26 - 18); // Normaliza o tempo de 0 a 1
+            direcionalLuz.intensity = Mathf.Lerp(intensidadeEntardecer, intensidadeNoite, t);
+            direcionalLuz.color = Color.Lerp(corEntardecer, corNoite, t);
         }
         
-        // Atualiza a UI a cada frame
         AtualizarUI();
     }
     
-    // Atualiza o texto do relógio e do contador de dias
+    // As funções AtualizarUI, AtualizarLuz e PassarParaProximoDia não precisam de alteração
     private void AtualizarUI()
     {
-        // Formata a hora para HH:mm, usando o módulo para o ciclo 24h
         relogioTexto.text = string.Format("{0:00}:{1:00}", horas % 24, minutos);
         contadorDiaTexto.text = "Dia " + diaAtual.ToString();
     }
     
-    // Atualiza a intensidade e cor da luz direcional
     private void AtualizarLuz()
     {
         if (direcionalLuz != null)
@@ -111,30 +109,18 @@ public class TimeManager : MonoBehaviour
         }
     }
     
-    // Método público para ser chamado pela cama
     public void PassarParaProximoDia()
     {
-        // Incrementa o contador de dias
         diaAtual++;
-        
-        // Reseta o tempo do ciclo
         tempoAtual = 0;
-        
-        // Permite que o tempo volte a correr
-        podeAvançarTempo = true;
-        
-        // Reseta a hora e os minutos para 6 da manhã
+        podeAvancarTempo = true;
         horas = 6;
         minutos = 0;
-        
-        // Atualiza UI e luz para o novo dia
         AtualizarUI();
         AtualizarLuz();
-        
         Debug.Log("Novo dia começou: Dia " + diaAtual);
     }
 
-    // Retorna a hora atual para que o personagem saiba a hora limite para ir para a cama
     public int GetHoraAtual()
     {
         return horas;
