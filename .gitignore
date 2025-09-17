@@ -1,0 +1,45 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ss]priteAtlasCache/
+[Aa]ssemblyInfo.cs
+*.unityproj
+*.pidb
+*.suo
+*.sln.ide
+*.csproj
+*.user
+*.usr
+*.unity
+*.vspscc
+
+# Unity specific folders
+Assets/Assets.meta
+
+# Visual Studio temporary files
+*.tmp
+*.vshost.*
+*.pdb
+*.user
+
+# Other files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore project builds
+Builds/
+
+# Ignore specific files
+*.meta
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore Windows files
+Thumbs.db
