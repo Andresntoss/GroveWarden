@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
             _isAttacking = true;
             _PlayerAnimator.SetTrigger("Ataque");
             _playerSpeed = 0;
+            _playerDirection = Vector2.zero; // Para o Boneco não deslizar quando ataca.
 
             // Para a coroutine anterior se ela existir e inicia uma nova
             if (_attackCoroutine != null) StopCoroutine(_attackCoroutine);
