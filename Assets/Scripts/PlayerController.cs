@@ -13,12 +13,29 @@ public class PlayerController : MonoBehaviour
     private bool _isAttacking = false;
     private Coroutine _attackCoroutine;
 
+    // ----- VARIÁVEIS DO ROLAMENTO -----
+    [Header("Configurações de Rolamento")]
+    public float _rollSpeed = 8f;
+    public float _rollDuration = 0.5f;
+    public float _rollCooldown = 1.5f;
+
+    private bool _isRolling = false;
+    private float _nextRollTime = 0f;
+
+    // ----- NOVAS VARIÁVEIS PARA AS CAMADAS -----
+    private int playerLayer;
+    private int invincibleLayer;
+
     void Start()
     {
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
         _PlayerAnimator = GetComponent<Animator>();
 
         _playerInitialSpeed = _playerSpeed;
+
+        // Armazena as camadas para uso futuro
+        playerLayer = LayerMask.NameToLayer("Player");
+        invincibleLayer = LayerMask.NameToLayer("Invencivel");
     }
 
     void Update()
@@ -29,8 +46,9 @@ public class PlayerController : MonoBehaviour
         ).normalized;
 
         OnAttack();
+        OnRoll();
 
-        if (!_isAttacking)
+        if (!_isAttacking && !_isRolling)
         {
             if (_playerDirection.sqrMagnitude > 0)
             {
@@ -48,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isAttacking)
+        if (!_isAttacking && !_isRolling)
         {
             _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerDirection * _playerSpeed * Time.fixedDeltaTime);
         }
@@ -80,12 +98,12 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0)) && !_isAttacking)
+        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0)) && !_isAttacking && !_isRolling)
         {
             _isAttacking = true;
             _PlayerAnimator.SetTrigger("Ataque");
             
-            SetAttackState(true); // <--- Adicione esta linha
+            SetAttackState(true);
             
             StartCoroutine(ResetAttackAfterDelay());
         }
@@ -95,14 +113,37 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         
-        SetAttackState(false); // <--- Adicione esta linha
+        SetAttackState(false);
     }
 
-    // <--- Adicione este novo método
     private void SetAttackState(bool isAttacking)
     {
         _isAttacking = isAttacking;
         _playerSpeed = isAttacking ? 0 : _playerInitialSpeed;
-        _playerRigidbody2D.isKinematic = isAttacking;
+    }
+
+    void OnRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextRollTime && !_isAttacking)
+        {
+            _isRolling = true;
+            _PlayerAnimator.SetTrigger("Rolamento");
+            
+            _nextRollTime = Time.time + _rollCooldown;
+
+            StartCoroutine(Roll());
+        }
+    }
+
+    private IEnumerator Roll()
+    {
+        gameObject.layer = invincibleLayer; // <--- Muda a camada para invencível
+        _playerRigidbody2D.linearVelocity = _playerDirection * _rollSpeed;
+
+        yield return new WaitForSeconds(_rollDuration);
+
+        _isRolling = false;
+        _playerRigidbody2D.linearVelocity = Vector2.zero;
+        gameObject.layer = playerLayer; // <--- Retorna para a camada normal
     }
 }

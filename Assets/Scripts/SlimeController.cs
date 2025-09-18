@@ -5,16 +5,17 @@ using UnityEngine;
 public class SlimeController : MonoBehaviour
 {
     
-    public float        _moveSpeedSlime = 3.5f;
-    private Vector2     _slimeDirection;
-    private Rigidbody2D _slimeRB2D;
+    public float                _moveSpeedSlime = 3.5f;
+    private Vector2             _slimeDirection;
+    private Rigidbody2D         _slimeRB2D;
+    public DetectionController  _detectionArea;
+    private SpriteRenderer      _spriteRenderer;
 
-    public DetectionController _detectionArea;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _slimeRB2D = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -26,10 +27,19 @@ public class SlimeController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if(_detectionArea.detectedObjs.Count > 0)
+        if (_detectionArea.detectedObjs.Count > 0)
         {
             _slimeDirection = (_detectionArea.detectedObjs[0].transform.position - transform.position).normalized;
             _slimeRB2D.MovePosition(_slimeRB2D.position + _slimeDirection * _moveSpeedSlime * Time.fixedDeltaTime);
+
+            if (_slimeDirection.x > 0)
+            {
+                _spriteRenderer.flipX = false;
+            }
+            else if (_slimeDirection.x < 0)
+            {
+                _spriteRenderer.flipX = true;
+            }
         }    
     }
 }
