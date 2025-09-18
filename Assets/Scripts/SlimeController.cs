@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class SlimeController : MonoBehaviour
 {
-    
     public float _moveSpeedSlime = 3.5f;
-    public float damageAmount = 10f; // <-- NOVA VARIÁVEL: a quantidade de dano que o slime causa
+    public float damageAmount = 10f;
+    [Header("Configurações de Knockback")]
+    public float knockbackForce = 10f;
+    public float knockbackDuration = 0.2f;
+    
     private Vector2 _slimeDirection;
     private Rigidbody2D _slimeRB2D;
     public DetectionController _detectionArea;
     private SpriteRenderer _spriteRenderer;
+    private bool isKnockedBack = false;
+    private Animator _slimeAnimator; // <--- Adicionamos o Animator
+
     void Start()
     {
         _slimeRB2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-    void Update()
-    {
-        // Removemos esta linha para que o slime não siga o input do teclado
-        // _slimeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        _slimeAnimator = GetComponent<Animator>(); // <--- Obtemos o Animator no Start
     }
 
     private void FixedUpdate() 
     {
-        if (_detectionArea.detectedObjs.Count > 0)
+        if (_detectionArea.detectedObjs.Count > 0 && !isKnockedBack)
         {
             _slimeDirection = (_detectionArea.detectedObjs[0].transform.position - transform.position).normalized;
             _slimeRB2D.MovePosition(_slimeRB2D.position + _slimeDirection * _moveSpeedSlime * Time.fixedDeltaTime);
-
+            
+            // Lógica para a animação
+            _slimeAnimator.SetInteger("Movimento", 1); // <--- Ativa a animação de walk
+            
             if (_slimeDirection.x > 0)
             {
                 _spriteRenderer.flipX = false;
@@ -38,19 +43,43 @@ public class SlimeController : MonoBehaviour
                 _spriteRenderer.flipX = true;
             }
         } 
+        else
+        {
+            _slimeAnimator.SetInteger("Movimento", 0); // <--- Ativa a animação de idle
+        }
     }
 
-    // <-- NOVO MÉTODO: O slime causa dano ao colidir com o jogador
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Encontra o componente de vida do jogador e causa dano
             Health playerHealth = collision.gameObject.GetComponent<Health>();
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damageAmount);
             }
+            
+            if (playerController != null)
+            {
+                Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
+                playerController.ApplyKnockback(knockbackDirection, playerController.knockbackForce);
+            }
         }
+    }
+
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        isKnockedBack = true;
+        _slimeRB2D.AddForce(direction * force, ForceMode2D.Impulse);
+        StartCoroutine(ResetKnockback());
+    }
+
+    private IEnumerator ResetKnockback()
+    {
+        yield return new WaitForSeconds(knockbackDuration);
+        _slimeRB2D.linearVelocity = Vector2.zero;
+        isKnockedBack = false;
     }
 }
