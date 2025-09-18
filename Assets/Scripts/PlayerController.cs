@@ -18,22 +18,28 @@ public class PlayerController : MonoBehaviour
     public float _rollSpeed = 8f;
     public float _rollDuration = 0.5f;
     public float _rollCooldown = 1.5f;
-
     private bool _isRolling = false;
     private float _nextRollTime = 0f;
 
-    // ----- NOVAS VARIÁVEIS PARA AS CAMADAS -----
+    // ----- VARIÁVEIS PARA AS CAMADAS -----
     private int playerLayer;
     private int invincibleLayer;
+    
+    // ----- VARIÁVEIS DE KNOCKBACK -----
+    [Header("Configurações de Knockback")]
+    public float knockbackForce = 15f;
+    public float knockbackDuration = 0.2f;
+    private bool isKnockedBack = false;
+
+    // ----- VARIÁVEL PARA A ÁREA DE ATAQUE (Alterada para pública) -----
+    [Header("Configurações de Ataque")]
+    public GameObject attackArea; // Linha 29: Referência ao objeto AttackArea
 
     void Start()
     {
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
         _PlayerAnimator = GetComponent<Animator>();
-
         _playerInitialSpeed = _playerSpeed;
-
-        // Armazena as camadas para uso futuro
         playerLayer = LayerMask.NameToLayer("Player");
         invincibleLayer = LayerMask.NameToLayer("Invencivel");
     }
@@ -48,7 +54,7 @@ public class PlayerController : MonoBehaviour
         OnAttack();
         OnRoll();
 
-        if (!_isAttacking && !_isRolling)
+        if (!_isAttacking && !_isRolling && !isKnockedBack)
         {
             if (_playerDirection.sqrMagnitude > 0)
             {
@@ -58,7 +64,6 @@ public class PlayerController : MonoBehaviour
             {
                 _PlayerAnimator.SetInteger("Movimento", 0);
             }
-
             Flip();
             PlayerRun();
         }
@@ -66,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!_isAttacking && !_isRolling)
+        if (!_isAttacking && !_isRolling && !isKnockedBack)
         {
             _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerDirection * _playerSpeed * Time.fixedDeltaTime);
         }
@@ -98,13 +103,11 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0)) && !_isAttacking && !_isRolling)
+        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0)) && !_isAttacking && !_isRolling && !isKnockedBack)
         {
             _isAttacking = true;
             _PlayerAnimator.SetTrigger("Ataque");
-            
             SetAttackState(true);
-            
             StartCoroutine(ResetAttackAfterDelay());
         }
     }
@@ -112,38 +115,69 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ResetAttackAfterDelay()
     {
         yield return new WaitForSeconds(0.5f);
-        
         SetAttackState(false);
     }
-
+    
     private void SetAttackState(bool isAttacking)
     {
         _isAttacking = isAttacking;
         _playerSpeed = isAttacking ? 0 : _playerInitialSpeed;
+        _playerRigidbody2D.bodyType = isAttacking ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
     }
 
     void OnRoll()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextRollTime && !_isAttacking)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextRollTime && !_isAttacking && !isKnockedBack)
         {
             _isRolling = true;
             _PlayerAnimator.SetTrigger("Rolamento");
-            
             _nextRollTime = Time.time + _rollCooldown;
-
             StartCoroutine(Roll());
         }
     }
 
     private IEnumerator Roll()
     {
-        gameObject.layer = invincibleLayer; // <--- Muda a camada para invencível
+        gameObject.layer = invincibleLayer;
         _playerRigidbody2D.linearVelocity = _playerDirection * _rollSpeed;
-
         yield return new WaitForSeconds(_rollDuration);
-
         _isRolling = false;
         _playerRigidbody2D.linearVelocity = Vector2.zero;
-        gameObject.layer = playerLayer; // <--- Retorna para a camada normal
+        gameObject.layer = playerLayer;
+        _playerRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    // --- Funções para Animação Events ---
+    public void EnableAttackArea()
+    {
+        Debug.Log("Ativando área de ataque!");
+        if (attackArea != null)
+        {
+            attackArea.SetActive(true);
+        }
+    }
+
+    public void DisableAttackArea()
+    {
+        Debug.Log("Desativando área de ataque!");
+        if (attackArea != null)
+        {
+            attackArea.SetActive(false);
+        }
+    }
+
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        if (isKnockedBack) return;
+        isKnockedBack = true;
+        _playerRigidbody2D.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        StartCoroutine(ResetKnockback());
+    }
+
+    private IEnumerator ResetKnockback()
+    {
+        yield return new WaitForSeconds(knockbackDuration);
+        _playerRigidbody2D.linearVelocity = Vector2.zero;
+        isKnockedBack = false;
     }
 }
