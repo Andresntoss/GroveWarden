@@ -89,7 +89,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.625
-    functionName: PerformHeadbuttAttack
+    functionName: ActivateAttackCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.875
+    functionName: DeactivateAttackCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: AttackAnimationFinished
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
