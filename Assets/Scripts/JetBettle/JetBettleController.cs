@@ -19,7 +19,7 @@ public class BeetleController : MonoBehaviour
     public float chargeDuration = 0.5f;
     public float chargeCooldown = 2.0f;
     
-    private enum BeetleState { Idle, Wander, Chase, Charge }
+    private enum BeetleState { Wander, Chase, Charge }
     private BeetleState currentState;
 
     private Rigidbody2D _rb2d;
@@ -40,7 +40,7 @@ public class BeetleController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         
-        ChangeState(BeetleState.Idle);
+        ChangeState(BeetleState.Wander);
     }
 
     void Update()
@@ -49,7 +49,6 @@ public class BeetleController : MonoBehaviour
         {
             float distanceToPlayer = Vector2.Distance(transform.position, _playerTransform.position);
             
-            // --- NOVO: Lógica de prioridade ---
             if (currentState != BeetleState.Charge)
             {
                 if (distanceToPlayer <= chargeRadius && Time.time > _nextChargeTime)
@@ -80,7 +79,7 @@ public class BeetleController : MonoBehaviour
                 HandleChaseState();
                 break;
             case BeetleState.Charge:
-                HandleChargeState();
+                // A lógica de charge é feita na Coroutine
                 break;
         }
     }
@@ -155,12 +154,12 @@ public class BeetleController : MonoBehaviour
 
     private void HandleChaseState()
     {
-        // A lógica de charge é feita no Update
+        //Essa função é chamada diretamente no update
     }
     
     private void HandleChargeState()
     {
-        // ...
+        // ...Essa função é chamada diretamente no update
     }
 
     private IEnumerator PerformChargeAttack()
