@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [Header("Configurações de Vida")]
     public float maxHealth = 100f;
     [SerializeField] private float currentHealth;
-    
+
     [Header("Configurações de Invulnerabilidade")]
     public float invulnerabilityDuration = 1.5f;
     private bool isInvulnerable = false;
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     private Color originalColor;
     private Collider2D _collider2D;
 
-    private GameManager _gameManager; // <--- Adicionamos uma referência ao GameManager
+    private GameManager _gameManager;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
         originalColor = spriteRenderer.color;
 
-        _gameManager = FindAnyObjectByType<GameManager>(); // <--- Encontra o GameManager
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     public void TakeDamage(float damageAmount)
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         if (isInvulnerable) return;
 
         currentHealth -= damageAmount;
-        
+
         if (gameObject.CompareTag("Enemy"))
         {
             if (animator != null)
@@ -43,9 +43,9 @@ public class Health : MonoBehaviour
                 animator.SetTrigger("Dano");
             }
         }
-        
+
         Debug.Log(gameObject.name + " sofreu " + damageAmount + " de dano. Vida restante: " + currentHealth);
-        
+
         StartCoroutine(BecomeInvulnerable());
 
         if (currentHealth <= 0)
@@ -57,41 +57,43 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log(gameObject.name + " foi derrotado!");
-        
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Morte");
+        }
+
+        _collider2D.enabled = false;
+
         if (gameObject.CompareTag("Player"))
         {
             GetComponent<PlayerController>().enabled = false;
-            _collider2D.enabled = false;
-            
-            // Chama o GameManager para mostrar a tela
-            if (_gameManager != null)
-            {
-                _gameManager.ShowGameOverPanel();
-            }
         }
-        
-        if (gameObject.CompareTag("Enemy"))
+        else if (gameObject.CompareTag("Enemy"))
         {
-            _collider2D.enabled = false;
-            spriteRenderer.enabled = false;
-            if (animator != null)
-            {
-                animator.SetTrigger("Morte");
-            }
             SlimeController slimeController = GetComponent<SlimeController>();
             if (slimeController != null)
             {
                 slimeController.enabled = false;
             }
-            Destroy(gameObject, 1.0f);
         }
     }
-    
+
+    // --- NOVO: Função para ser chamada pelo Animation Event de morte do Player ---
+    public void ShowGameOverScreen()
+    {
+        if (_gameManager != null)
+        {
+            _gameManager.ShowGameOverPanel();
+        }
+    }
+
+    // --- Chamado pelo Animation Event do Slime ---
     public void DestroyAfterAnimation()
     {
         Destroy(gameObject);
     }
-    
+
     private IEnumerator BecomeInvulnerable()
     {
         isInvulnerable = true;
@@ -100,6 +102,10 @@ public class Health : MonoBehaviour
         spriteRenderer.color = originalColor;
         isInvulnerable = false;
     }
-    
-    // Removido o método RestartGame, que agora está no GameManager
+
+    public static void RestartGame()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
