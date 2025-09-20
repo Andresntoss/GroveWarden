@@ -281,6 +281,9 @@ MonoBehaviour:
   damageAmount: 10
   knockbackForce: 10
   knockbackDuration: 0.2
+  wanderSpeed: 1.5
+  wanderTimeMax: 3
+  idleTimeMax: 2
   _detectionArea: {fileID: 4608779829168617070}
 --- !u!114 &8312194866317694432
 MonoBehaviour:
@@ -297,5 +300,5 @@ MonoBehaviour:
   maxHealth: 60
   currentHealth: 0
   invulnerabilityDuration: 0.5
-  flashInterval: 0.1
   invulnerableColor: {r: 1, g: 1, b: 1, a: 0.78039217}
+  coinDropAmount: 10

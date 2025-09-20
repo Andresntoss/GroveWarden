@@ -75,7 +75,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   invulnerabilityDuration: 1.5
-  invulnerableColor: {r: 1, g: 1, b: 1, a: 1}
+  invulnerableColor: {r: 1, g: 1, b: 1, a: 0.78039217}
+  coinDropAmount: 15
 --- !u!95 &4957367163148443371
 Animator:
   serializedVersion: 7
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 19
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7933346587677693101, guid: 2d59c601eb9ff8c4fb387a27c9ff7a1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

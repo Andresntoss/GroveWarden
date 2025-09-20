@@ -78,6 +78,7 @@ MonoBehaviour:
   currentHealth: 0
   invulnerabilityDuration: 1.5
   invulnerableColor: {r: 1, g: 1, b: 1, a: 1}
+  coinDropAmount: 5
 --- !u!95 &6472157229081632335
 Animator:
   serializedVersion: 7
