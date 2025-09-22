@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance; // O singleton do Player
     private Rigidbody2D _playerRigidbody2D;
     private Animator _PlayerAnimator;
     public float _playerSpeed;
@@ -34,6 +36,19 @@ public class PlayerController : MonoBehaviour
     // ----- VARIÁVEL PARA A ÁREA DE ATAQUE (Alterada para pública) -----
     [Header("Configurações de Ataque")]
     public GameObject attackArea; // Linha 29: Referência ao objeto AttackArea
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(gameObject); // <--- Não Destruir o player onde trocar de cena
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

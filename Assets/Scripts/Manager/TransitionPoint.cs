@@ -3,9 +3,9 @@ using UnityEngine;
 public class TransitionPoint : MonoBehaviour
 {
     [Header("Configurações de Transição")]
-    public string sceneToLoad; // O nome da cena a ser carregada
-    public bool needsKeypress; // Se a transição precisa da tecla 'E'
-    public GameObject interactionPrompt; // O aviso visual (ícone do 'E')
+    public string sceneToLoad;
+    public bool needsKeypress;
+    public GameObject interactionPrompt;
 
     private bool _isPlayerInTrigger = false;
     private TransitionManager _transitionManager;
@@ -22,12 +22,16 @@ public class TransitionPoint : MonoBehaviour
     void Update()
     {
         if (needsKeypress && _isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
-        {
-            if (_transitionManager != null)
-            {
-                _transitionManager.LoadScene(sceneToLoad);
-            }
-        }
+{
+    if (sceneToLoad == "voltar") // ou qualquer string que você defina para o retorno
+    {
+        _transitionManager.LoadPreviousScene();
+    }
+    else
+    {
+        _transitionManager.LoadScene(sceneToLoad);
+    }
+}
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +45,6 @@ public class TransitionPoint : MonoBehaviour
             }
             if (!needsKeypress)
             {
-                // Se não precisar de tecla, carrega a cena imediatamente
                 if (_transitionManager != null)
                 {
                     _transitionManager.LoadScene(sceneToLoad);

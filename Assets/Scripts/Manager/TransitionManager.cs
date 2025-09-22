@@ -2,37 +2,40 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.Cinemachine;
 
 public class TransitionManager : MonoBehaviour
 {
-    public static TransitionManager instance; // O singleton do script
+    public static TransitionManager instance;
     
     [Header("Configurações de Transição")]
     public float fadeTime = 1.0f;
     public Image fadePanel;
 
-    private void Awake()
+    private string _previousSceneName;
+
+    public void LoadScene(string sceneName)
     {
-        if (instance == null)
+        // NOVO: Armazena o nome da cena atual como a cena anterior
+        _previousSceneName = SceneManager.GetActiveScene().name;
+        StartCoroutine(FadeIn(sceneName));
+    }
+    
+    // NOVO: Método para voltar para a cena anterior
+    public void LoadPreviousScene()
+    {
+        if (!string.IsNullOrEmpty(_previousSceneName))
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // O script não será destruído ao carregar uma nova cena
+            StartCoroutine(FadeIn(_previousSceneName));
         }
         else
         {
-            Destroy(gameObject); // Garante que só há uma instância
+            Debug.LogError("Cena anterior não encontrada!");
         }
     }
 
-    // Este método é chamado para carregar uma nova cena
-    public void LoadScene(string sceneName)
+    private IEnumerator FadeIn(string sceneName)
     {
-        StartCoroutine(FadeAndLoadScene(sceneName));
-    }
-
-    private IEnumerator FadeAndLoadScene(string sceneName)
-    {
-        // Fade in (escurece a tela)
         fadePanel.gameObject.SetActive(true);
         float elapsedTime = 0f;
         Color color = fadePanel.color;
@@ -45,11 +48,45 @@ public class TransitionManager : MonoBehaviour
             yield return null;
         }
 
-        // Carrega a cena
         SceneManager.LoadScene(sceneName);
+    }
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-        // Fade out (clareia a tela)
-        elapsedTime = 0f;
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (PlayerController.instance != null)
+        {
+            GameObject startPoint = GameObject.Find("StartPoint");
+            if (startPoint != null)
+            {
+                PlayerController.instance.transform.position = startPoint.transform.position;
+            }
+            
+            CinemachineCamera virtualCamera = Object.FindAnyObjectByType<CinemachineCamera>();
+            if (virtualCamera != null)
+            {
+                virtualCamera.Follow = PlayerController.instance.transform;
+                virtualCamera.LookAt = PlayerController.instance.transform;
+            }
+        }
+
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float elapsedTime = 0f;
+        Color color = fadePanel.color;
+        
         while (elapsedTime < fadeTime)
         {
             elapsedTime += Time.deltaTime;
