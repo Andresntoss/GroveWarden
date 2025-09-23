@@ -9,17 +9,17 @@ public class SlimeController : MonoBehaviour
     [Header("Configurações de Knockback")]
     public float knockbackForce = 10f;
     public float knockbackDuration = 0.2f;
-    
+
     [Header("Configurações de Movimento Aleatório")]
     public float wanderSpeed = 1.5f;
     public float wanderTimeMax = 3.0f;
     public float idleTimeMax = 2.0f;
     private float currentActionTime;
     private Vector2 wanderDirection;
-    
+
     private enum SlimeState { Idle, Wander, Chase, KnockedBack }
     private SlimeState currentSlimeState;
-    
+
     private Vector2 _slimeDirection;
     private Rigidbody2D _slimeRB2D;
     public DetectionController _detectionArea;
@@ -32,12 +32,12 @@ public class SlimeController : MonoBehaviour
         _slimeRB2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _slimeAnimator = GetComponent<Animator>();
-        
+
         currentSlimeState = SlimeState.Idle;
         currentActionTime = Random.Range(1f, idleTimeMax);
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         if (isKnockedBack)
         {
@@ -48,8 +48,8 @@ public class SlimeController : MonoBehaviour
         {
             currentSlimeState = SlimeState.Chase;
             ChasePlayer();
-        } 
-        else 
+        }
+        else
         {
             currentActionTime -= Time.fixedDeltaTime;
 
@@ -79,7 +79,7 @@ public class SlimeController : MonoBehaviour
             _slimeAnimator.SetInteger("Movimento", (currentSlimeState == SlimeState.Wander) ? 1 : 0);
         }
     }
-    
+
     private void ChasePlayer()
     {
         _slimeDirection = (_detectionArea.detectedObjs[0].transform.position - transform.position).normalized;
@@ -87,14 +87,14 @@ public class SlimeController : MonoBehaviour
         _slimeAnimator.SetInteger("Movimento", 1);
         Flip();
     }
-    
+
     private void Wander()
     {
         _slimeDirection = wanderDirection;
         _slimeRB2D.MovePosition(_slimeRB2D.position + _slimeDirection * wanderSpeed * Time.fixedDeltaTime);
         Flip();
     }
-    
+
     private void Idle()
     {
         _slimeRB2D.linearVelocity = Vector2.zero; // Garante que o slime esteja parado
@@ -106,7 +106,7 @@ public class SlimeController : MonoBehaviour
         float y = Random.Range(-1f, 1f);
         return new Vector2(x, y).normalized;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -118,7 +118,7 @@ public class SlimeController : MonoBehaviour
             {
                 playerHealth.TakeDamage(damageAmount);
             }
-            
+
             if (playerController != null)
             {
                 Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
@@ -141,7 +141,7 @@ public class SlimeController : MonoBehaviour
         _slimeRB2D.linearVelocity = Vector2.zero;
         isKnockedBack = false;
     }
-    
+
     private void Flip()
     {
         if (_slimeDirection.x > 0)
@@ -153,4 +153,5 @@ public class SlimeController : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
     }
+    
 }

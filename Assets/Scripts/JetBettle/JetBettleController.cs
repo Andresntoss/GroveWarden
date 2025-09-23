@@ -12,13 +12,13 @@ public class BeetleController : MonoBehaviour
     [Header("Configurações da IA")]
     public float detectionRadius = 6f;
     public float wanderTimeMax = 3.0f;
-    
+
     [Header("Ataque de Investida")]
     public float chargeRadius = 1.0f;
     public float chargeForce = 20f;
     public float chargeDuration = 0.5f;
     public float chargeCooldown = 2.0f;
-    
+
     private enum BeetleState { Wander, Chase, Charge }
     private BeetleState currentState;
 
@@ -39,7 +39,7 @@ public class BeetleController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
         ChangeState(BeetleState.Wander);
     }
 
@@ -48,7 +48,7 @@ public class BeetleController : MonoBehaviour
         if (_playerTransform != null)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, _playerTransform.position);
-            
+
             if (currentState != BeetleState.Charge)
             {
                 if (distanceToPlayer <= chargeRadius && Time.time > _nextChargeTime)
@@ -83,11 +83,11 @@ public class BeetleController : MonoBehaviour
                 break;
         }
     }
-    
+
     private void FixedUpdate()
     {
         Vector2 desiredVelocity = Vector2.zero;
-        
+
         if (currentState == BeetleState.Wander)
         {
             desiredVelocity = _wanderDirection * _moveSpeed;
@@ -99,7 +99,7 @@ public class BeetleController : MonoBehaviour
                 desiredVelocity = (_playerTransform.position - transform.position).normalized * _moveSpeed;
             }
         }
-        
+
         if (!_isCharging)
         {
             _rb2d.linearVelocity = desiredVelocity;
@@ -156,7 +156,7 @@ public class BeetleController : MonoBehaviour
     {
         //Essa função é chamada diretamente no update
     }
-    
+
     private void HandleChargeState()
     {
         // ...Essa função é chamada diretamente no update
@@ -166,20 +166,20 @@ public class BeetleController : MonoBehaviour
     {
         _isCharging = true;
         _rb2d.linearVelocity = Vector2.zero;
-        
+
         Vector2 chargeDirection = (_playerTransform.position - transform.position).normalized;
         _rb2d.AddForce(chargeDirection * chargeForce, ForceMode2D.Impulse);
-        
+
         yield return new WaitForSeconds(chargeDuration);
 
         _isCharging = false;
         _rb2d.linearVelocity = Vector2.zero;
-        
+
         _nextChargeTime = Time.time + chargeCooldown;
-        
+
         ChangeState(BeetleState.Wander);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && _isCharging)
@@ -191,9 +191,10 @@ public class BeetleController : MonoBehaviour
             }
         }
     }
-    
+
     private Vector2 GetRandomDirection()
     {
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
+    
 }

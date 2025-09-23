@@ -1,97 +1,108 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class FaintManager : MonoBehaviour
 {
     public static FaintManager instance;
 
     [Header("Referências")]
-    public GameObject gameOverPanel; // Painel "Você desmaiou"
-    public GameObject player;        // Referência ao player
-    public Transform camaTransform;  // Local onde o player aparecerá após desmaiar
+    public Transform camaPosition;
 
-    private bool esperandoInput = false;
+    [Header("Mensagem de Desmaio")]
+    [TextArea]
+    public string faintMessage = "Você desmaiou! Pressione E para continuar.";
+
+    private PlayerController playerController;
+    private Health playerHealth;
+    private Animator playerAnimator;
+
+    private bool isFainting = false;
 
     private void Awake()
     {
-        // Singleton simples
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
-
-        // Desativa o painel no início
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        // Singleton
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
     }
 
-    /// <summary>
-    /// Chame este método quando a vida do jogador chegar a zero.
-    /// </summary>
-    public void AtivarDesmaio()
+    private void Start()
     {
-        if (gameOverPanel != null)
-        {
-            gameOverPanel.SetActive(true);
-            esperandoInput = true;
-        }
-
-        // Pausa o jogo
-        Time.timeScale = 0f;
-
-        // Desativa PlayerController para evitar movimento
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            var controller = player.GetComponent<PlayerController>();
-            if (controller != null) controller.enabled = false;
-        }
-    }
-
-    private void Update()
-    {
-        // Aguarda input do jogador
-        if (esperandoInput && Input.GetKeyDown(KeyCode.E))
-        {
-            esperandoInput = false;
-
-            // Retoma o tempo antes do fade
-            Time.timeScale = 1f;
-
-            // Inicia o fade e move o jogador para a cama
-            StartCoroutine(FadeAndMoveToBed());
-        }
-    }
-
-    private IEnumerator FadeAndMoveToBed()
-    {
-        // Verifica se o FadeManager existe
-        if (FadeManager.instance != null)
-        {
-            // Faz fade usando o FadeManager
-            yield return StartCoroutine(FadeManager.instance.FadeAndTeleport(player, camaTransform.position));
+            playerController = player.GetComponent<PlayerController>();
+            playerHealth = player.GetComponent<Health>();
+            playerAnimator = player.GetComponent<Animator>();
         }
         else
         {
-            // Se não houver FadeManager, move o player diretamente
-            if (player != null && camaTransform != null)
-                player.transform.position = camaTransform.position;
+            Debug.LogError("[FaintManager] Jogador não encontrado!");
         }
+    }
 
-        // Restaura vida do jogador
-        Health playerHealth = player.GetComponent<Health>();
-        if (playerHealth != null)
+    // Chamada quando o jogador morre
+    public void TriggerFaint()
+    {
+        if (!isFainting)
         {
-            playerHealth.RestaurarVidaMaxima();
+            isFainting = true;
+            StartCoroutine(FaintSequence());
         }
+    }
 
-        // Passa para o próximo dia
-        if (TimeManager.instance != null)
-            TimeManager.instance.PassarParaProximoDia();
+    private IEnumerator FaintSequence()
+    {
+        // Pausa o jogador
+        if (playerController != null)
+            playerController.enabled = false;
 
-        // Fecha o painel e reativa PlayerController
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        // Pausa o tempo do jogo e mostra mensagem
+        Time.timeScale = 0f;
+        UIManager.instance.ShowGameOverPanel();
 
-        if (player != null)
+        // Altera o texto do painel para a mensagem definida
+        TMPro.TextMeshProUGUI textUI = UIManager.instance.gameOverPanel.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        if (textUI != null)
+            textUI.text = faintMessage;
+
+        // Espera o jogador apertar E
+        yield return StartCoroutine(WaitForPlayerInput());
+
+        // Esconde painel e retoma tempo
+        UIManager.instance.HideGameOverPanel();
+        Time.timeScale = 1f;
+
+        // Fade e teleporte para a cama
+        if (FadeManager.instance != null)
+            yield return StartCoroutine(FadeManager.instance.FadeAndTeleport(playerController.gameObject, camaPosition.position));
+
+        // Recupera vida completa
+        playerHealth?.RestoreFullHealth();
+
+        // Avança o dia
+        FindAnyObjectByType<TimeManager>()?.PassarParaProximoDia();
+
+        // Reseta animação para Idle
+        if (playerAnimator != null)
         {
-            var controller = player.GetComponent<PlayerController>();
-            if (controller != null) controller.enabled = true;
+            playerAnimator.Rebind();
+            playerAnimator.Update(0f);
         }
+
+        // Reativa jogador
+        if (playerController != null)
+            playerController.enabled = true;
+
+        isFainting = false;
+    }
+
+    private IEnumerator WaitForPlayerInput()
+    {
+        while (!Input.GetKeyDown(KeyCode.E))
+            yield return null;
     }
 }

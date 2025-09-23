@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // ----- VARIÁVEIS PARA AS CAMADAS -----
     private int playerLayer;
     private int invincibleLayer;
-    
+
     // ----- VARIÁVEIS DE KNOCKBACK -----
     [Header("Configurações de Knockback")]
     public float knockbackForce = 15f;
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SetAttackState(false);
     }
-    
+
     private void SetAttackState(bool isAttacking)
     {
         _isAttacking = isAttacking;
@@ -195,4 +195,11 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody2D.linearVelocity = Vector2.zero;
         isKnockedBack = false;
     }
+    // Este método será chamado pelo Animation Event "TriggerFaint" no final da animação de morte
+    public void OnDeathAnimationEnd()
+    {
+        // Chama o FaintManager
+        FaintManager.instance?.TriggerFaint();
+    }
+
 }
