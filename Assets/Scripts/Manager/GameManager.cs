@@ -2,117 +2,80 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using Unity.Cinemachine;
 
+[DefaultExecutionOrder(-100)] // tenta garantir que o GameManager acorde antes de outros scripts
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    
-    [Header("UI e Tempo")]
+
+    [Header("UI e Fade")]
     public float fadeTime = 1.0f;
     public Image fadePanel;
     public GameObject gameOverPanel;
+
+    [Header("UI de HUD (opcional)")]
     public TextMeshProUGUI clockText;
     public TextMeshProUGUI dayCounterText;
 
-    [Header("Configurações de Tempo")]
-    public float tempoTotalDia = 1200f;
-    public float duracaoDiaPleno = 480f;
-    public float duracaoEntardecer = 240f;
-    public float duracaoNoite = 480f;
-
-    private float tempoAtual;
-    private int diaAtual = 1;
-    private int horas = 6;
-    private int minutos = 0;
-    private bool podeAvancarTempo = true;
-
     private void Awake()
     {
-        if (instance == null)
+        // Singleton robusto
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
+            Debug.LogWarning("[GameManager] Outra instância detectada — destruindo esta.");
             Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+
+        // Avisos se referências não atribuídas
+        if (fadePanel == null) Debug.LogWarning("[GameManager] fadePanel não atribuído no Inspetor.");
+        if (clockText == null) Debug.LogWarning("[GameManager] clockText não atribuído no Inspetor.");
+        if (dayCounterText == null) Debug.LogWarning("[GameManager] dayCounterText não atribuído no Inspetor.");
     }
 
-    void Start()
-    {
-        Canvas mainCanvas = Object.FindFirstObjectByType<Canvas>();
-        if (mainCanvas != null)
-        {
-            DontDestroyOnLoad(mainCanvas.gameObject);
-        }
-        
-        Camera mainCamera = Camera.main;
-        if (mainCamera != null)
-        {
-            DontDestroyOnLoad(mainCamera.gameObject);
-        }
-
-        ResetTime();
-    }
-
-    void Update()
-    {
-        if (podeAvancarTempo)
-        {
-            tempoAtual += Time.deltaTime;
-        }
-        
-        float segundosPorHora = tempoTotalDia / 24f;
-        float tempoDecorrenteDia = tempoAtual / segundosPorHora;
-        
-        horas = 6 + (int)tempoDecorrenteDia;
-        minutos = (int)((tempoDecorrenteDia - (int)tempoDecorrenteDia) * 60);
-
-        if (horas >= 26)
-        {
-            podeAvancarTempo = false;
-            horas = 2;
-            minutos = 0;
-        }
-        
-        AtualizarUI();
-    }
-
+    // --- Game Over ---
+    
     public void ShowGameOverPanel()
     {
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            Time.timeScale = 0f;
         }
-        Time.timeScale = 0f;
+        else
+        {
+            Debug.LogError("[GameManager] gameOverPanel não atribuído!");
+        }
     }
-    
+    //private void Update() // Ao Morrer Reinicia o jogo ao apertar E
+    //{
+        //if (gameOverPanel != null && gameOverPanel.activeSelf) // Verifica se o gameOverPanel está ativo
+    //    {
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        RestartGame();
+    //    }
+    //  }
+    //}
     public void RestartGame()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void AtualizarUI()
+    // --- Atualização de HUD opcional ---
+    public void AtualizarUI(string horaTexto = null, string diaTexto = null)
     {
-        if (clockText != null)
+        if (clockText != null && horaTexto != null)
         {
-            clockText.text = string.Format("{0:00}:{1:00}", horas % 24, minutos);
+            clockText.text = horaTexto;
         }
-        if (dayCounterText != null)
+
+        if (dayCounterText != null && diaTexto != null)
         {
-            dayCounterText.text = "Dia " + diaAtual.ToString();
+            dayCounterText.text = diaTexto;
         }
-    }
-    
-    private void ResetTime()
-    {
-        tempoAtual = 0;
-        horas = 6;
-        minutos = 0;
-        diaAtual = 1;
-        podeAvancarTempo = true;
     }
 }

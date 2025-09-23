@@ -1,65 +1,75 @@
 using UnityEngine;
+using System.Collections;
 
 public class BedInteraction : MonoBehaviour
 {
-    // A referência ao script TimeManager
-    private TimeManager _timeManager;
-    
-    // O objeto de aviso visual (o sprite ou texto) que você conectou no Inspector
-    public GameObject avisoInteracao;
+    private FadeManager _fadeManager; // Referência para o FadeManager
 
-    // Flag para verificar se o jogador está na área de interação
+    [Header("UI de Interação")]
+    public GameObject interactionPrompt; // O aviso visual (ícone do 'E')
+
     private bool _isPlayerInTrigger = false;
+    private bool _canSleep = true; // Controla se o jogador pode dormir
 
     void Start()
     {
-        // Encontra o TimeManager na cena e o armazena
-        _timeManager = FindAnyObjectByType<TimeManager>();
+        _fadeManager = FindAnyObjectByType<FadeManager>();
 
-        // Começa com o aviso de interação desativado
-        if (avisoInteracao != null)
+        if (interactionPrompt != null)
         {
-            avisoInteracao.SetActive(false);
+            interactionPrompt.SetActive(false);
         }
     }
-    
-    // O Input.GetKeyDown é verificado aqui, a cada frame
+
     void Update()
     {
-        // Se o jogador estiver na área E pressionar a tecla 'E'
-        if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
+        // Se a tecla for pressionada e o jogador estiver na área
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerInTrigger && _canSleep)
         {
-            // Chamamos a função para avançar o dia
-            _timeManager.PassarParaProximoDia();
-        }
-    }
-
-    // Chamado quando um objeto entra na área do gatilho
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        // Se o objeto que entrou for o jogador
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInTrigger = true; // Ativa a flag
-
-            if (avisoInteracao != null)
+            if (_fadeManager != null)
             {
-                avisoInteracao.SetActive(true);
+                // Bloqueia novas tentativas até o fade terminar
+                _canSleep = false;
+                StartCoroutine(SleepRoutine());
+            }
+            else
+            {
+                Debug.LogWarning("[BedInteraction] FadeManager não encontrado na cena.");
             }
         }
     }
 
-    // Chamado quando um objeto sai da área do gatilho
-    void OnTriggerExit2D(Collider2D other)
+    private IEnumerator SleepRoutine()
     {
-        // Se o objeto que saiu for o jogador
+        // Espera a animação de fade + avanço de dia terminar
+        yield return StartCoroutine(_fadeManager.FadeAndPassDay());
+
+        // Libera novamente para permitir dormir no próximo dia
+        _canSleep = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.CompareTag("Player"))
         {
-            _isPlayerInTrigger = false; // Desativa a flag
+            _isPlayerInTrigger = true;
 
-            if (avisoInteracao != null)
+            if (interactionPrompt != null)
             {
-                avisoInteracao.SetActive(false);
+                interactionPrompt.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _isPlayerInTrigger = false;
+
+            if (interactionPrompt != null)
+            {
+                interactionPrompt.SetActive(false);
             }
         }
     }

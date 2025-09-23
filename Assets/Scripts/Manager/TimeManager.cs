@@ -36,7 +36,16 @@ public class TimeManager : MonoBehaviour
     
     // Flag para verificar se o tempo deve continuar correndo
     private bool podeAvancarTempo = true;
-    
+
+    public static TimeManager instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
+
     void Start()
     {
         // Define o tempo inicial do jogo para 6 da manhã

@@ -8,20 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel; // O painel de game over
     public GameObject mainMenuPanel; // O painel do menu principal
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void ShowGameOverPanel()
+        public void ShowGameOverPanel()
     {
         if (gameOverPanel != null)
         {

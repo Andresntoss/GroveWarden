@@ -1,117 +1,118 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [Header("Configurações de Vida")]
     public float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
-    public float CurrentHealth { get { return currentHealth; } }
+    private float currentHealth;
 
     [Header("Configurações de Invulnerabilidade")]
     public float invulnerabilityDuration = 1.5f;
+    public Color invulnerableColor = Color.white;
+
+    private bool isDead = false;
     private bool isInvulnerable = false;
+
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    public Color invulnerableColor = Color.white;
     private Color originalColor;
-    private Collider2D _collider2D;
-    private GameManager _gameManager;
-    public int coinDropAmount;
 
-    void Start()
+    // --- Propriedade para compatibilidade com HealthBarUI ---
+    public float CurrentHealth
+    {
+        get { return currentHealth; }
+    }
+
+    private void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        _collider2D = GetComponent<Collider2D>();
-        originalColor = spriteRenderer.color;
-
-        _gameManager = FindAnyObjectByType<GameManager>();
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
     }
 
     public void TakeDamage(float damageAmount)
     {
-        if (isInvulnerable) return;
+        if (isDead || isInvulnerable) return;
 
         currentHealth -= damageAmount;
+        currentHealth = Mathf.Max(currentHealth, 0);
 
-        if (gameObject.CompareTag("Enemy"))
-        {
-            if (animator != null)
-            {
-                animator.SetTrigger("Dano");
-            }
-        }
+        if (spriteRenderer != null)
+            StartCoroutine(BecomeInvulnerable());
 
-        Debug.Log(gameObject.name + " sofreu " + damageAmount + " de dano. Vida restante: " + currentHealth);
-
-        StartCoroutine(BecomeInvulnerable());
-
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             Die();
         }
     }
 
-    private void Die()
-    {
-        Debug.Log(gameObject.name + " foi derrotado!");
-
-        if (animator != null)
-        {
-            animator.SetTrigger("Morte");
-        }
-
-        _collider2D.enabled = false;
-
-        if (gameObject.CompareTag("Player"))
-        {
-            GetComponent<PlayerController>().enabled = false;
-        }
-        else if (gameObject.CompareTag("Enemy"))
-        {
-            SlimeController slimeController = GetComponent<SlimeController>();
-            if (slimeController != null)
-            {
-                slimeController.enabled = false;
-            }
-        }
-
-        Debug.Log(gameObject.name + " foi derrotado!");
-    
-        // Adiciona moedas antes de o objeto ser destruído
-        CurrencyManager.AddCoins(coinDropAmount);
-    }
-
-    // --- NOVO: Função para ser chamada pelo Animation Event de morte do Player ---
-    public void ShowGameOverScreen()
-    {
-        if (_gameManager != null)
-        {
-            _gameManager.ShowGameOverPanel();
-        }
-    }
-
-    // --- Chamado pelo Animation Event do Slime ---
-    public void DestroyAfterAnimation()
-    {
-        Destroy(gameObject);
-    }
-
     private IEnumerator BecomeInvulnerable()
     {
         isInvulnerable = true;
-        spriteRenderer.color = invulnerableColor;
+        if (spriteRenderer != null)
+            spriteRenderer.color = invulnerableColor;
+
         yield return new WaitForSeconds(invulnerabilityDuration);
-        spriteRenderer.color = originalColor;
+
+        if (spriteRenderer != null)
+            spriteRenderer.color = originalColor;
+
         isInvulnerable = false;
     }
 
-    public static void RestartGame()
+    private void Die()
     {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (isDead) return;
+        isDead = true;
+
+        if (animator != null)
+            animator.SetTrigger("Morte"); // Configure o trigger "Morte" no Animator
+
+        if (gameObject.CompareTag("Player"))
+        {
+            // Player desmaia
+            if (FaintManager.instance != null)
+                FaintManager.instance.AtivarDesmaio();
+
+            var controller = GetComponent<PlayerController>();
+            if (controller != null)
+                controller.enabled = false;
+
+            Debug.Log("[Health] Player desmaiou!");
+        }
+        else
+        {
+            // Inimigo morre normalmente
+            var enemyController = GetComponent<SlimeController>();
+            if (enemyController != null)
+                enemyController.enabled = false;
+
+            // Opcional: Destruir inimigo após animação
+            Destroy(gameObject, 0.5f);
+        }
+    }
+
+    /// <summary>
+    /// Restaura a vida máxima e permite nova morte.
+    /// </summary>
+    public void RestaurarVidaMaxima()
+    {
+        currentHealth = maxHealth;
+        isDead = false;
+
+        var controller = GetComponent<PlayerController>();
+        if (controller != null)
+            controller.enabled = true;
+    }
+
+    /// <summary>
+    /// Retorna a vida atual (opcional se preferir usar CurrentHealth).
+    /// </summary>
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

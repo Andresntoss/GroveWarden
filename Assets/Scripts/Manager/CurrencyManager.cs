@@ -1,41 +1,66 @@
 using UnityEngine;
-using TMPro; // Importe para usar TextMeshPro
+using TMPro;
 
 public class CurrencyManager : MonoBehaviour
 {
-    public static int coins; // O total de moedas
+    public static CurrencyManager instance; // Singleton
+    public static int coins; // Total de moedas
 
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI coinsText;
 
-    void Start()
+    private void Awake()
     {
-        coins = 0; // Inicia com 0 moedas
+        // Singleton
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        // Opcional: persistir entre cenas
+        // DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        coins = 0; // inicia com 0 moedas
         UpdateCoinsUI();
     }
 
-    // Adiciona moedas ao total
+    // Adiciona moedas
     public static void AddCoins(int amount)
     {
         coins += amount;
-        FindAnyObjectByType<CurrencyManager>().UpdateCoinsUI();
+        if (instance != null)
+            instance.UpdateCoinsUI();
+        else
+            Debug.LogWarning("[CurrencyManager] Nenhuma instância encontrada para atualizar UI!");
     }
 
-    // Remove moedas do total
+    // Remove moedas
     public static void RemoveCoins(int amount)
     {
         if (coins >= amount)
         {
             coins -= amount;
-            FindAnyObjectByType<CurrencyManager>().UpdateCoinsUI();
+            if (instance != null)
+                instance.UpdateCoinsUI();
+            else
+                Debug.LogWarning("[CurrencyManager] Nenhuma instância encontrada para atualizar UI!");
         }
     }
 
-    // Atualiza o texto da UI
+    // Atualiza a UI
     private void UpdateCoinsUI()
     {
         if (coinsText != null)
         {
             coinsText.text = coins.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("[CurrencyManager] coinsText não atribuído no Inspector!");
         }
     }
 }
