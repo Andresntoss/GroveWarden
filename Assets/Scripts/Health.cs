@@ -20,6 +20,10 @@ public class Health : MonoBehaviour
     private bool isDead = false;
     public int coinDropAmount = 0; // Quantidade de moedas que este inimigo solta
 
+    [Header("Drop de Itens")]
+    public ItemData itemToDrop; // O ScriptableObject do item que o inimigo vai dropar
+    public int dropAmount = 1; // Quantidade de itens a serem dropados
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -70,6 +74,19 @@ public class Health : MonoBehaviour
             SlimeController ec = GetComponent<SlimeController>();
             if (ec != null) ec.enabled = false;
         }
+        Debug.Log(gameObject.name + " foi derrotado!");
+
+        // --- NOVO: Lógica para o Drop de Itens ---
+        if (itemToDrop != null && InventoryManager.instance != null)
+        {
+            InventoryManager.instance.AddItem(itemToDrop, dropAmount);
+        }
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Morte");
+        }
+        
     }
 
     public void RestoreFullHealth()
