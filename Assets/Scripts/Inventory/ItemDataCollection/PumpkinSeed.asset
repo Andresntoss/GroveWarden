@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7cff9a78a99bf4581cc227baf46522, type: 3}
+  m_Script: {fileID: 11500000, guid: 805936bcd35e0684a940594c1959e2b2, type: 3}
   m_Name: PumpkinSeed
-  m_EditorClassIdentifier: Assembly-CSharp::CropData
-  cropName: 
-  growthSprites: []
-  daysToGrow: 0
-  yieldItem: {fileID: 0}
-  yieldAmount: 0
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: PumpkinSeed
+  itemIcon: {fileID: 6961537510691747046, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  itemDescription: Semente de Abobora

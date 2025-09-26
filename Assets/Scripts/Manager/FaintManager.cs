@@ -84,7 +84,7 @@ public class FaintManager : MonoBehaviour
         playerHealth?.RestoreFullHealth();
 
         // Avança o dia
-        FindAnyObjectByType<TimeManager>()?.PassarParaProximoDia();
+        FindAnyObjectByType<GameManager>()?.PassarParaProximoDia();
 
         // Reseta animação para Idle
         if (playerAnimator != null)

@@ -46,7 +46,7 @@ public class FadeManager : MonoBehaviour
 
         if (GameManager.instance != null)
         {
-            FindAnyObjectByType<TimeManager>()?.PassarParaProximoDia();
+            FindAnyObjectByType<GameManager>()?.PassarParaProximoDia();
         }
         else
         {

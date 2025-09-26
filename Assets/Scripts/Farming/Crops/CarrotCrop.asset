@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7cff9a78a99bf4581cc227baf46522, type: 3}
+  m_Name: CarrotCrop
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  cropName: CarrotCrop
+  growthSprites:
+  - {fileID: 4067331649436871237, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -8891576911292042033, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: 3989102433688500459, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -301230590586860282, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -4764451855761610375, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  daysToGrow: 7
+  seedItem: {fileID: 11400000, guid: b4c4d074475ff0c418326b72356bbb14, type: 2}
+  yieldItem: {fileID: 11400000, guid: 59b33fa60ee6c1e4d984df70353fbedf, type: 2}
+  yieldAmount: 4

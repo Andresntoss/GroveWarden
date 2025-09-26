@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7cff9a78a99bf4581cc227baf46522, type: 3}
+  m_Name: PumpkinCrop
+  m_EditorClassIdentifier: Assembly-CSharp::CropData
+  cropName: PumpkinSeed
+  growthSprites:
+  - {fileID: 6961537510691747046, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: 4292933438375630853, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -2770800535949366151, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -5247447911279970617, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  - {fileID: -1427710858036387656, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  daysToGrow: 5
+  seedItem: {fileID: 11400000, guid: f7d5390558d44eb4eb6124c0d1754062, type: 2}
+  yieldItem: {fileID: 11400000, guid: a5f7fd2c6ef4a9a4eb421911388f410d, type: 2}
+  yieldAmount: 3

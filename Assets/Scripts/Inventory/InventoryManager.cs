@@ -72,4 +72,16 @@ public class InventoryManager : MonoBehaviour
         }
         Debug.Log("------------------");
     }
+    public bool HasItem(ItemData itemData, int requiredQuantity)
+    {
+    foreach (var item in inventoryItems)
+    {
+        // Verifica se o ItemData é o correto E se a quantidade é suficiente
+        if (item.itemData == itemData && item.quantity >= requiredQuantity)
+        {
+            return true;
+        }
+    }
+    return false;
+    }
 }

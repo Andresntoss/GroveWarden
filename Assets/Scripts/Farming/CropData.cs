@@ -6,6 +6,9 @@ public class CropData : ScriptableObject
     public string cropName;
     public Sprite[] growthSprites; // Sprites para cada estágio de crescimento
     public int daysToGrow; // O tempo total de crescimento
-    public ItemData yieldItem; // O item que será colhido
+
+    [Header("Itens")]
+    public ItemData seedItem; // <--- NOVO: O ItemData da semente (o que o jogador planta)
+    public ItemData yieldItem; // O item que será colhido (o produto final)
     public int yieldAmount; // A quantidade do item
 }

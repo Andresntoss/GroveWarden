@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 805936bcd35e0684a940594c1959e2b2, type: 3}
-  m_Name: CarrotSeed
+  m_Name: Carrot
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
-  itemIcon: {fileID: 0}
-  itemDescription: 
+  itemName: Carrot
+  itemIcon: {fileID: 4391672357255245482, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
+  itemDescription: Cenoura crocante
