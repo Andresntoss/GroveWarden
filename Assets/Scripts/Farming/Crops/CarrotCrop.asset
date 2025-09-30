@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7cff9a78a99bf4581cc227baf46522, type: 3}
   m_Name: CarrotCrop
   m_EditorClassIdentifier: Assembly-CSharp::CropData
+  relatedCropData: {fileID: 11400000}
   cropName: CarrotCrop
   growthSprites:
   - {fileID: 4067331649436871237, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
@@ -19,7 +20,7 @@ MonoBehaviour:
   - {fileID: 3989102433688500459, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   - {fileID: -301230590586860282, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   - {fileID: -4764451855761610375, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
-  daysToGrow: 7
+  daysToGrow: 4
   seedItem: {fileID: 11400000, guid: b4c4d074475ff0c418326b72356bbb14, type: 2}
   yieldItem: {fileID: 11400000, guid: 59b33fa60ee6c1e4d984df70353fbedf, type: 2}
-  yieldAmount: 4
+  yieldAmount: 3

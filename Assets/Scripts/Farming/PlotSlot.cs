@@ -50,10 +50,26 @@ public class PlotSlot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _isPlayerInside)
         {
             if (!isPlanted)
+        {
+            // 1. Tenta obter o item selecionado na Hotbar
+            Item selectedItem = InventoryManager.instance?.GetSelectedItem();
+
+            // 2. Se houver um item e for uma semente...
+            if (selectedItem != null && selectedItem.itemData.itemType == ItemType.Seed) // Supondo que você tem um Enum ItemType
             {
-                // NOVO: Assume que o jogador tem a semente para teste
-                Plant(cropData);
+                // ... tenta plantar o CropData relacionado à semente
+                CropData cropToPlant = selectedItem.itemData.relatedCropData;
+                
+                if (cropToPlant != null)
+                {
+                    TryPlanting(cropToPlant); 
+                }
             }
+            else
+            {
+                Debug.Log("Você não está segurando uma semente na Hotbar.");
+            }
+        }
             else if (isPlanted && !isWatered)
             {
                 Water();
@@ -159,9 +175,7 @@ public class PlotSlot : MonoBehaviour
     }
     public void TryPlanting(CropData data)
 {
-    // AQUI VOCÊ TERÁ QUE DEFINIR QUAL O ITEM DE SEMENTE CORRESPONDE A ESTA CULTURA
-    // Por exemplo, data.seedItem é o ItemData da semente de cenoura
-    
+    // Verifica se o Inventário tem a semente antes de plantar
     if (InventoryManager.instance != null && InventoryManager.instance.HasItem(data.seedItem, 1))
     {
         InventoryManager.instance.RemoveItem(data.seedItem, 1);
@@ -172,4 +186,8 @@ public class PlotSlot : MonoBehaviour
         Debug.Log("Você não tem a semente para plantar!");
     }
 }
+
+// O campo cropData público agora pode ser removido ou usado internamente:
+// [SerializeField] private CropData currentCropData; 
+// public CropData cropData; // REMOVA ESTA LINHA OU MUDE PARA private/SerializeField
 }

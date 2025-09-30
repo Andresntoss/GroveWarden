@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7cff9a78a99bf4581cc227baf46522, type: 3}
   m_Name: PumpkinCrop
   m_EditorClassIdentifier: Assembly-CSharp::CropData
+  relatedCropData: {fileID: 11400000}
   cropName: PumpkinSeed
   growthSprites:
   - {fileID: 6961537510691747046, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
@@ -19,7 +20,7 @@ MonoBehaviour:
   - {fileID: -2770800535949366151, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   - {fileID: -5247447911279970617, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   - {fileID: -1427710858036387656, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
-  daysToGrow: 5
+  daysToGrow: 4
   seedItem: {fileID: 11400000, guid: f7d5390558d44eb4eb6124c0d1754062, type: 2}
   yieldItem: {fileID: 11400000, guid: a5f7fd2c6ef4a9a4eb421911388f410d, type: 2}
-  yieldAmount: 3
+  yieldAmount: 1

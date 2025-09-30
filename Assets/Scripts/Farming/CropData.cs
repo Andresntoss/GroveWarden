@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Crop", menuName = "Farming/Crop Data")]
 public class CropData : ScriptableObject
 {
+    [Header("Farming")]
+    public CropData relatedCropData; // O CropData que esta semente gera
     public string cropName;
     public Sprite[] growthSprites; // Sprites para cada estágio de crescimento
     public int daysToGrow; // O tempo total de crescimento

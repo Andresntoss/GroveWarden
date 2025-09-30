@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     // --- Funções para Animação Events ---
     public void EnableAttackArea()
     {
-        Debug.Log("Ativando área de ataque!");
+        //Debug.Log("Ativando área de ataque!");
         if (attackArea != null)
         {
             attackArea.SetActive(true);
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
 
     public void DisableAttackArea()
     {
-        Debug.Log("Desativando área de ataque!");
+        //Debug.Log("Desativando área de ataque!");
         if (attackArea != null)
         {
             attackArea.SetActive(false);

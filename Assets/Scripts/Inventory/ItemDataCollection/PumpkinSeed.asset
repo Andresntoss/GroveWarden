@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: PumpkinSeed
   itemIcon: {fileID: 6961537510691747046, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   itemDescription: Semente de Abobora
+  itemType: 1
+  relatedCropData: {fileID: 11400000, guid: 6594acf0394956441a8cfdd401264bec, type: 2}

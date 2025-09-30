@@ -298,7 +298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 60
-  currentHealth: 0
   invulnerabilityDuration: 0.5
   invulnerableColor: {r: 1, g: 1, b: 1, a: 0.78039217}
   coinDropAmount: 10
+  itemToDrop: {fileID: 11400000, guid: b4c4d074475ff0c418326b72356bbb14, type: 2}
+  dropAmount: 1

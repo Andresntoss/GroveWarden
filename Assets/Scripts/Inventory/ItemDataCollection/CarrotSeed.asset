@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: CarrotSeed
   itemIcon: {fileID: 4067331649436871237, guid: d32f5de85b4ae3b4abc6757b94ab732e, type: 3}
   itemDescription: Semente de Cenoura
+  itemType: 1
+  relatedCropData: {fileID: 11400000, guid: 88e9f1bf1abc88d48b34e2e0bdd49345, type: 2}

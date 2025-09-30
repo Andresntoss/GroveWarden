@@ -47,14 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Certifique-se que o Canvas e Câmera persistam
-        Canvas mainCanvas = Object.FindFirstObjectByType<Canvas>();
-        if (mainCanvas != null) DontDestroyOnLoad(mainCanvas.gameObject);
-        
-        Camera mainCamera = Camera.main;
-        if (mainCamera != null) DontDestroyOnLoad(mainCamera.gameObject);
-
-        ResetTime();
+               ResetTime();
     }
 
     void Update()
