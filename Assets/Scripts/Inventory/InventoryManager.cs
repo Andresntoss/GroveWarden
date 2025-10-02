@@ -1,19 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
 
-    // NOVO: Qual slot (índice da lista) está atualmente selecionado (0 a N)
     public int selectedSlotIndex = 0;
 
     [Header("Configurações do Inventário")]
-    public int maxUniqueSlots = 30; // Limite de 30 tipos de itens diferentes
-    public List<Item> inventoryItems = new List<Item>();
+    public const int MAX_SLOTS = 36; // Tamanho Fixo da Mochila e Hotbar
+    
+    // Array privado para evitar conflitos de serialização, mas visível para debug
+    [SerializeField] private Item[] _inventorySlots = new Item[MAX_SLOTS]; 
 
+    // Propriedade pública para que scripts externos (HotbarUI) possam LER o array
+    public Item[] InventorySlots => _inventorySlots; 
+    
     public event Action OnInventoryChanged;
+    public event Action<int> OnSlotSelected;
 
     private void Awake()
     {
@@ -25,108 +31,142 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        // Garante que o array seja do tamanho correto se for a primeira vez que está sendo criado
+        if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
+        {
+            _inventorySlots = new Item[MAX_SLOTS];
+        }
     }
 
+    // --- LÓGICA DE ADIÇÃO E REMOÇÃO ---
     public void AddItem(ItemData itemData, int quantity)
     {
-        // Verifica se o item já existe no inventário
-        foreach (var item in inventoryItems)
+        // 1. Tenta empilhar em slot existente
+        for (int i = 0; i < MAX_SLOTS; i++)
         {
-            if (item.itemData == itemData)
+            if (_inventorySlots[i] != null && _inventorySlots[i].itemData == itemData)
             {
-                item.quantity += quantity;
-                Debug.Log($"Adicionou {quantity} {itemData.itemName}. Quantidade total: {item.quantity}");
+                _inventorySlots[i].quantity += quantity;
+                OnInventoryChanged?.Invoke();
                 return;
             }
-
-            // Se o item não existe, checa se há espaço para um novo slot
-            if (inventoryItems.Count >= maxUniqueSlots)
+        }
+        
+        // 2. Item novo: encontra o primeiro slot vazio
+        for (int i = 0; i < MAX_SLOTS; i++)
+        {
+            if (_inventorySlots[i] == null)
             {
-                Debug.LogWarning("Inventário cheio! Não há espaço para novos tipos de item.");
-                return; // Bloqueia a adição de um novo slot
+                _inventorySlots[i] = new Item { itemData = itemData, quantity = quantity };
+                OnInventoryChanged?.Invoke();
+                return; 
             }
         }
 
-        // Se o item não existe, adiciona-o à lista
-        Item newItem = new Item { itemData = itemData, quantity = quantity };
-        inventoryItems.Add(newItem);
-        Debug.Log($"Novo item adicionado: {itemData.itemName} com quantidade {quantity}");
-
-        OnInventoryChanged?.Invoke();
+        Debug.LogWarning("Inventário Cheio! Não há slots vazios.");
     }
 
     public void RemoveItem(ItemData itemData, int quantity)
     {
-        foreach (var item in inventoryItems)
+        for (int i = 0; i < MAX_SLOTS; i++)
         {
-            if (item.itemData == itemData)
+            Item item = _inventorySlots[i];
+            
+            if (item != null && item.itemData == itemData)
             {
                 item.quantity -= quantity;
+                
                 if (item.quantity <= 0)
                 {
-                    inventoryItems.Remove(item);
+                    _inventorySlots[i] = null; // Zera o slot
                 }
-                Debug.Log($"Removeu {quantity} {itemData.itemName}. Quantidade restante: {item.quantity}");
+
+                OnInventoryChanged?.Invoke(); 
                 return;
             }
         }
-        OnInventoryChanged?.Invoke();
-
-        Debug.Log($"Não foi possível remover {itemData.itemName}. Item não encontrado.");
     }
-    public void DisplayInventory()
+
+    // --- LÓGICA DE TROCA E SELEÇÃO ---
+    
+    public void SwapItems(int indexA, int indexB)
     {
-        Debug.Log("--- Inventário ---");
-        if (inventoryItems.Count == 0)
+        if (indexA < 0 || indexB < 0 || indexA >= MAX_SLOTS || indexB >= MAX_SLOTS)
         {
-            Debug.Log("O inventário está vazio.");
+            Debug.LogError("Tentativa de troca em índice inválido.");
             return;
         }
 
-        foreach (var item in inventoryItems)
-        {
-            // Esta linha irá imprimir o nome do item e a quantidade
-            Debug.Log($"{item.itemData.itemName}: {item.quantity}");
-        }
-        Debug.Log("------------------");
+        // Troca os itens no Array Fixo (Item ou null)
+        Item temp = _inventorySlots[indexA];
+        _inventorySlots[indexA] = _inventorySlots[indexB];
+        _inventorySlots[indexB] = temp;
+
+        OnInventoryChanged?.Invoke();
+        SelectSlot(indexB); 
     }
+    
+    public void SelectSlot(int index)
+    {
+        if (index >= 0 && index < MAX_SLOTS)
+        {
+            selectedSlotIndex = index;
+            OnSlotSelected?.Invoke(index);
+            
+            if (_inventorySlots[index] != null)
+            {
+                Debug.Log($"Slot {index + 1} selecionado: {_inventorySlots[index].itemData.itemName}");
+            }
+            else
+            {
+                Debug.Log($"Slot {index + 1} selecionado (Vazio).");
+            }
+        }
+    }
+
+    public Item GetSelectedItem()
+    {
+        if (selectedSlotIndex >= 0 && selectedSlotIndex < MAX_SLOTS)
+        {
+            return _inventorySlots[selectedSlotIndex];
+        }
+        return null; 
+    }
+
+    // --- LÓGICA DE CHECAGEM ---
     public bool HasItem(ItemData itemData, int requiredQuantity)
     {
-        foreach (var item in inventoryItems)
+        for (int i = 0; i < MAX_SLOTS; i++)
         {
-            // Verifica se o ItemData é o correto E se a quantidade é suficiente
-            if (item.itemData == itemData && item.quantity >= requiredQuantity)
+            Item item = _inventorySlots[i];
+            if (item != null && item.itemData == itemData && item.quantity >= requiredQuantity)
             {
                 return true;
             }
         }
         return false;
     }
-
-    // NOVO: Método para trocar o slot ativo
-    public void SelectSlot(int index)
+    
+    // --- DEBUG ---
+    public void DisplayInventory()
     {
-        // Garante que o índice está dentro dos limites da lista
-        if (index >= 0 && index < inventoryItems.Count)
-        {
-            selectedSlotIndex = index;
-            Debug.Log($"Slot {index + 1} selecionado: {inventoryItems[index].itemData.itemName}");
-            // [AQUI você chamaria um evento para notificar a UI de Hotbar]
-        }
-        else if (inventoryItems.Count > 0 && index >= 0 && index < maxUniqueSlots)
-        {
-            // Se o índice estiver vazio, mas dentro da capacidade máxima, apenas registre o índice
-            selectedSlotIndex = index;
-        }
-    }
+        Debug.Log("--- Inventário ---");
+        int filledSlots = _inventorySlots.Count(i => i != null);
 
-    // NOVO: Método para obter o item selecionado
-    public Item GetSelectedItem()
-    {
-        if (selectedSlotIndex >= 0 && selectedSlotIndex < inventoryItems.Count)
+        if (filledSlots == 0)
         {
-            return inventoryItems[selectedSlotIndex];
+            Debug.Log("O inventário está vazio.");
+            return;
         }
-        return null; // Retorna null se o slot estiver vazio
+
+        foreach (var item in _inventorySlots)
+        {
+            if (item != null)
+            {
+                Debug.Log($"SLOT: {item.itemData.itemName}: {item.quantity}");
+            }
+        }
+        Debug.Log("------------------");
     }
 }
