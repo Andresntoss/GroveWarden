@@ -22,22 +22,52 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
     }
     
     // Configura o slot para exibir o item
-    public void SetItem(Item item)
+    // No script InventorySlotUI.cs
+public void SetItem(Item item)
+{
+    // --- 1. VERIFICAÇÃO DE COMPONENTES VISUAIS (DEBUG FATAL) ---
+    if (itemIcon == null || quantityText == null)
     {
-        _item = item;
-        itemIcon.sprite = item.itemData.itemIcon;
-        quantityText.text = item.quantity.ToString();
-        gameObject.SetActive(true);
+        Debug.LogError($"[ERRO FATAL] SLOT {gameObject.name}: ItemIcon ou QuantityText estão NULOS no Prefab. Reveja a conexão.");
+        return; 
     }
     
-    // Limpa o slot
-    public void ClearSlot()
+    // --- 2. VERIFICAÇÃO DE DADOS (Checa se o item está corrompido ou é nulo) ---
+    if (item == null || item.itemData == null)
     {
-        _item = null;
-        itemIcon.sprite = null;
-        quantityText.text = "";
-        gameObject.SetActive(false);
+        ClearSlot(); // Se o item estiver corrompido, limpa o slot para evitar crash
+        return;
     }
+    // -------------------------------------------------------------------------
+    
+    _item = item;
+    
+    // As linhas de exibição (sempre seguras aqui)
+    itemIcon.sprite = item.itemData.itemIcon;
+    quantityText.text = item.quantity.ToString();
+    
+    // CRUCIAL: Ativa apenas o ícone, o slot em si está sempre ativo
+    itemIcon.gameObject.SetActive(true);
+}
+    
+        public void ClearSlot() // Limpa o slot
+{
+    _item = null;
+    
+    
+    if (itemIcon != null) // Garante que os componentes não sejam nulos antes de tentar usá-los
+    {
+        itemIcon.sprite = null;
+        itemIcon.gameObject.SetActive(false); // Desativa o visual
+    }
+
+    if (quantityText != null)
+    {
+        quantityText.text = "";
+    }
+    
+    // O GameObject raiz do slot (com o Box Collider) permanece ativo para o DND
+}
     
     // --- LÓGICA DE DRAG AND DROP (INÍCIO) ---
     
@@ -82,9 +112,9 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHa
     // --- LÓGICA DE CLIQUE (SELEÇÃO) ---
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_item != null)
-        {
+        // A seleção deve sempre ocorrer, para que o jogador saiba qual slot está ativo, 
+    // mesmo que vazio.
             InventoryManager.instance.SelectSlot(fixedSlotIndex);
-        }
+        
     }
 }

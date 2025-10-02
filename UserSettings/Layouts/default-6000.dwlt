@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 166
+  controlID: 164
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 137
+  controlID: 135
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1090,9 +1090,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 940.9243, y: 417.562, z: -6.306168}
+    m_Target: {x: 519.27905, y: 754.82874, z: -13.277838}
     speed: 2
-    m_Value: {x: 940.9243, y: 417.562, z: -6.306168}
+    m_Value: {x: 519.27905, y: 754.82874, z: -13.277838}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1142,9 +1142,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 701.32947
+    m_Target: 1337.7864
     speed: 2
-    m_Value: 701.32947
+    m_Value: 1337.7864
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1216,7 +1216,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 60432
+  m_LastSelectedObjectID: -319510
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1451,7 +1451,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 86faffff0e050100560501008a060100cc06010018070100
+      m_ExpandedIDs: ea1ffbff7c2afbffa059fbff4ed7feff30dcfefff20bffffe04dfffff281ffff9682ffffe2faffff04fbffff44eb000044ec0000b4ec000050ed0000eced00002eee00007aee0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1513,7 +1513,7 @@ MonoBehaviour:
     m_ContainerData: []
     m_OverlaysVisible: 1
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: hotbar
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -1521,28 +1521,28 @@ MonoBehaviour:
     m_SceneHandles: 
     m_ShowAllHits: 0
     m_SkipHidden: 0
-    m_SearchArea: 1
+    m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Inventory
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
-    m_OriginalText: 
+    m_OriginalText: hotbar
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts/Inventory
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Projetos Unity\GroveWarden
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 149}
-    m_SelectedIDs: aa230100
-    m_LastClickedID: 74666
-    m_ExpandedIDs: 000000003416010036160100381601003a1601003c1601003e16010040160100
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 34160100
+    m_LastClickedID: 71220
+    m_ExpandedIDs: 0000000066170100681701006a1701006c1701006e17010070170100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1571,7 +1571,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7e020000
     m_LastClickedID: 638
-    m_ExpandedIDs: 000000003416010036160100381601003a1601003c1601003e16010040160100
+    m_ExpandedIDs: 0000000066170100681701006a1701006c1701006e17010070170100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1599,8 +1599,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000e0d600003ce10000b4d30000d0d3000000000000e0c80100cab70100aed4000044080100f2080100ead4000008e70100ca150100
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000e0d600003ce10000b4d30000d0d3000000000000e0c80100cab70100aed4000044080100f2080100ead4000008e70100ca1501005c570100b229010070f7000072f60000
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

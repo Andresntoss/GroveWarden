@@ -33,10 +33,10 @@ public class InventoryManager : MonoBehaviour
         }
         
         // Garante que o array seja do tamanho correto se for a primeira vez que está sendo criado
-        if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
-        {
+        //if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
+        //{
             _inventorySlots = new Item[MAX_SLOTS];
-        }
+        //}
     }
 
     // --- LÓGICA DE ADIÇÃO E REMOÇÃO ---

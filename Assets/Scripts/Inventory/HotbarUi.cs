@@ -47,9 +47,11 @@ public class HotbarUI : MonoBehaviour
 
     private void HighlightSlot(int index)
     {
+        Debug.Log($"Visual: Tentativa de mover o indicador para o índice {index}"); 
+    
         if (index >= 0 && index < slots.Count && selectionIndicator != null)
         {
-            selectionIndicator.transform.localPosition = slots[index].transform.localPosition; 
+            selectionIndicator.transform.localPosition = slots[index].transform.localPosition;
         }
     }
 }
