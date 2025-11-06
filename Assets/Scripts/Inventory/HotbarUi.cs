@@ -34,7 +34,7 @@ public class HotbarUI : MonoBehaviour
     for (int i = 0; i < slots.Count; i++) // Itera apenas pelo número de slots conectados
     {
         // Certifique-se de que o slot exista no array de dados antes de usá-lo
-        if (i < InventoryManager.MAX_SLOTS && slotsData[i] != null) 
+        if (i < InventoryManager.MAX_SLOTS && slotsData[i] != null)  
         {
             slots[i].SetItem(slotsData[i]);
         }

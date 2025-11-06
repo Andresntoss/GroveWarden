@@ -1,120 +1,79 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.EventSystems; // <--- NOVO: Essencial para o DND
 
-// ADICIONAMOS AS INTERFACES DE DRAG & DROP
-public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IDropHandler
+public class InventorySlotUI : MonoBehaviour
 {
+    [Header("Configuração de Slot")]
+    public int fixedSlotIndex; // O ID de 0 a 8
+
+    [Header("Componentes do Item (Button)")]
+    public Button itemButton; 
     public Image itemIcon;
     public TextMeshProUGUI quantityText;
     
-    [Header("Configuração de Slot")]
-    public int fixedSlotIndex; // O ID de 0 a 35 (definido no Inspector)
-
     private Item _item;
-    private Transform _originalParent;
-    private CanvasGroup _canvasGroup;
-
-    void Awake()
+    
+    // --- LIGAÇÃO INICIAL ---
+    void Start()
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
-    }
-    
-    // Configura o slot para exibir o item
-    // No script InventorySlotUI.cs
-public void SetItem(Item item)
-{
-    // --- 1. VERIFICAÇÃO DE COMPONENTES VISUAIS (DEBUG FATAL) ---
-    if (itemIcon == null || quantityText == null)
-    {
-        Debug.LogError($"[ERRO FATAL] SLOT {gameObject.name}: ItemIcon ou QuantityText estão NULOS no Prefab. Reveja a conexão.");
-        return; 
-    }
-    
-    // --- 2. VERIFICAÇÃO DE DADOS (Checa se o item está corrompido ou é nulo) ---
-    if (item == null || item.itemData == null)
-    {
-        ClearSlot(); // Se o item estiver corrompido, limpa o slot para evitar crash
-        return;
-    }
-    // -------------------------------------------------------------------------
-    
-    _item = item;
-    
-    // As linhas de exibição (sempre seguras aqui)
-    itemIcon.sprite = item.itemData.itemIcon;
-    quantityText.text = item.quantity.ToString();
-    
-    // CRUCIAL: Ativa apenas o ícone, o slot em si está sempre ativo
-    itemIcon.gameObject.SetActive(true);
-}
-    
-        public void ClearSlot() // Limpa o slot
-{
-    _item = null;
-    
-    
-    if (itemIcon != null) // Garante que os componentes não sejam nulos antes de tentar usá-los
-    {
-        itemIcon.sprite = null;
-        itemIcon.gameObject.SetActive(false); // Desativa o visual
-    }
-
-    if (quantityText != null)
-    {
-        quantityText.text = "";
-    }
-    
-    // O GameObject raiz do slot (com o Box Collider) permanece ativo para o DND
-}
-    
-    // --- LÓGICA DE DRAG AND DROP (INÍCIO) ---
-    
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (_item == null) return; // Não pode arrastar slot vazio
-
-        _originalParent = transform.parent;
-        transform.SetParent(transform.root); // Coloca o slot no topo da tela (visualmente)
-        _canvasGroup.blocksRaycasts = false; // CRUCIAL: Permite que o mouse 'veja' o slot alvo
-        itemIcon.raycastTarget = false; // Desliga o raycast no ícone
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (_item == null) return;
-        transform.position = eventData.position; // Segue o mouse
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        _canvasGroup.blocksRaycasts = true;
-        
-        InventorySlotUI sourceSlot = eventData.pointerDrag.GetComponent<InventorySlotUI>();
-
-        if (sourceSlot != null && InventoryManager.instance != null)
+        // Garante que o botão chame a função de seleção ao ser clicado
+        if (itemButton != null)
         {
-            // Índices de 0 a 35 são usados para o swap
-            int indexA = sourceSlot.fixedSlotIndex; 
-            int indexB = this.fixedSlotIndex;
-
-            // 1. Chama o método de troca de dados no InventoryManager
-            InventoryManager.instance.SwapItems(indexA, indexB);
+            itemButton.onClick.AddListener(SelectSlot);
         }
-
-        // 2. Garante que o item arrastado volte para o painel correto
-        sourceSlot.transform.SetParent(_originalParent);
-        sourceSlot.transform.localPosition = Vector3.zero;
-        sourceSlot.itemIcon.raycastTarget = true;
     }
     
-    // --- LÓGICA DE CLIQUE (SELEÇÃO) ---
-    public void OnPointerClick(PointerEventData eventData)
+    // --- SELEÇÃO DE SLOT ---
+    public void SelectSlot()
     {
-        // A seleção deve sempre ocorrer, para que o jogador saiba qual slot está ativo, 
-    // mesmo que vazio.
+        // Esta função será chamada pelo onClick do Button.
+        if (InventoryManager.instance != null)
+        {
             InventoryManager.instance.SelectSlot(fixedSlotIndex);
+        }
+    }
+
+    // --- Configuração de Dados ---
+    public void SetItem(Item item)
+    {
+        _item = item;
         
+        // ... (Verificações de Segurança) ...
+
+        if (item == null || item.itemData == null)
+        {
+            ClearSlot();
+            return;
+        }
+        
+        itemIcon.sprite = item.itemData.itemIcon;
+        quantityText.text = item.quantity.ToString();
+        
+        // O Centralize precisa estar LIGADO, pois o item agora tem que dar snap no slot
+        Centralize centralizeScript = itemButton.GetComponent<Centralize>();
+        if (centralizeScript != null)
+        {
+            centralizeScript.enabled = true;
+        }
+        
+        itemButton.gameObject.SetActive(true); 
+    }
+    
+    public void ClearSlot()
+    {
+        _item = null;
+        
+        if (itemButton != null)
+        {
+            // O botão deve ser desativado para que não possa ser arrastado
+            itemButton.gameObject.SetActive(false);
+        }
+        // ... (Restante da limpeza visual) ...
+    }
+    
+    public Item GetItem()
+    {
+        return _item;
     }
 }

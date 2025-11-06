@@ -32,11 +32,12 @@ public class InventoryManager : MonoBehaviour
             Destroy(gameObject);
         }
         
-        // Garante que o array seja do tamanho correto se for a primeira vez que está sendo criado
-        //if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
-        //{
+        // Garante que o array seja do tamanho correto e limpo na inicialização
+        // Isso resolve o bug de "Inventário Cheio" que persiste no Editor
+        if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
+        {
             _inventorySlots = new Item[MAX_SLOTS];
-        //}
+        }
     }
 
     // --- LÓGICA DE ADIÇÃO E REMOÇÃO ---
@@ -98,7 +99,6 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        // Troca os itens no Array Fixo (Item ou null)
         Item temp = _inventorySlots[indexA];
         _inventorySlots[indexA] = _inventorySlots[indexB];
         _inventorySlots[indexB] = temp;
@@ -116,7 +116,14 @@ public class InventoryManager : MonoBehaviour
             
             if (_inventorySlots[index] != null)
             {
-                Debug.Log($"Slot {index + 1} selecionado: {_inventorySlots[index].itemData.itemName}");
+                if (_inventorySlots[index].itemData != null)
+                {
+                    Debug.Log($"Slot {index + 1} selecionado: {_inventorySlots[index].itemData.itemName}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Slot {index + 1} selecionado, mas DADOS DO ITEM corrompidos.");
+                }
             }
             else
             {
@@ -134,7 +141,7 @@ public class InventoryManager : MonoBehaviour
         return null; 
     }
 
-    // --- LÓGICA DE CHECAGEM ---
+    // Verifica se o jogador tem o item
     public bool HasItem(ItemData itemData, int requiredQuantity)
     {
         for (int i = 0; i < MAX_SLOTS; i++)

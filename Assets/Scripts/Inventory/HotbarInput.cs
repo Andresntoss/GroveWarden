@@ -4,32 +4,37 @@ public class HotbarInput : MonoBehaviour
 {
     private InventoryManager _inventoryManager;
 
-    void Start()
+    // NOVO: Usar Awake() para garantir que a referência seja capturada cedo
+    void Awake()
     {
         // Encontra a instância do InventoryManager (singleton)
-        _inventoryManager = InventoryManager.instance;
+        // Usamos FindObjectOfType, pois a instância pode não ter se definido ainda.
+        _inventoryManager = FindAnyObjectByType<InventoryManager>();
         
         if (_inventoryManager == null) 
         {
              Debug.LogError("[HotbarInput] InventoryManager não encontrado! Verifique se está na cena.");
         }
     }
+    
+    // Deixe o Start() vazio.
+    void Start()
+    {
+        // Se o InventoryManager for um Singleton de cena, esta referência já está segura.
+    }
 
     void Update()
     {
         if (_inventoryManager == null) return;
         
-        // Loop que verifica as teclas Alpha1 (tecla 1) até Alpha9 (tecla 9)
+        // ... (resto do seu código Update() aqui, está correto)
         for (int i = 0; i < 9; i++)
         {
-            // Verifica se a tecla numérica correspondente (1, 2, 3...) foi pressionada
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
-            {
-                // O índice é 0 (para a tecla 1) até 8 (para a tecla 9)
-                Debug.Log("Tecla " + (i + 1) + " OK!");
-                _inventoryManager.SelectSlot(i);
-                break; 
-            }
+             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+             {
+                 _inventoryManager.SelectSlot(i);
+                 break; 
+             }
         }
     }
 }
