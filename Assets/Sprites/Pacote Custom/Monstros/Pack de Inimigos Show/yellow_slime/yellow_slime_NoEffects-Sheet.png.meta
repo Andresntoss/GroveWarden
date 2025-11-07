@@ -1,0 +1,1136 @@
+fileFormatVersion: 2
+guid: 464b18530c1f0534f88abd55a0b6ea5f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 498485210887639579
+    second: yellow_slime_NoEffects-Sheet_0
+  - first:
+      213: 5424299310085512703
+    second: yellow_slime_NoEffects-Sheet_1
+  - first:
+      213: 8133287735768340434
+    second: yellow_slime_NoEffects-Sheet_2
+  - first:
+      213: 8214852305819898594
+    second: yellow_slime_NoEffects-Sheet_3
+  - first:
+      213: -5812148787794145088
+    second: yellow_slime_NoEffects-Sheet_4
+  - first:
+      213: 7896479776132317094
+    second: yellow_slime_NoEffects-Sheet_5
+  - first:
+      213: 4872755871099350958
+    second: yellow_slime_NoEffects-Sheet_6
+  - first:
+      213: 1565711156324480995
+    second: yellow_slime_NoEffects-Sheet_7
+  - first:
+      213: -3906744094143886229
+    second: yellow_slime_NoEffects-Sheet_8
+  - first:
+      213: 8638287715471403318
+    second: yellow_slime_NoEffects-Sheet_9
+  - first:
+      213: -2323056317409673035
+    second: yellow_slime_NoEffects-Sheet_10
+  - first:
+      213: 627856960316170263
+    second: yellow_slime_NoEffects-Sheet_11
+  - first:
+      213: -2772482494585707943
+    second: yellow_slime_NoEffects-Sheet_12
+  - first:
+      213: 2581623742720154487
+    second: yellow_slime_NoEffects-Sheet_13
+  - first:
+      213: 6686813126809353399
+    second: yellow_slime_NoEffects-Sheet_14
+  - first:
+      213: 3257433406532139670
+    second: yellow_slime_NoEffects-Sheet_15
+  - first:
+      213: -2868871126435658040
+    second: yellow_slime_NoEffects-Sheet_16
+  - first:
+      213: -9050371611976836109
+    second: yellow_slime_NoEffects-Sheet_17
+  - first:
+      213: -8039758958020581137
+    second: yellow_slime_NoEffects-Sheet_18
+  - first:
+      213: -8338549363722097390
+    second: yellow_slime_NoEffects-Sheet_19
+  - first:
+      213: 875023616549986409
+    second: yellow_slime_NoEffects-Sheet_20
+  - first:
+      213: 8989278338812288211
+    second: yellow_slime_NoEffects-Sheet_21
+  - first:
+      213: 4019601602393912855
+    second: yellow_slime_NoEffects-Sheet_22
+  - first:
+      213: 4741003201751294418
+    second: yellow_slime_NoEffects-Sheet_23
+  - first:
+      213: -5610773666812984545
+    second: yellow_slime_NoEffects-Sheet_24
+  - first:
+      213: 4989538049521009276
+    second: yellow_slime_NoEffects-Sheet_25
+  - first:
+      213: -6455504431259370762
+    second: yellow_slime_NoEffects-Sheet_26
+  - first:
+      213: 1247116346241735709
+    second: yellow_slime_NoEffects-Sheet_27
+  - first:
+      213: -6217426513396063343
+    second: yellow_slime_NoEffects-Sheet_28
+  - first:
+      213: 4218404116235242796
+    second: yellow_slime_NoEffects-Sheet_29
+  - first:
+      213: -6238803022831218692
+    second: yellow_slime_NoEffects-Sheet_30
+  - first:
+      213: 7143228817455058147
+    second: yellow_slime_NoEffects-Sheet_31
+  - first:
+      213: -2703210577937986792
+    second: yellow_slime_NoEffects-Sheet_32
+  - first:
+      213: 2261787956398126418
+    second: yellow_slime_NoEffects-Sheet_33
+  - first:
+      213: 933140465763027541
+    second: yellow_slime_NoEffects-Sheet_34
+  - first:
+      213: -4290530849212955406
+    second: yellow_slime_NoEffects-Sheet_35
+  - first:
+      213: 4709880900659891687
+    second: yellow_slime_NoEffects-Sheet_36
+  - first:
+      213: -2674553416592217884
+    second: yellow_slime_NoEffects-Sheet_37
+  - first:
+      213: 4375027596509079608
+    second: yellow_slime_NoEffects-Sheet_38
+  - first:
+      213: -4372447383823438694
+    second: yellow_slime_NoEffects-Sheet_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b125eb088a9fae600800000000000000
+      internalID: 498485210887639579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd1b0dbb7bf64b40800000000000000
+      internalID: 5424299310085512703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7538a8a1e3fd070800000000000000
+      internalID: 8133287735768340434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e291b2e5a4010270800000000000000
+      internalID: 8214852305819898594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c010d9b879175fa0800000000000000
+      internalID: -5812148787794145088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6af3c60e48ee59d60800000000000000
+      internalID: 7896479776132317094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 560
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaf6316d5a18f9340800000000000000
+      internalID: 4872755871099350958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e7369d40068ab510800000000000000
+      internalID: 1565711156324480995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6cc238f1f478c9c0800000000000000
+      internalID: -3906744094143886229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6392b4cd8ec51e770800000000000000
+      internalID: 8638287715471403318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b0c19f5698d2cfd0800000000000000
+      internalID: -2323056317409673035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 710e661349896b800800000000000000
+      internalID: 627856960316170263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 952ea344cd92689d0800000000000000
+      internalID: -2772482494585707943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b9c80bd15c3d320800000000000000
+      internalID: 2581623742720154487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bcf3ee4c155ccc50800000000000000
+      internalID: 6686813126809353399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ab6d3bc6ab43d20800000000000000
+      internalID: 3257433406532139670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c68d6219e8bf28d0800000000000000
+      internalID: -2868871126435658040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fb57d648fe966280800000000000000
+      internalID: -9050371611976836109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe82b6bf2d90d6090800000000000000
+      internalID: -8039758958020581137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21de8418885874c80800000000000000
+      internalID: -8338549363722097390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9602a8ad755b42c00800000000000000
+      internalID: 875023616549986409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc150c950550cc70800000000000000
+      internalID: 8989278338812288211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716b7415c5e78c730800000000000000
+      internalID: 4019601602393912855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d120670b4d6bc140800000000000000
+      internalID: 4741003201751294418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f130f72c3178222b0800000000000000
+      internalID: -5610773666812984545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c72cefa9b666e3540800000000000000
+      internalID: 4989538049521009276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa33d82ce07966a0800000000000000
+      internalID: -6455504431259370762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1c525b95b5ae4110800000000000000
+      internalID: 1247116346241735709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 193aee3078347b9a0800000000000000
+      internalID: -6217426513396063343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d4f339138ca8a30800000000000000
+      internalID: 4218404116235242796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff038094b15b69a0800000000000000
+      internalID: -6238803022831218692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec0eb553c8d12360800000000000000
+      internalID: 7143228817455058147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81b8de43d444c7ad0800000000000000
+      internalID: -2703210577937986792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255fd52b92c736f10800000000000000
+      internalID: 2261787956398126418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a09534f4e23fc00800000000000000
+      internalID: 933140465763027541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f48ec2cce8f474c0800000000000000
+      internalID: -4290530849212955406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7edca32a9bbdc5140800000000000000
+      internalID: 4709880900659891687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8a63786d312ead0800000000000000
+      internalID: -2674553416592217884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_slime_NoEffects-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 838647c4b6837bc30800000000000000
+      internalID: 4375027596509079608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: da9cb52b16040ce4c9ac99b5448c158d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":112.0,"y":112.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      yellow_slime_NoEffects-Sheet_0: 498485210887639579
+      yellow_slime_NoEffects-Sheet_1: 5424299310085512703
+      yellow_slime_NoEffects-Sheet_10: -2323056317409673035
+      yellow_slime_NoEffects-Sheet_11: 627856960316170263
+      yellow_slime_NoEffects-Sheet_12: -2772482494585707943
+      yellow_slime_NoEffects-Sheet_13: 2581623742720154487
+      yellow_slime_NoEffects-Sheet_14: 6686813126809353399
+      yellow_slime_NoEffects-Sheet_15: 3257433406532139670
+      yellow_slime_NoEffects-Sheet_16: -2868871126435658040
+      yellow_slime_NoEffects-Sheet_17: -9050371611976836109
+      yellow_slime_NoEffects-Sheet_18: -8039758958020581137
+      yellow_slime_NoEffects-Sheet_19: -8338549363722097390
+      yellow_slime_NoEffects-Sheet_2: 8133287735768340434
+      yellow_slime_NoEffects-Sheet_20: 875023616549986409
+      yellow_slime_NoEffects-Sheet_21: 8989278338812288211
+      yellow_slime_NoEffects-Sheet_22: 4019601602393912855
+      yellow_slime_NoEffects-Sheet_23: 4741003201751294418
+      yellow_slime_NoEffects-Sheet_24: -5610773666812984545
+      yellow_slime_NoEffects-Sheet_25: 4989538049521009276
+      yellow_slime_NoEffects-Sheet_26: -6455504431259370762
+      yellow_slime_NoEffects-Sheet_27: 1247116346241735709
+      yellow_slime_NoEffects-Sheet_28: -6217426513396063343
+      yellow_slime_NoEffects-Sheet_29: 4218404116235242796
+      yellow_slime_NoEffects-Sheet_3: 8214852305819898594
+      yellow_slime_NoEffects-Sheet_30: -6238803022831218692
+      yellow_slime_NoEffects-Sheet_31: 7143228817455058147
+      yellow_slime_NoEffects-Sheet_32: -2703210577937986792
+      yellow_slime_NoEffects-Sheet_33: 2261787956398126418
+      yellow_slime_NoEffects-Sheet_34: 933140465763027541
+      yellow_slime_NoEffects-Sheet_35: -4290530849212955406
+      yellow_slime_NoEffects-Sheet_36: 4709880900659891687
+      yellow_slime_NoEffects-Sheet_37: -2674553416592217884
+      yellow_slime_NoEffects-Sheet_38: 4375027596509079608
+      yellow_slime_NoEffects-Sheet_4: -5812148787794145088
+      yellow_slime_NoEffects-Sheet_5: 7896479776132317094
+      yellow_slime_NoEffects-Sheet_6: 4872755871099350958
+      yellow_slime_NoEffects-Sheet_7: 1565711156324480995
+      yellow_slime_NoEffects-Sheet_8: -3906744094143886229
+      yellow_slime_NoEffects-Sheet_9: 8638287715471403318
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

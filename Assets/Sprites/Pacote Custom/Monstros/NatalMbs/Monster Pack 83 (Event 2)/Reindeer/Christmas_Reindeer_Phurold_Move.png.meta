@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 4e3f5c756e0eaf9448cd5b791efa6424
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5286708824395816001
+    second: Christmas_Reindeer_Phurold_Move_0
+  - first:
+      213: -1791963780771657557
+    second: Christmas_Reindeer_Phurold_Move_1
+  - first:
+      213: -7440136308385623196
+    second: Christmas_Reindeer_Phurold_Move_2
+  - first:
+      213: 5832110383133700839
+    second: Christmas_Reindeer_Phurold_Move_3
+  - first:
+      213: 8701822261094522778
+    second: Christmas_Reindeer_Phurold_Move_4
+  - first:
+      213: -8169509006187944175
+    second: Christmas_Reindeer_Phurold_Move_5
+  - first:
+      213: -5966569748661858792
+    second: Christmas_Reindeer_Phurold_Move_6
+  - first:
+      213: 6554643564162998151
+    second: Christmas_Reindeer_Phurold_Move_7
+  - first:
+      213: 2272575724711384571
+    second: Christmas_Reindeer_Phurold_Move_8
+  - first:
+      213: -6224470195723557646
+    second: Christmas_Reindeer_Phurold_Move_9
+  - first:
+      213: -3389541678275763892
+    second: Christmas_Reindeer_Phurold_Move_10
+  - first:
+      213: -8018302516525689644
+    second: Christmas_Reindeer_Phurold_Move_11
+  - first:
+      213: -2481107816017244759
+    second: Christmas_Reindeer_Phurold_Move_12
+  - first:
+      213: -6591184520068491767
+    second: Christmas_Reindeer_Phurold_Move_13
+  - first:
+      213: -3015600560066830370
+    second: Christmas_Reindeer_Phurold_Move_14
+  - first:
+      213: 4324059828102720182
+    second: Christmas_Reindeer_Phurold_Move_15
+  - first:
+      213: -6910530458680415667
+    second: Christmas_Reindeer_Phurold_Move_16
+  - first:
+      213: 7974657016933769357
+    second: Christmas_Reindeer_Phurold_Move_17
+  - first:
+      213: -943273781009520943
+    second: Christmas_Reindeer_Phurold_Move_18
+  - first:
+      213: 5587743695488578622
+    second: Christmas_Reindeer_Phurold_Move_19
+  - first:
+      213: 3405673166176346123
+    second: Christmas_Reindeer_Phurold_Move_20
+  - first:
+      213: 2316098722163064079
+    second: Christmas_Reindeer_Phurold_Move_21
+  - first:
+      213: -3061792388534626908
+    second: Christmas_Reindeer_Phurold_Move_22
+  - first:
+      213: 6217337346601832133
+    second: Christmas_Reindeer_Phurold_Move_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 431
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb3e6fa9556d1a6b0800000000000000
+      internalID: -5286708824395816001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_1
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 430
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba84db48f6aa127e0800000000000000
+      internalID: -1791963780771657557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_2
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 431
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 463503272735fb890800000000000000
+      internalID: -7440136308385623196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_3
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 431
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e23d8d5e71dfe050800000000000000
+      internalID: 5832110383133700839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_4
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 430
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f10230e3513c870800000000000000
+      internalID: 8701822261094522778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_5
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 431
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11720d0c7d210ae80800000000000000
+      internalID: -8169509006187944175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_6
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 303
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e0b630d6c723da0800000000000000
+      internalID: -5966569748661858792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_7
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 303
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f5c37f795c6fa50800000000000000
+      internalID: 6554643564162998151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_8
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 303
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf5199cb49fc98f10800000000000000
+      internalID: 2272575724711384571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_9
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 303
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f424ece55d3e99a0800000000000000
+      internalID: -6224470195723557646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_10
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 303
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41edfa5dcde5f0d0800000000000000
+      internalID: -3389541678275763892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_11
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 303
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d49dd0185449b090800000000000000
+      internalID: -8018302516525689644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 175
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9adc8d83695519dd0800000000000000
+      internalID: -2481107816017244759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 175
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9069340c9986784a0800000000000000
+      internalID: -6591184520068491767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_14
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 175
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf5fb8944f6626d0800000000000000
+      internalID: -3015600560066830370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_15
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 175
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba6999f085220c30800000000000000
+      internalID: 4324059828102720182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_16
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 175
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4a26d0592dd810a0800000000000000
+      internalID: -6910530458680415667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_17
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 175
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d80e9eb2e4cabae60800000000000000
+      internalID: 7974657016933769357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_18
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 47
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d6ecfc6e71d8e2f0800000000000000
+      internalID: -943273781009520943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_19
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 46
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3476813947ab8d40800000000000000
+      internalID: 5587743695488578622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_20
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 47
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b00650b53b1634f20800000000000000
+      internalID: 3405673166176346123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_21
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 47
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0df34f348f642020800000000000000
+      internalID: 2316098722163064079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_22
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 46
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a516617b045285d0800000000000000
+      internalID: -3061792388534626908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Phurold_Move_23
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 47
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cec8f8306b684650800000000000000
+      internalID: 6217337346601832133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Christmas_Reindeer_Phurold_Move_0: -5286708824395816001
+      Christmas_Reindeer_Phurold_Move_1: -1791963780771657557
+      Christmas_Reindeer_Phurold_Move_10: -3389541678275763892
+      Christmas_Reindeer_Phurold_Move_11: -8018302516525689644
+      Christmas_Reindeer_Phurold_Move_12: -2481107816017244759
+      Christmas_Reindeer_Phurold_Move_13: -6591184520068491767
+      Christmas_Reindeer_Phurold_Move_14: -3015600560066830370
+      Christmas_Reindeer_Phurold_Move_15: 4324059828102720182
+      Christmas_Reindeer_Phurold_Move_16: -6910530458680415667
+      Christmas_Reindeer_Phurold_Move_17: 7974657016933769357
+      Christmas_Reindeer_Phurold_Move_18: -943273781009520943
+      Christmas_Reindeer_Phurold_Move_19: 5587743695488578622
+      Christmas_Reindeer_Phurold_Move_2: -7440136308385623196
+      Christmas_Reindeer_Phurold_Move_20: 3405673166176346123
+      Christmas_Reindeer_Phurold_Move_21: 2316098722163064079
+      Christmas_Reindeer_Phurold_Move_22: -3061792388534626908
+      Christmas_Reindeer_Phurold_Move_23: 6217337346601832133
+      Christmas_Reindeer_Phurold_Move_3: 5832110383133700839
+      Christmas_Reindeer_Phurold_Move_4: 8701822261094522778
+      Christmas_Reindeer_Phurold_Move_5: -8169509006187944175
+      Christmas_Reindeer_Phurold_Move_6: -5966569748661858792
+      Christmas_Reindeer_Phurold_Move_7: 6554643564162998151
+      Christmas_Reindeer_Phurold_Move_8: 2272575724711384571
+      Christmas_Reindeer_Phurold_Move_9: -6224470195723557646
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

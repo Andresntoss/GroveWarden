@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 398698e384854b64380c92ce111df2b0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3781616375019178805
+    second: Christmas_Kid_Ghost_Move_0
+  - first:
+      213: 2642795786982812616
+    second: Christmas_Kid_Ghost_Move_1
+  - first:
+      213: 1247061480581134801
+    second: Christmas_Kid_Ghost_Move_2
+  - first:
+      213: 8644236466733776114
+    second: Christmas_Kid_Ghost_Move_3
+  - first:
+      213: -2748226155296002674
+    second: Christmas_Kid_Ghost_Move_4
+  - first:
+      213: -1479798959536790818
+    second: Christmas_Kid_Ghost_Move_5
+  - first:
+      213: 2174248204052637224
+    second: Christmas_Kid_Ghost_Move_6
+  - first:
+      213: -4122753708700102906
+    second: Christmas_Kid_Ghost_Move_7
+  - first:
+      213: -345193749445455079
+    second: Christmas_Kid_Ghost_Move_8
+  - first:
+      213: 4854450427022539231
+    second: Christmas_Kid_Ghost_Move_9
+  - first:
+      213: -721543322137603318
+    second: Christmas_Kid_Ghost_Move_10
+  - first:
+      213: -7583860792278139999
+    second: Christmas_Kid_Ghost_Move_11
+  - first:
+      213: 1248283174463606909
+    second: Christmas_Kid_Ghost_Move_12
+  - first:
+      213: -3747840042433345340
+    second: Christmas_Kid_Ghost_Move_13
+  - first:
+      213: -7035344069230873352
+    second: Christmas_Kid_Ghost_Move_14
+  - first:
+      213: 2150466685074859066
+    second: Christmas_Kid_Ghost_Move_15
+  - first:
+      213: 1785092851360368510
+    second: Christmas_Kid_Ghost_Move_16
+  - first:
+      213: -3369494433245917957
+    second: Christmas_Kid_Ghost_Move_17
+  - first:
+      213: 7026861096483402614
+    second: Christmas_Kid_Ghost_Move_18
+  - first:
+      213: 4986638051754247796
+    second: Christmas_Kid_Ghost_Move_19
+  - first:
+      213: 7428336303334091140
+    second: Christmas_Kid_Ghost_Move_20
+  - first:
+      213: -503892547234852465
+    second: Christmas_Kid_Ghost_Move_21
+  - first:
+      213: -3664629235942834982
+    second: Christmas_Kid_Ghost_Move_22
+  - first:
+      213: -857971941810460551
+    second: Christmas_Kid_Ghost_Move_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 431
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b81d5ae000b7430800000000000000
+      internalID: 3781616375019178805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_1
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 430
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cb620124c81da420800000000000000
+      internalID: 2642795786982812616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 431
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d97c133fc37e4110800000000000000
+      internalID: 1247061480581134801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 431
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcf422744f76f770800000000000000
+      internalID: 8644236466733776114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_4
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 430
+        width: 19
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8de42b5fd65cd9d0800000000000000
+      internalID: -2748226155296002674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_5
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 431
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed221d5cfa2b67be0800000000000000
+      internalID: -1479798959536790818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 303
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 826a610d83b7c2e10800000000000000
+      internalID: 2174248204052637224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 303
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f8180685909c6c0800000000000000
+      internalID: -4122753708700102906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_8
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 303
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9135e912d10a53bf0800000000000000
+      internalID: -345193749445455079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_9
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 303
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9fb6281f87e5340800000000000000
+      internalID: 4854450427022539231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_10
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 303
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a03dee1eb209cf5f0800000000000000
+      internalID: -721543322137603318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_11
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 303
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1abbf3a5ac6b0c690800000000000000
+      internalID: -7583860792278139999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 175
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d701009feeac25110800000000000000
+      internalID: 1248283174463606909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 175
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c886cb965ffcfbc0800000000000000
+      internalID: -3747840042433345340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_14
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 175
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f4b7d808df6d5e90800000000000000
+      internalID: -7035344069230873352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_15
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 175
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34e2317e0ef7dd10800000000000000
+      internalID: 2150466685074859066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_16
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 175
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e778c609d7ce5c810800000000000000
+      internalID: 1785092851360368510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_17
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 175
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc88b15aa62d31d0800000000000000
+      internalID: -3369494433245917957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_18
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 47
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673b7e5ffec648160800000000000000
+      internalID: 7026861096483402614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_19
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 46
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476024243e8143540800000000000000
+      internalID: 4986638051754247796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_20
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 47
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489ed58c280c61760800000000000000
+      internalID: 7428336303334091140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_21
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 47
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f819915e560d109f0800000000000000
+      internalID: -503892547234852465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_22
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 46
+        width: 19
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adcbd1e302f942dc0800000000000000
+      internalID: -3664629235942834982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Kid_Ghost_Move_23
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 47
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 978a22d801fd714f0800000000000000
+      internalID: -857971941810460551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Christmas_Kid_Ghost_Move_0: 3781616375019178805
+      Christmas_Kid_Ghost_Move_1: 2642795786982812616
+      Christmas_Kid_Ghost_Move_10: -721543322137603318
+      Christmas_Kid_Ghost_Move_11: -7583860792278139999
+      Christmas_Kid_Ghost_Move_12: 1248283174463606909
+      Christmas_Kid_Ghost_Move_13: -3747840042433345340
+      Christmas_Kid_Ghost_Move_14: -7035344069230873352
+      Christmas_Kid_Ghost_Move_15: 2150466685074859066
+      Christmas_Kid_Ghost_Move_16: 1785092851360368510
+      Christmas_Kid_Ghost_Move_17: -3369494433245917957
+      Christmas_Kid_Ghost_Move_18: 7026861096483402614
+      Christmas_Kid_Ghost_Move_19: 4986638051754247796
+      Christmas_Kid_Ghost_Move_2: 1247061480581134801
+      Christmas_Kid_Ghost_Move_20: 7428336303334091140
+      Christmas_Kid_Ghost_Move_21: -503892547234852465
+      Christmas_Kid_Ghost_Move_22: -3664629235942834982
+      Christmas_Kid_Ghost_Move_23: -857971941810460551
+      Christmas_Kid_Ghost_Move_3: 8644236466733776114
+      Christmas_Kid_Ghost_Move_4: -2748226155296002674
+      Christmas_Kid_Ghost_Move_5: -1479798959536790818
+      Christmas_Kid_Ghost_Move_6: 2174248204052637224
+      Christmas_Kid_Ghost_Move_7: -4122753708700102906
+      Christmas_Kid_Ghost_Move_8: -345193749445455079
+      Christmas_Kid_Ghost_Move_9: 4854450427022539231
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

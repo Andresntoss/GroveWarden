@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: d8391676c6ce3434ea08f0aba0a38385
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1675685187477610449
+    second: Christmas_Nasta_Idle_0
+  - first:
+      213: -5889330744610349090
+    second: Christmas_Nasta_Idle_1
+  - first:
+      213: -2072843946045282081
+    second: Christmas_Nasta_Idle_2
+  - first:
+      213: -239916324286368706
+    second: Christmas_Nasta_Idle_3
+  - first:
+      213: 7564002453679306900
+    second: Christmas_Nasta_Idle_4
+  - first:
+      213: 4408611389390910435
+    second: Christmas_Nasta_Idle_5
+  - first:
+      213: -2057910278614585000
+    second: Christmas_Nasta_Idle_6
+  - first:
+      213: -3101907644798555410
+    second: Christmas_Nasta_Idle_7
+  - first:
+      213: -2182261828777021548
+    second: Christmas_Nasta_Idle_8
+  - first:
+      213: 4951525056529693727
+    second: Christmas_Nasta_Idle_9
+  - first:
+      213: -7837388882509745626
+    second: Christmas_Nasta_Idle_10
+  - first:
+      213: -9054981082389285605
+    second: Christmas_Nasta_Idle_11
+  - first:
+      213: -3104003163833705416
+    second: Christmas_Nasta_Idle_12
+  - first:
+      213: 5478875796621510743
+    second: Christmas_Nasta_Idle_13
+  - first:
+      213: -5048541444568695759
+    second: Christmas_Nasta_Idle_14
+  - first:
+      213: -1718756492205357271
+    second: Christmas_Nasta_Idle_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 431
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df9cf2ccca314710800000000000000
+      internalID: 1675685187477610449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 431
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edf96ba04e4e44ea0800000000000000
+      internalID: -5889330744610349090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 431
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd8e629d967cb33e0800000000000000
+      internalID: -2072843946045282081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 431
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34f71bcf55abacf0800000000000000
+      internalID: -239916324286368706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 303
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 498fcb3e72cb8f860800000000000000
+      internalID: 7564002453679306900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 303
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e3f26963b88e2d30800000000000000
+      internalID: 4408611389390910435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 303
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8517d8f3185d073e0800000000000000
+      internalID: -2057910278614585000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 303
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeaa6b18e6fc3f4d0800000000000000
+      internalID: -3101907644798555410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 175
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fe9d8cd6c07b1e0800000000000000
+      internalID: -2182261828777021548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 175
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1cf5eafdc957b440800000000000000
+      internalID: 4951525056529693727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 175
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622396be5500c3390800000000000000
+      internalID: -7837388882509745626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 175
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15fd405eae365280800000000000000
+      internalID: -9054981082389285605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 47
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83cd006719d5ce4d0800000000000000
+      internalID: -3104003163833705416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 47
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7584c1a3280e80c40800000000000000
+      internalID: 5478875796621510743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 47
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c35a2fd4affe9b0800000000000000
+      internalID: -5048541444568695759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Nasta_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 47
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92704b2a310c528e0800000000000000
+      internalID: -1718756492205357271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Christmas_Nasta_Idle_0: 1675685187477610449
+      Christmas_Nasta_Idle_1: -5889330744610349090
+      Christmas_Nasta_Idle_10: -7837388882509745626
+      Christmas_Nasta_Idle_11: -9054981082389285605
+      Christmas_Nasta_Idle_12: -3104003163833705416
+      Christmas_Nasta_Idle_13: 5478875796621510743
+      Christmas_Nasta_Idle_14: -5048541444568695759
+      Christmas_Nasta_Idle_15: -1718756492205357271
+      Christmas_Nasta_Idle_2: -2072843946045282081
+      Christmas_Nasta_Idle_3: -239916324286368706
+      Christmas_Nasta_Idle_4: 7564002453679306900
+      Christmas_Nasta_Idle_5: 4408611389390910435
+      Christmas_Nasta_Idle_6: -2057910278614585000
+      Christmas_Nasta_Idle_7: -3101907644798555410
+      Christmas_Nasta_Idle_8: -2182261828777021548
+      Christmas_Nasta_Idle_9: 4951525056529693727
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

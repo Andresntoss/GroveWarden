@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 0c57afa92b6d0114c816be9a0d76dd55
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4474362684761640345
+    second: Christmas_Snowman_B_Idle_0
+  - first:
+      213: 4967661015137513435
+    second: Christmas_Snowman_B_Idle_1
+  - first:
+      213: 956911557274543894
+    second: Christmas_Snowman_B_Idle_2
+  - first:
+      213: -7324971982291375906
+    second: Christmas_Snowman_B_Idle_3
+  - first:
+      213: 7851520506017975057
+    second: Christmas_Snowman_B_Idle_4
+  - first:
+      213: -1960810035228896794
+    second: Christmas_Snowman_B_Idle_5
+  - first:
+      213: 5644069624200689679
+    second: Christmas_Snowman_B_Idle_6
+  - first:
+      213: 4430153041041836808
+    second: Christmas_Snowman_B_Idle_7
+  - first:
+      213: -4832931549407311891
+    second: Christmas_Snowman_B_Idle_8
+  - first:
+      213: 838366820897306492
+    second: Christmas_Snowman_B_Idle_9
+  - first:
+      213: 2060245869154304481
+    second: Christmas_Snowman_B_Idle_10
+  - first:
+      213: -8669012050898494837
+    second: Christmas_Snowman_B_Idle_11
+  - first:
+      213: -5459472939478916702
+    second: Christmas_Snowman_B_Idle_12
+  - first:
+      213: 5074396074237107753
+    second: Christmas_Snowman_B_Idle_13
+  - first:
+      213: 783881996609827329
+    second: Christmas_Snowman_B_Idle_14
+  - first:
+      213: -1317130616166894736
+    second: Christmas_Snowman_B_Idle_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 431
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 762f48a28ded7e1c0800000000000000
+      internalID: -4474362684761640345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 431
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdfe3db9f5da0f440800000000000000
+      internalID: 4967661015137513435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 431
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617a0dccdf1a74d00800000000000000
+      internalID: 956911557274543894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 431
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed865dd9ac8785a90800000000000000
+      internalID: -7324971982291375906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 303
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11b85e31d4436fc60800000000000000
+      internalID: 7851520506017975057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 303
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e1192a69adc9c4e0800000000000000
+      internalID: -1960810035228896794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 303
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08fd0e6b63c35e40800000000000000
+      internalID: 5644069624200689679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 303
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b4ae708b01b7d30800000000000000
+      internalID: 4430153041041836808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 175
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de78ccd9c5afdecb0800000000000000
+      internalID: -4832931549407311891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 175
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c77be078e2a72ab00800000000000000
+      internalID: 838366820897306492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 175
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e188ecc3b6779c10800000000000000
+      internalID: 2060245869154304481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 175
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8a5d98587b71b780800000000000000
+      internalID: -8669012050898494837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 47
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a1608d794e0c34b0800000000000000
+      internalID: -5459472939478916702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 47
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92e1a8e1850eb6640800000000000000
+      internalID: 5074396074237107753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 47
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 102b0c1d588e0ea00800000000000000
+      internalID: 783881996609827329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Snowman_B_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 47
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073b49cdeac98bde0800000000000000
+      internalID: -1317130616166894736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Christmas_Snowman_B_Idle_0: -4474362684761640345
+      Christmas_Snowman_B_Idle_1: 4967661015137513435
+      Christmas_Snowman_B_Idle_10: 2060245869154304481
+      Christmas_Snowman_B_Idle_11: -8669012050898494837
+      Christmas_Snowman_B_Idle_12: -5459472939478916702
+      Christmas_Snowman_B_Idle_13: 5074396074237107753
+      Christmas_Snowman_B_Idle_14: 783881996609827329
+      Christmas_Snowman_B_Idle_15: -1317130616166894736
+      Christmas_Snowman_B_Idle_2: 956911557274543894
+      Christmas_Snowman_B_Idle_3: -7324971982291375906
+      Christmas_Snowman_B_Idle_4: 7851520506017975057
+      Christmas_Snowman_B_Idle_5: -1960810035228896794
+      Christmas_Snowman_B_Idle_6: 5644069624200689679
+      Christmas_Snowman_B_Idle_7: 4430153041041836808
+      Christmas_Snowman_B_Idle_8: -4832931549407311891
+      Christmas_Snowman_B_Idle_9: 838366820897306492
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

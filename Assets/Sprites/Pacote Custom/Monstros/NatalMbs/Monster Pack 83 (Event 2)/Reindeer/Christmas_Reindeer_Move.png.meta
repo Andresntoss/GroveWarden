@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: eef6e101ed1e8574ba9634e14ced4d07
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8604315413043904309
+    second: Christmas_Reindeer_Move_0
+  - first:
+      213: -4382582226913033445
+    second: Christmas_Reindeer_Move_1
+  - first:
+      213: 3302858108989026166
+    second: Christmas_Reindeer_Move_2
+  - first:
+      213: 6185735869378571886
+    second: Christmas_Reindeer_Move_3
+  - first:
+      213: -8033494205306838650
+    second: Christmas_Reindeer_Move_4
+  - first:
+      213: 718397360252961082
+    second: Christmas_Reindeer_Move_5
+  - first:
+      213: -8959445878367482284
+    second: Christmas_Reindeer_Move_6
+  - first:
+      213: -271605409815096804
+    second: Christmas_Reindeer_Move_7
+  - first:
+      213: -5912282300853841527
+    second: Christmas_Reindeer_Move_8
+  - first:
+      213: -3629932823159168069
+    second: Christmas_Reindeer_Move_9
+  - first:
+      213: 2652718448265064925
+    second: Christmas_Reindeer_Move_10
+  - first:
+      213: 2086040687487738081
+    second: Christmas_Reindeer_Move_11
+  - first:
+      213: -8371289307890350741
+    second: Christmas_Reindeer_Move_12
+  - first:
+      213: -4020012284708592363
+    second: Christmas_Reindeer_Move_13
+  - first:
+      213: 4331455036176784612
+    second: Christmas_Reindeer_Move_14
+  - first:
+      213: 4469864144537499777
+    second: Christmas_Reindeer_Move_15
+  - first:
+      213: 1478909637796901898
+    second: Christmas_Reindeer_Move_16
+  - first:
+      213: -88538140133276456
+    second: Christmas_Reindeer_Move_17
+  - first:
+      213: -9145587432207405284
+    second: Christmas_Reindeer_Move_18
+  - first:
+      213: -2227159335882911162
+    second: Christmas_Reindeer_Move_19
+  - first:
+      213: 2635164263282193083
+    second: Christmas_Reindeer_Move_20
+  - first:
+      213: -3970247963923548402
+    second: Christmas_Reindeer_Move_21
+  - first:
+      213: 3753521754730283354
+    second: Christmas_Reindeer_Move_22
+  - first:
+      213: 6771684150285000956
+    second: Christmas_Reindeer_Move_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 431
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53f76e1d74ba86770800000000000000
+      internalID: 8604315413043904309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_1
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 430
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1388ed3fa0fd23c0800000000000000
+      internalID: -4382582226913033445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_2
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 431
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f2fc963fb16dd20800000000000000
+      internalID: 3302858108989026166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_3
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 431
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6ea3b0fff528d550800000000000000
+      internalID: 6185735869378571886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_4
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 430
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 681e683659b438090800000000000000
+      internalID: -8033494205306838650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_5
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 431
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31c479c79248f900800000000000000
+      internalID: 718397360252961082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_6
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 303
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e819b5177a9a380800000000000000
+      internalID: -8959445878367482284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_7
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 303
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1295ec91501b3cf0800000000000000
+      internalID: -271605409815096804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_8
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 303
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98117cd629a53fda0800000000000000
+      internalID: -5912282300853841527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_9
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 303
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb3211d5453ef9dc0800000000000000
+      internalID: -3629932823159168069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_10
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 303
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1f6fdbf5950d420800000000000000
+      internalID: 2652718448265064925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_11
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 303
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0e7b4f3fa13fc10800000000000000
+      internalID: 2086040687487738081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 175
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b658b2b3ab433db80800000000000000
+      internalID: -8371289307890350741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_13
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 175
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 515ec31402c0638c0800000000000000
+      internalID: -4020012284708592363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_14
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 175
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ecd4e7086b6c1c30800000000000000
+      internalID: 4331455036176784612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_15
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 175
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 188b961d1c5280e30800000000000000
+      internalID: 4469864144537499777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_16
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 175
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0439cfda74268410800000000000000
+      internalID: 1478909637796901898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_17
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 175
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d44848d70375cef0800000000000000
+      internalID: -88538140133276456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_18
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 47
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f20019fa8541180800000000000000
+      internalID: -9145587432207405284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_19
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 46
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 642118e426a8711e0800000000000000
+      internalID: -2227159335882911162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_20
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 47
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb23dbd8febf19420800000000000000
+      internalID: 2635164263282193083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_21
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 47
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e077e181388d6e8c0800000000000000
+      internalID: -3970247963923548402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_22
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 46
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a51466f1620371430800000000000000
+      internalID: 3753521754730283354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Christmas_Reindeer_Move_23
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 47
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf061e45bdad9fd50800000000000000
+      internalID: 6771684150285000956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Christmas_Reindeer_Move_0: 8604315413043904309
+      Christmas_Reindeer_Move_1: -4382582226913033445
+      Christmas_Reindeer_Move_10: 2652718448265064925
+      Christmas_Reindeer_Move_11: 2086040687487738081
+      Christmas_Reindeer_Move_12: -8371289307890350741
+      Christmas_Reindeer_Move_13: -4020012284708592363
+      Christmas_Reindeer_Move_14: 4331455036176784612
+      Christmas_Reindeer_Move_15: 4469864144537499777
+      Christmas_Reindeer_Move_16: 1478909637796901898
+      Christmas_Reindeer_Move_17: -88538140133276456
+      Christmas_Reindeer_Move_18: -9145587432207405284
+      Christmas_Reindeer_Move_19: -2227159335882911162
+      Christmas_Reindeer_Move_2: 3302858108989026166
+      Christmas_Reindeer_Move_20: 2635164263282193083
+      Christmas_Reindeer_Move_21: -3970247963923548402
+      Christmas_Reindeer_Move_22: 3753521754730283354
+      Christmas_Reindeer_Move_23: 6771684150285000956
+      Christmas_Reindeer_Move_3: 6185735869378571886
+      Christmas_Reindeer_Move_4: -8033494205306838650
+      Christmas_Reindeer_Move_5: 718397360252961082
+      Christmas_Reindeer_Move_6: -8959445878367482284
+      Christmas_Reindeer_Move_7: -271605409815096804
+      Christmas_Reindeer_Move_8: -5912282300853841527
+      Christmas_Reindeer_Move_9: -3629932823159168069
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

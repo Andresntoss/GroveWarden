@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 76f001cf9e8c2764082891a0384fd55c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cropData: {fileID: 11400000, guid: 6594acf0394956441a8cfdd401264bec, type: 2}
+  - interactionPrompt: {instanceID: 0}
+  - waterPrompt: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

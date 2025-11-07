@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6e7cff9a78a99bf4581cc227baf46522
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - relatedCropData: {instanceID: 0}
+  - seedItem: {fileID: 11400000, guid: b4c4d074475ff0c418326b72356bbb14, type: 2}
+  - yieldItem: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
