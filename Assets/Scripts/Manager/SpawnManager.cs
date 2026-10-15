@@ -33,16 +33,38 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
-        
+        nextSpawnTime = Time.time + Mathf.Max(0.1f, spawnInterval);
+
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0 ||
+            spawnPoints == null || spawnPoints.Length == 0)
+        {
+            Debug.LogError(
+                "SpawnManager: configure Enemy Prefabs e Spawn Points.", this);
+
+            enabled = false;
+            return;
+        }
+
         int randomEnemy = Random.Range(0, enemyPrefabs.Length);
+        int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
 
-        // --- NOVO: Encontra um ponto aleatório dentro do raio
-        Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
-        Vector2 spawnPosition = (Vector2)spawnPoints[randomSpawnPoint].position + randomOffset;
-        
-        Instantiate(enemyPrefabs[randomEnemy], spawnPosition, Quaternion.identity);
+        GameObject prefab = enemyPrefabs[randomEnemy];
+        Transform point = spawnPoints[randomSpawnPoint];
 
-        nextSpawnTime = Time.time + spawnInterval;
+        if (prefab == null || point == null)
+        {
+            Debug.LogError(
+                "SpawnManager: existe uma referência ausente ou destruída. " +
+                "Use prefabs da janela Project em Enemy Prefabs.", this);
+
+            enabled = false;
+            return;
+        }
+
+        Vector2 offset = Random.insideUnitCircle * spawnRadius;
+        Vector3 position = point.position;
+        position += new Vector3(offset.x, offset.y, 0f);
+
+        Instantiate(prefab, position, Quaternion.identity);
     }
 }

@@ -5,6 +5,7 @@ public class ItemData : ScriptableObject
 {
     [Header("Identificação")]
     public string itemName;
+    [Min(1)] public int maxStackSize = 64;
     public Sprite itemIcon;
     [TextArea]
     public string itemDescription;

@@ -1,179 +1,116 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
-using System.Linq;
+using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-
-    public int selectedSlotIndex = 0;
-
-    [Header("Configurações do Inventário")]
-    public const int MAX_SLOTS = 36; // Tamanho Fixo da Mochila e Hotbar
-    
-    // Array privado para evitar conflitos de serialização, mas visível para debug
-    [SerializeField] private Item[] _inventorySlots = new Item[MAX_SLOTS]; 
-
-    // Propriedade pública para que scripts externos (HotbarUI) possam LER o array
-    public Item[] InventorySlots => _inventorySlots; 
-    
+    public const int MAX_SLOTS = 36;
+    public const int HOTBAR_SLOTS = 9;
+    public int selectedSlotIndex;
+    [SerializeField] private Item[] _inventorySlots = new Item[MAX_SLOTS];
+    public Item[] InventorySlots => _inventorySlots;
     public event Action OnInventoryChanged;
     public event Action<int> OnSlotSelected;
 
-    private void Awake()
+    void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-        // Garante que o array seja do tamanho correto e limpo na inicialização
-        // Isso resolve o bug de "Inventário Cheio" que persiste no Editor
-        if (_inventorySlots == null || _inventorySlots.Length != MAX_SLOTS)
-        {
-            _inventorySlots = new Item[MAX_SLOTS];
-        }
-    }
-
-    // --- LÓGICA DE ADIÇÃO E REMOÇÃO ---
-    public void AddItem(ItemData itemData, int quantity)
-    {
-        // 1. Tenta empilhar em slot existente
+        if (instance != null && instance != this) { Destroy(this); return; }
+        instance = this;
+        if (_inventorySlots == null) _inventorySlots = new Item[MAX_SLOTS];
+        else if (_inventorySlots.Length != MAX_SLOTS) Array.Resize(ref _inventorySlots, MAX_SLOTS);
         for (int i = 0; i < MAX_SLOTS; i++)
-        {
-            if (_inventorySlots[i] != null && _inventorySlots[i].itemData == itemData)
-            {
-                _inventorySlots[i].quantity += quantity;
-                OnInventoryChanged?.Invoke();
-                return;
-            }
-        }
-        
-        // 2. Item novo: encontra o primeiro slot vazio
-        for (int i = 0; i < MAX_SLOTS; i++)
-        {
-            if (_inventorySlots[i] == null)
-            {
-                _inventorySlots[i] = new Item { itemData = itemData, quantity = quantity };
-                OnInventoryChanged?.Invoke();
-                return; 
-            }
-        }
-
-        Debug.LogWarning("Inventário Cheio! Não há slots vazios.");
+            if (_inventorySlots[i] != null && (_inventorySlots[i].itemData == null || _inventorySlots[i].quantity <= 0))
+                _inventorySlots[i] = null;
+        selectedSlotIndex = Mathf.Clamp(selectedSlotIndex, 0, HOTBAR_SLOTS - 1);
     }
-
-    public void RemoveItem(ItemData itemData, int quantity)
-    {
-        for (int i = 0; i < MAX_SLOTS; i++)
-        {
-            Item item = _inventorySlots[i];
-            
-            if (item != null && item.itemData == itemData)
-            {
-                item.quantity -= quantity;
-                
-                if (item.quantity <= 0)
-                {
-                    _inventorySlots[i] = null; // Zera o slot
-                }
-
-                OnInventoryChanged?.Invoke(); 
-                return;
-            }
-        }
-    }
-
-    // --- LÓGICA DE TROCA E SELEÇÃO ---
-    
-    public void SwapItems(int indexA, int indexB)
-    {
-        if (indexA < 0 || indexB < 0 || indexA >= MAX_SLOTS || indexB >= MAX_SLOTS)
-        {
-            Debug.LogError("Tentativa de troca em índice inválido.");
-            return;
-        }
-
-        Item temp = _inventorySlots[indexA];
-        _inventorySlots[indexA] = _inventorySlots[indexB];
-        _inventorySlots[indexB] = temp;
-
-        OnInventoryChanged?.Invoke();
-        SelectSlot(indexB); 
-    }
-    
+    void OnDestroy() { if (instance == this) instance = null; }
+    static int Limit(ItemData data) => Mathf.Max(1, data.maxStackSize);
+    public Item GetSelectedItem() => _inventorySlots[selectedSlotIndex];
     public void SelectSlot(int index)
     {
-        if (index >= 0 && index < MAX_SLOTS)
-        {
-            selectedSlotIndex = index;
-            OnSlotSelected?.Invoke(index);
-            
-            if (_inventorySlots[index] != null)
-            {
-                if (_inventorySlots[index].itemData != null)
-                {
-                    Debug.Log($"Slot {index + 1} selecionado: {_inventorySlots[index].itemData.itemName}");
-                }
-                else
-                {
-                    Debug.LogWarning($"Slot {index + 1} selecionado, mas DADOS DO ITEM corrompidos.");
-                }
-            }
-            else
-            {
-                Debug.Log($"Slot {index + 1} selecionado (Vazio).");
-            }
-        }
+        if (index < 0 || index >= HOTBAR_SLOTS) return;
+        selectedSlotIndex = index;
+        OnSlotSelected?.Invoke(index);
     }
-
-    public Item GetSelectedItem()
+    public int CountItem(ItemData data)
     {
-        if (selectedSlotIndex >= 0 && selectedSlotIndex < MAX_SLOTS)
-        {
-            return _inventorySlots[selectedSlotIndex];
-        }
-        return null; 
+        int count = 0;
+        if (data == null) return count;
+        foreach (Item item in _inventorySlots)
+            if (item != null && item.itemData == data) count += item.quantity;
+        return count;
     }
-
-    // Verifica se o jogador tem o item
-    public bool HasItem(ItemData itemData, int requiredQuantity)
+    public bool HasItem(ItemData data, int quantity) => data != null && quantity > 0 && CountItem(data) >= quantity;
+    public bool CanAddItem(ItemData data, int quantity)
     {
-        for (int i = 0; i < MAX_SLOTS; i++)
+        if (data == null || quantity <= 0) return false;
+        long capacity = 0;
+        foreach (Item item in _inventorySlots)
+            capacity += item == null ? Limit(data) : item.itemData == data ? Mathf.Max(0, Limit(data) - item.quantity) : 0;
+        return capacity >= quantity;
+    }
+    // All-or-nothing: callers can preserve the source when the inventory is full.
+    public bool TryAddItem(ItemData data, int quantity)
+    {
+        if (!CanAddItem(data, quantity)) return false;
+        int remaining = quantity;
+        foreach (Item item in _inventorySlots)
+        {
+            if (item == null || item.itemData != data) continue;
+            int amount = Mathf.Min(remaining, Mathf.Max(0, Limit(data) - item.quantity));
+            item.quantity += amount;
+            remaining -= amount;
+        }
+        for (int i = 0; i < MAX_SLOTS && remaining > 0; i++)
+        {
+            if (_inventorySlots[i] != null) continue;
+            int amount = Mathf.Min(remaining, Limit(data));
+            _inventorySlots[i] = new Item { itemData = data, quantity = amount };
+            remaining -= amount;
+        }
+        OnInventoryChanged?.Invoke();
+        return true;
+    }
+    public void AddItem(ItemData data, int quantity)
+    {
+        if (!TryAddItem(data, quantity)) Debug.LogWarning("Não foi possível receber o item: dados inválidos ou inventário cheio.");
+    }
+    public bool TryRemoveItem(ItemData data, int quantity)
+    {
+        if (!HasItem(data, quantity)) return false;
+        int remaining = quantity;
+        for (int i = 0; i < MAX_SLOTS && remaining > 0; i++)
         {
             Item item = _inventorySlots[i];
-            if (item != null && item.itemData == itemData && item.quantity >= requiredQuantity)
-            {
-                return true;
-            }
+            if (item == null || item.itemData != data) continue;
+            int amount = Mathf.Min(remaining, item.quantity);
+            item.quantity -= amount;
+            remaining -= amount;
+            if (item.quantity == 0) _inventorySlots[i] = null;
         }
-        return false;
+        OnInventoryChanged?.Invoke();
+        return true;
     }
-    
-    // --- DEBUG ---
+    public void RemoveItem(ItemData data, int quantity) { TryRemoveItem(data, quantity); }
+    public void SwapItems(int from, int to)
+    {
+        if (from < 0 || to < 0 || from >= MAX_SLOTS || to >= MAX_SLOTS || from == to) return;
+        Item source = _inventorySlots[from], target = _inventorySlots[to];
+        if (source == null) return;
+        if (target != null && source.itemData == target.itemData)
+        {
+            int amount = Mathf.Min(source.quantity, Mathf.Max(0, Limit(target.itemData) - target.quantity));
+            target.quantity += amount;
+            source.quantity -= amount;
+            if (source.quantity == 0) _inventorySlots[from] = null;
+        }
+        else { _inventorySlots[to] = source; _inventorySlots[from] = target; }
+        OnInventoryChanged?.Invoke();
+    }
     public void DisplayInventory()
     {
-        Debug.Log("--- Inventário ---");
-        int filledSlots = _inventorySlots.Count(i => i != null);
-
-        if (filledSlots == 0)
-        {
-            Debug.Log("O inventário está vazio.");
-            return;
-        }
-
-        foreach (var item in _inventorySlots)
-        {
-            if (item != null)
-            {
-                Debug.Log($"SLOT: {item.itemData.itemName}: {item.quantity}");
-            }
-        }
-        Debug.Log("------------------");
+        for (int i = 0; i < MAX_SLOTS; i++)
+            if (_inventorySlots[i] != null) Debug.Log($"{i + 1}: {_inventorySlots[i].itemData.itemName} x{_inventorySlots[i].quantity}");
     }
 }

@@ -77,9 +77,10 @@ public class Health : MonoBehaviour
         Debug.Log(gameObject.name + " foi derrotado!");
 
         // --- NOVO: Lógica para o Drop de Itens ---
-        if (itemToDrop != null && InventoryManager.instance != null)
+        if (itemToDrop != null && dropAmount > 0)
         {
-            InventoryManager.instance.AddItem(itemToDrop, dropAmount);
+            if (InventoryManager.instance == null || !InventoryManager.instance.TryAddItem(itemToDrop, dropAmount))
+                InventoryPickup.Spawn(itemToDrop, dropAmount, transform.position);
         }
 
         if (animator != null)

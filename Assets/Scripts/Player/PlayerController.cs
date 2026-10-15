@@ -61,6 +61,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (HotbarUi.IsInventoryOpen)
+        {
+            _playerDirection = Vector2.zero;
+            _PlayerAnimator.SetInteger("Movimento", 0);
+            return;
+        }
         _playerDirection = new Vector2(
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
@@ -106,11 +112,11 @@ public class PlayerController : MonoBehaviour
 
     void PlayerRun()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             _playerSpeed = _playerRunSpeed;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else
         {
             _playerSpeed = _playerInitialSpeed;
         }
@@ -118,6 +124,27 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
+        // Bloqueia o ataque somente quando o mouse estiver sobre um slot.
+        var eventSystem = UnityEngine.EventSystems.EventSystem.current;
+
+        if (eventSystem != null)
+        {
+            var pointer = new UnityEngine.EventSystems.PointerEventData(eventSystem)
+            {
+                position = Input.mousePosition
+            };
+
+            var hits = new System.Collections.Generic.List<
+                UnityEngine.EventSystems.RaycastResult>();
+
+            eventSystem.RaycastAll(pointer, hits);
+
+            foreach (var hit in hits)
+            {
+                if (hit.gameObject.GetComponentInParent<GroveSlotView>() != null)
+                    return;
+            }
+        }
         if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetMouseButtonDown(0)) && !_isAttacking && !_isRolling && !isKnockedBack)
         {
             _isAttacking = true;

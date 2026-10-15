@@ -33,6 +33,28 @@ public class PlotSlot : MonoBehaviour
 
     void Update()
     {
+        if (HotbarUi.IsInventoryOpen) return;
+
+        var eventSystem = UnityEngine.EventSystems.EventSystem.current;
+
+        if (eventSystem != null)
+        {
+            var pointer = new UnityEngine.EventSystems.PointerEventData(eventSystem)
+            {
+                position = Input.mousePosition
+            };
+
+            var hits = new System.Collections.Generic.List<
+                UnityEngine.EventSystems.RaycastResult>();
+
+            eventSystem.RaycastAll(pointer, hits);
+
+            foreach (var hit in hits)
+            {
+                if (hit.gameObject.GetComponentInParent<GroveSlotView>() != null)
+                    return;
+            }
+        }
         if (_isPlayerInside)
         {
             // Lógica para mostrar o prompt de regar
@@ -124,11 +146,11 @@ public class PlotSlot : MonoBehaviour
 
     public void Harvest()
     {
-        if (InventoryManager.instance != null)
+        if (!isPlanted || !isHarvestable || cropData == null || InventoryManager.instance == null) return;
+        if (!InventoryManager.instance.TryAddItem(cropData.yieldItem, cropData.yieldAmount))
         {
-            // Adiciona o item ao inventário
-            InventoryManager.instance.AddItem(cropData.yieldItem, cropData.yieldAmount);
-            Debug.Log("Colheita concluída! Adicionado ao inventário.");
+            Debug.Log("Inventário cheio. Libere espaço para colher.");
+            return;
         }
 
         // Reseta o slot para estado vazio
