@@ -1,323 +1,188 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
 public class MushroomController : MonoBehaviour
 {
-    // Variáveis que podem ser reutilizadas do Slime
     public float _moveSpeed = 1.5f;
     public float damageAmount = 20f;
     public float knockbackForce = 15f;
-    public float knockbackDuration = 0.2f;
-
+    public float knockbackDuration = .2f;
     [Header("Configurações da IA")]
     public float detectionRadius = 5f;
-    public float wanderTimeMax = 3.0f;
-    public float idleTimeMax = 2.0f;
-    
+    public float wanderTimeMax = 3f;
+    public float idleTimeMax = 2f;
     [Header("Ataque e Stun")]
     public float attackRadius = 1.5f;
-    public float attackDelay = 1.0f; // Este delay será menos relevante, mas pode ser um "wind-up" inicial
-    public float stunDuration = 3.0f;
-    public Collider2D attackCollider; // Certifique-se de que este é o seu Trigger Collider para o ataque!
+    [Tooltip("Intervalo mínimo após terminar um ataque.")]
+    public float attackDelay = 1f;
+    public float stunDuration = 3f;
+    public Collider2D attackCollider;
+    [Tooltip("Limite de segurança caso o evento final da animação não chegue.")]
+    public float attackTimeout = 2.5f;
 
-    private enum MushroomState { Idle, Wander, Chase, Attack, Stun }
-    private MushroomState currentState;
+    enum State { Idle, Wander, Chase, Attack, Stun, Dead }
+    State state;
+    Rigidbody2D body;
+    Animator animator;
+    SpriteRenderer sprite;
+    Health health;
+    Transform player;
+    Health playerHealth;
+    MushroomAttackArea attackArea;
+    Vector2 wanderDirection;
+    Vector3 attackScale;
+    float timer, nextAttack, nextPlayerSearch, knockbackUntil;
+    bool windowOpened;
+    public bool IsAttacking => isActiveAndEnabled && state == State.Attack && (health == null || !health.IsDead);
+    public bool IsAttackWindowOpen => IsAttacking && windowOpened && attackCollider != null && attackCollider.enabled;
 
-    private Rigidbody2D _rb2d;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    private Collider2D _collider; // Collider principal do cogumelo
-
-    private Transform _playerTransform;
-    private float currentActionTime;
-    private Vector2 _wanderDirection;
-    private bool _hasAttackedThisCycle = false; // Garante que o ataque só cause dano uma vez por ativação de collider
-
-    void Start()
+    void Awake()
     {
-        _rb2d = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider = GetComponent<Collider2D>();
-
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
-        ChangeState(MushroomState.Idle);
-        
+        body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+        health = GetComponent<Health>();
         if (attackCollider != null)
         {
-            attackCollider.enabled = false; // O attackCollider começa desativado
+            if (attackCollider.gameObject == gameObject)
+            {
+                Debug.LogError("Mushroom: a área de ataque precisa estar em um objeto filho.", this);
+                enabled = false; return;
+            }
+            attackScale = attackCollider.transform.localScale;
+            attackArea = attackCollider.GetComponent<MushroomAttackArea>();
+            if (attackArea == null) attackArea = attackCollider.gameObject.AddComponent<MushroomAttackArea>();
+            attackArea.owner = this;
+            attackCollider.isTrigger = true;
+            attackCollider.enabled = false;
         }
+        else Debug.LogWarning("Mushroom: atribua Attack Collider no Inspector.", this);
+        ChangeState(State.Idle);
     }
-
+    void FindPlayer()
+    {
+        if (player != null || Time.time < nextPlayerSearch) return;
+        nextPlayerSearch = Time.time + 1f;
+        GameObject found = GameObject.FindGameObjectWithTag("Player");
+        if (found == null) return;
+        player = found.transform;
+        playerHealth = found.GetComponent<Health>();
+    }
+    bool HasTarget => player != null && player.gameObject.activeInHierarchy && (playerHealth == null || !playerHealth.IsDead);
     void Update()
     {
-        if (_playerTransform != null)
+        if (health != null && health.IsDead) { StopForDeath(); return; }
+        FindPlayer();
+        timer -= Time.deltaTime;
+        if (state == State.Stun)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, _playerTransform.position);
-            
-            // Lógica de estado principal
-            if (distanceToPlayer <= attackRadius)
-            {
-                if (currentState != MushroomState.Attack && currentState != MushroomState.Stun)
-                {
-                    ChangeState(MushroomState.Attack);
-                }
-            }
-            else if (distanceToPlayer <= detectionRadius)
-            {
-                if (currentState != MushroomState.Chase && currentState != MushroomState.Attack && currentState != MushroomState.Stun)
-                {
-                    ChangeState(MushroomState.Chase);
-                }
-            }
-            else
-            {
-                if (currentState != MushroomState.Wander && currentState != MushroomState.Idle && currentState != MushroomState.Attack && currentState != MushroomState.Stun)
-                {
-                    ChangeState(MushroomState.Wander);
-                }
-            }
+            if (timer <= 0) ChangeState(State.Idle);
+            return;
         }
-        else // Se o jogador não for encontrado
+        if (state == State.Attack)
         {
-            if (currentState != MushroomState.Wander && currentState != MushroomState.Idle && currentState != MushroomState.Stun)
+            if (!HasTarget || timer <= 0) AttackAnimationFinished();
+            return;
+        }
+        if (Time.time < knockbackUntil) return;
+        if (HasTarget)
+        {
+            float distance = Vector2.Distance(transform.position, player.position);
+            if (distance <= attackRadius)
             {
-                ChangeState(MushroomState.Wander);
+                Face(player.position.x - transform.position.x);
+                if (Time.time >= nextAttack) ChangeState(State.Attack);
+                else if (state != State.Idle) ChangeState(State.Idle);
+                return;
+            }
+            if (distance <= detectionRadius)
+            {
+                if (state != State.Chase) ChangeState(State.Chase);
+                return;
             }
         }
-
-        // Lógica de tratamento de estados (chamada a cada frame)
-        switch (currentState)
-        {
-            case MushroomState.Idle:
-                HandleIdleState();
-                break;
-            case MushroomState.Wander:
-                HandleWanderState();
-                break;
-            case MushroomState.Chase:
-                HandleChaseState();
-                break;
-            case MushroomState.Attack:
-                // O ataque é controlado principalmente pelos Animation Events agora
-                // HandleAttackState(); // Pode ser vazio ou para lógicas adicionais durante o ataque
-                break;
-            case MushroomState.Stun:
-                HandleStunState();
-                break;
-        }
+        if (state == State.Chase) ChangeState(State.Idle);
+        else if (timer <= 0) ChangeState(state == State.Idle ? State.Wander : State.Idle);
     }
-    
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        Vector2 desiredVelocity = Vector2.zero;
-        
-        if (currentState == MushroomState.Wander)
-        {
-            desiredVelocity = _wanderDirection * _moveSpeed;
-        }
-        else if (currentState == MushroomState.Chase && _playerTransform != null)
-        {
-            // Ajusta a direção baseada na posição do jogador
-            desiredVelocity = (_playerTransform.position - transform.position).normalized * _moveSpeed;
-            
-            // Inverte o sprite para virar na direção do jogador durante a perseguição
-            if (Mathf.Abs(desiredVelocity.x) > 0.05f)
-            {
-                _spriteRenderer.flipX = desiredVelocity.x > 0;
-            }
-        }
-        // No estado de ataque, o cogumelo não se move, então desiredVelocity permanece zero
-        // No estado de stun, também não se move
-
-        _rb2d.linearVelocity = desiredVelocity;
-        
-        // Inverte o sprite para virar na direção do movimento durante a caminhada
-        if (currentState == MushroomState.Wander && Mathf.Abs(desiredVelocity.x) > 0.05f)
-        {
-            _spriteRenderer.flipX = desiredVelocity.x > 0;
-        }
+        if (state == State.Dead || Time.time < knockbackUntil) return;
+        Vector2 velocity = Vector2.zero;
+        if (state == State.Wander) velocity = wanderDirection * _moveSpeed;
+        if (state == State.Chase && HasTarget) velocity = ((Vector2)(player.position - transform.position)).normalized * _moveSpeed;
+        body.linearVelocity = velocity;
+        if (Mathf.Abs(velocity.x) > .05f) Face(velocity.x);
     }
-
-    // --- Lógica de Estados ---
-    private void ChangeState(MushroomState newState)
+    void Face(float direction)
     {
-        currentState = newState;
-        StopAllCoroutines(); // Parar todas as corotinas ao mudar de estado
-
-        // Desativa o collider de ataque ao mudar para um novo estado, a menos que seja o estado de ataque
-        if (attackCollider != null && currentState != MushroomState.Attack)
-        {
-            attackCollider.enabled = false;
-        }
-        _hasAttackedThisCycle = false; // Sempre reseta esta flag ao mudar de estado
-
-        switch (currentState)
-        {
-            case MushroomState.Idle:
-                _animator.SetInteger("Estado", 0);
-                currentActionTime = Random.Range(1f, idleTimeMax);
-                _rb2d.linearVelocity = Vector2.zero;
-                break;
-            case MushroomState.Wander:
-                _animator.SetInteger("Estado", 1);
-                _wanderDirection = GetRandomDirection();
-                currentActionTime = Random.Range(1f, wanderTimeMax);
-                break;
-            case MushroomState.Chase:
-                _animator.SetInteger("Estado", 1);
-                break;
-            case MushroomState.Attack:
-                _animator.SetInteger("Estado", 2);
-                _rb2d.linearVelocity = Vector2.zero; // Para movimento durante o ataque
-                // A ativação/desativação do collider de ataque e o dano serão controlados pelos Animation Events
-                
-                // Virar para o jogador antes de atacar
-                if (_playerTransform != null)
-                {
-                    _spriteRenderer.flipX = (_playerTransform.position.x - transform.position.x) > 0;
-                }
-                break;
-            case MushroomState.Stun:
-                _animator.SetInteger("Estado", 3);
-                currentActionTime = stunDuration;
-                _rb2d.linearVelocity = Vector2.zero;
-                break;
-        }
-    }
-
-    private void HandleIdleState()
-    {
-        currentActionTime -= Time.deltaTime;
-        if (currentActionTime <= 0)
-        {
-            ChangeState(MushroomState.Wander);
-        }
-    }
-
-    private void HandleWanderState()
-    {
-        currentActionTime -= Time.deltaTime;
-        if (currentActionTime <= 0)
-        {
-            ChangeState(MushroomState.Idle);
-        }
-    }
-
-    private void HandleChaseState()
-    {
-        float distanceToAttack = Vector2.Distance(transform.position, _playerTransform.position);
-        if (distanceToAttack < attackRadius)
-        {
-            ChangeState(MushroomState.Attack);
-        }
-    }
-    
-    private void HandleStunState()
-    {
-        currentActionTime -= Time.deltaTime;
-        if (currentActionTime <= 0)
-        {
-            ChangeState(MushroomState.Idle);
-        }
-    }
-
-    // --- Funções Chamadas pelos Animation Events ---
-    public void ActivateAttackCollider()
-    {
-        if (currentState == MushroomState.Attack && attackCollider != null)
-        {
-            attackCollider.enabled = true;
-            _hasAttackedThisCycle = false; // Permite que o ataque cause dano novamente
-        }
-    }
-
-    public void DeactivateAttackCollider()
-    {
+        if (Mathf.Abs(direction) < .01f) return;
+        // Original Mushroom sprites face left when flipX is false.
+        sprite.flipX = direction > 0;
         if (attackCollider != null)
         {
-            attackCollider.enabled = false;
+            Vector3 scale = attackScale;
+            scale.x = Mathf.Abs(scale.x) * (sprite.flipX ? -1f : 1f);
+            attackCollider.transform.localScale = scale;
         }
     }
-
+    void ChangeState(State value)
+    {
+        DeactivateAttackCollider();
+        state = value;
+        body.linearVelocity = Vector2.zero;
+        if (value == State.Idle) { timer = Random.Range(.5f, Mathf.Max(.5f,idleTimeMax)); animator.SetInteger("Estado",0); }
+        if (value == State.Wander) { timer = Random.Range(.5f, Mathf.Max(.5f,wanderTimeMax)); wanderDirection = Random.insideUnitCircle.normalized; animator.SetInteger("Estado",1); }
+        if (value == State.Chase) animator.SetInteger("Estado",1);
+        if (value == State.Attack)
+        {
+            if (HasTarget) Face(player.position.x - transform.position.x);
+            timer = Mathf.Max(1.25f,attackTimeout);
+            windowOpened = false;
+            animator.ResetTrigger("AttackFinished");
+            animator.SetInteger("Estado",2);
+        }
+        if (value == State.Stun) { timer = Mathf.Max(.1f,stunDuration); animator.SetInteger("Estado",3); }
+    }
+    public void ActivateAttackCollider()
+    {
+        if (!IsAttacking || windowOpened || attackCollider == null) return;
+        windowOpened = true;
+        attackArea.BeginSwing();
+        attackCollider.enabled = true;
+    }
+    public void DeactivateAttackCollider() { if (attackCollider != null) attackCollider.enabled = false; }
     public void AttackAnimationFinished()
     {
-        // Esta função é chamada no final da animação de ataque
-        if (currentState == MushroomState.Attack)
+        if (!IsAttacking) return;
+        nextAttack = Time.time + Mathf.Max(.1f,attackDelay);
+        animator.SetTrigger("AttackFinished");
+        ChangeState(State.Idle);
+    }
+    // Called once by the player's damage area, only after accepted damage.
+    public void ReceiveHit(Vector2 attackerPosition, float force)
+    {
+        if (!isActiveAndEnabled || (health != null && health.IsDead)) return;
+        float dx = attackerPosition.x - transform.position.x;
+        bool behind = sprite.flipX ? dx < -.05f : dx > .05f;
+        if (behind) { ChangeState(State.Stun); return; }
+        // Preserve facing and current animation; use a short physical recoil.
+        if (state != State.Attack && state != State.Stun)
         {
-            // Depois do ataque, verifica o estado do jogador para decidir o próximo estado
-            if (_playerTransform != null)
-            {
-                if (Vector2.Distance(transform.position, _playerTransform.position) <= detectionRadius)
-                {
-                    ChangeState(MushroomState.Chase);
-                }
-                else
-                {
-                    ChangeState(MushroomState.Wander);
-                }
-            }
-            else
-            {
-                ChangeState(MushroomState.Wander);
-            }
+            knockbackUntil = Time.time + Mathf.Max(0,knockbackDuration);
+            body.linearVelocity = Vector2.zero;
+            body.AddForce(((Vector2)transform.position-attackerPosition).normalized * force, ForceMode2D.Impulse);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public void StopForDeath()
     {
-        // Se este collider for o attackCollider do cogumelo
-        if (other.CompareTag("Player") && attackCollider != null && other == _playerTransform.GetComponent<Collider2D>())
-        {
-            // Certifique-se de que é o attackCollider que está ativo e não o collider principal do cogumelo
-            // Isso pode ser um pouco complicado se o attackCollider for um filho.
-            // A maneira mais robusta é usar o evento "OnTriggerEnter2D" *no script do attackCollider*
-            // ou ter certeza que este método só é chamado pelo collider de ataque.
-
-            // Para este setup, presumimos que este `OnTriggerEnter2D` está no GameObject pai (o Mushroom),
-            // e que `attackCollider` é um `Trigger` anexado ao Mushroom ou a um filho.
-            // Para ter certeza que a detecção de colisão é apenas para o attackCollider:
-            // O `other` é o jogador. Se o `attackCollider` é que está causando o trigger,
-            // então não precisamos verificar `currentState == MushroomState.Attack` aqui,
-            // pois o `attackCollider` só é ativado nesse estado pelos eventos de animação.
-
-            // A flag `_hasAttackedThisCycle` é crucial para garantir um único hit por ataque.
-            if (attackCollider.enabled && !_hasAttackedThisCycle) // Verifica se o collider de ataque está ativo e ainda não atacou
-            {
-                Health playerHealth = other.GetComponent<Health>();
-                if (playerHealth != null)
-                {
-                    playerHealth.TakeDamage(damageAmount);
-                    _hasAttackedThisCycle = true; // Marca como hit para evitar múltiplos hits
-
-                    Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
-                    if (playerRb != null)
-                    {
-                        Vector2 knockbackDir = (other.transform.position - transform.position).normalized;
-                        playerRb.AddForce(knockbackDir * knockbackForce, ForceMode2D.Impulse);
-                    }
-                }
-            }
-        }
-        else if (other.CompareTag("PlayerAttackArea")) // Este é um ataque do jogador contra o cogumelo
-        {
-            Vector2 attackDirection = other.transform.position - transform.position;
-
-            // Lógica para verificar se o ataque do jogador foi pelas costas do cogumelo
-            bool hitFromBehind = (_spriteRenderer.flipX && attackDirection.x > 0) || (!_spriteRenderer.flipX && attackDirection.x < 0);
-
-            if (hitFromBehind)
-            {
-                ChangeState(MushroomState.Stun);
-            }
-            // Não retorna aqui para permitir que outros triggers (se houver) sejam processados
-        }
+        state = State.Dead;
+        DeactivateAttackCollider();
+        if (body != null) body.linearVelocity = Vector2.zero;
+        enabled = false;
     }
-
-    private Vector2 GetRandomDirection()
+    void OnDisable()
     {
-        return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        DeactivateAttackCollider();
+        if (body != null) body.linearVelocity = Vector2.zero;
     }
 }

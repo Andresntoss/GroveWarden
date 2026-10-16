@@ -59,9 +59,10 @@ MonoBehaviour:
   wanderTimeMax: 3
   idleTimeMax: 5
   attackRadius: 1.5
-  attackDelay: 2
+  attackDelay: 1
   stunDuration: 3.5
   attackCollider: {fileID: 6022842004723003880}
+  attackTimeout: 2.5
 --- !u!114 &4019446587540939638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,11 +75,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6847c94471f4f42b24a83e82b3d59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 370
   invulnerabilityDuration: 1.5
   invulnerableColor: {r: 1, g: 1, b: 1, a: 1}
   coinDropAmount: 5
+  itemToDrop: {fileID: 11400000, guid: f7d5390558d44eb4eb6124c0d1754062, type: 2}
+  dropAmount: 1
+  deathCleanupDelay: 5
 --- !u!95 &6472157229081632335
 Animator:
   serializedVersion: 7
@@ -103,6 +106,7 @@ Animator:
   m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8153675739865920163
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -148,6 +152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -654737500350741434, guid: ff854780cee9ad046a29b86be149c3c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -157,7 +162,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &8947987304935181223
 Rigidbody2D:
@@ -353,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MushroomAttackArea
   damageAmount: 20
   knockbackForce: 15
+  owner: {fileID: 0}
 --- !u!70 &6022842004723003880
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

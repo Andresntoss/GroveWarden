@@ -5,124 +5,134 @@ public class Health : MonoBehaviour
 {
     [Header("Configurações de Vida")]
     public float maxHealth = 100f;
-    private float currentHealth;
+    float currentHealth;
     public float CurrentHealth => currentHealth;
-
+    public bool IsDead { get; private set; }
     [Header("Invulnerabilidade")]
     public float invulnerabilityDuration = 1.5f;
-    private bool isInvulnerable = false;
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
     public Color invulnerableColor = Color.white;
-
-    private Collider2D _collider2D;
-    private Animator animator;
-    private bool isDead = false;
-    public int coinDropAmount = 0; // Quantidade de moedas que este inimigo solta
-
+    bool isInvulnerable;
+    SpriteRenderer spriteRenderer;
+    Color originalColor;
+    Animator animator;
+    Rigidbody2D body;
+    Collider2D[] colliders;
+    bool[] initialColliderStates;
+    Coroutine invulnerability;
+    public int coinDropAmount;
     [Header("Drop de Itens")]
-    public ItemData itemToDrop; // O ScriptableObject do item que o inimigo vai dropar
-    public int dropAmount = 1; // Quantidade de itens a serem dropados
+    public ItemData itemToDrop;
+    public int dropAmount = 1;
+    [Header("Remoção de inimigos")]
+    [Tooltip("Segurança caso o evento da animação de morte não seja executado.")]
+    public float deathCleanupDelay = 5f;
 
-    void Start()
+    void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth = Mathf.Max(1,maxHealth);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null) originalColor = spriteRenderer.color;
         animator = GetComponent<Animator>();
-        _collider2D = GetComponent<Collider2D>();
-        originalColor = spriteRenderer.color;
+        body = GetComponent<Rigidbody2D>();
+        colliders = GetComponentsInChildren<Collider2D>(true);
+        initialColliderStates = new bool[colliders.Length];
+        for (int i = 0; i < colliders.Length; i++) initialColliderStates[i] = colliders[i].enabled;
     }
-
-    public void TakeDamage(float damageAmount)
+    // Compatibility for existing enemy scripts and UI.
+    public void TakeDamage(float amount) { TryTakeDamage(amount); }
+    public bool TryTakeDamage(float amount)
     {
-        if (isInvulnerable || isDead) return;
-
-        currentHealth -= damageAmount;
-        StartCoroutine(BecomeInvulnerable());
-
-        if (currentHealth <= 0)
+        if (IsDead || isInvulnerable || amount <= 0 || float.IsNaN(amount) || float.IsInfinity(amount)) return false;
+        if (CompareTag("Player"))
         {
-            Die();
+            int layer = LayerMask.NameToLayer("Invencivel");
+            if (layer >= 0 && gameObject.layer == layer) return false;
         }
+        currentHealth = Mathf.Max(0,currentHealth-amount);
+        if (currentHealth == 0) Die();
+        else invulnerability = StartCoroutine(BecomeInvulnerable());
+        return true;
     }
-
-    private void Die()
+    void Die()
     {
-        if (isDead) return;
-        isDead = true;
-
-        if (_collider2D != null)
-            _collider2D.enabled = false;
-
-        if (animator != null)
-            animator.SetTrigger("Morte"); // Trigger deve existir no Animator
-
-        if (gameObject.CompareTag("Player"))
+        if (IsDead) return;
+        IsDead = true;
+        if (invulnerability != null) StopCoroutine(invulnerability);
+        isInvulnerable = false;
+        if (spriteRenderer != null) spriteRenderer.color = originalColor;
+        if (body != null) { body.linearVelocity = Vector2.zero; body.angularVelocity = 0; }
+        foreach (var collider in colliders) if (collider != null) collider.enabled = false;
+        if (CompareTag("Enemy"))
         {
-            // Pausa o controle do jogador
-            PlayerController pc = GetComponent<PlayerController>();
-            if (pc != null) pc.enabled = false;
-
-            // Ativa desmaio
+            // Disable only behaviour controllers; leave Health and Animator running.
+            var mushroom = GetComponent<MushroomController>();
+            if (mushroom != null) mushroom.StopForDeath();
+            StopEnemy(GetComponent<SlimeController>());
+            StopEnemy(GetComponent<BeetleController>());
+            StopEnemy(GetComponent<WormController>());
+            if (body != null) body.simulated = false;
+            CurrencyManager.AddCoins(Mathf.Max(0,coinDropAmount));
+            if (itemToDrop != null && dropAmount > 0 &&
+                (InventoryManager.instance == null || !InventoryManager.instance.TryAddItem(itemToDrop,dropAmount)))
+                InventoryPickup.Spawn(itemToDrop,dropAmount,transform.position);
+            StartCoroutine(CleanupEnemy());
+        }
+        SetDeathAnimation();
+        if (CompareTag("Player"))
+        {
+            var pc = GetComponent<PlayerController>();
+            if (pc != null) { pc.DisableAttackArea(); pc.enabled = false; }
             FaintManager.instance?.TriggerFaint();
         }
-        else if (gameObject.CompareTag("Enemy"))
-        {
-            // Drop de moedas do inimigo
-            CurrencyManager.AddCoins(coinDropAmount);
-            // Desativa controlador do inimigo se existir
-            SlimeController ec = GetComponent<SlimeController>();
-            if (ec != null) ec.enabled = false;
-        }
-        Debug.Log(gameObject.name + " foi derrotado!");
-
-        // --- NOVO: Lógica para o Drop de Itens ---
-        if (itemToDrop != null && dropAmount > 0)
-        {
-            if (InventoryManager.instance == null || !InventoryManager.instance.TryAddItem(itemToDrop, dropAmount))
-                InventoryPickup.Spawn(itemToDrop, dropAmount, transform.position);
-        }
-
-        if (animator != null)
-        {
-            animator.SetTrigger("Morte");
-        }
-        
     }
-
-    public void RestoreFullHealth()
+    static void StopEnemy(MonoBehaviour controller)
     {
-        currentHealth = maxHealth;
-        isDead = false;
-
-        if (_collider2D != null)
-            _collider2D.enabled = true;
-
-        if (animator != null)
-            animator.Play("Base"); // Reseta para animação base
-
-        PlayerController pc = GetComponent<PlayerController>();
-        if (pc != null)
-            pc.enabled = true;
+        if (controller == null) return;
+        controller.StopAllCoroutines();
+        controller.enabled = false;
     }
-
-    private IEnumerator BecomeInvulnerable()
+    void SetDeathAnimation()
     {
-        isInvulnerable = true;
-        if (spriteRenderer != null)
-            spriteRenderer.color = invulnerableColor;
-
-        yield return new WaitForSeconds(invulnerabilityDuration);
-
-        if (spriteRenderer != null)
-            spriteRenderer.color = originalColor;
-
-        isInvulnerable = false;
+        if (animator == null || animator.runtimeAnimatorController == null) return;
+        foreach (var parameter in animator.parameters)
+        {
+            if (parameter.name == "Estado" && parameter.type == AnimatorControllerParameterType.Int) animator.SetInteger("Estado",-1);
+            if (parameter.type == AnimatorControllerParameterType.Trigger) animator.ResetTrigger(parameter.nameHash);
+        }
+        foreach (var parameter in animator.parameters)
+            if (parameter.name == "Morte" && parameter.type == AnimatorControllerParameterType.Trigger) animator.SetTrigger(parameter.nameHash);
     }
-
-    // --- Chamado pelo AnimationEvent 'DestroyAfterAnimation' ---
+    IEnumerator CleanupEnemy()
+    {
+        yield return new WaitForSeconds(Mathf.Max(.1f,deathCleanupDelay));
+        if (IsDead && CompareTag("Enemy")) Destroy(gameObject);
+    }
     public void DestroyAfterAnimation()
     {
-        Destroy(gameObject);
+        if (IsDead && CompareTag("Enemy")) Destroy(gameObject);
+    }
+    public void RestoreFullHealth()
+    {
+        // Player revival; enemy respawns should create a new prefab instance.
+        if (CompareTag("Enemy") && IsDead) return;
+        StopAllCoroutines();
+        currentHealth = Mathf.Max(1,maxHealth);
+        IsDead = false;
+        isInvulnerable = false;
+        invulnerability = null;
+        if (spriteRenderer != null) spriteRenderer.color = originalColor;
+        for (int i = 0; i < colliders.Length; i++) if (colliders[i] != null) colliders[i].enabled = initialColliderStates[i];
+        var pc = GetComponent<PlayerController>();
+        if (pc != null) { pc.DisableAttackArea(); pc.enabled = true; }
+        if (animator != null) { animator.Rebind(); animator.Update(0f); }
+    }
+    IEnumerator BecomeInvulnerable()
+    {
+        isInvulnerable = true;
+        if (spriteRenderer != null) spriteRenderer.color = invulnerableColor;
+        yield return new WaitForSeconds(Mathf.Max(0,invulnerabilityDuration));
+        if (spriteRenderer != null) spriteRenderer.color = originalColor;
+        isInvulnerable = false;
+        invulnerability = null;
     }
 }
