@@ -1,215 +1,90 @@
 using UnityEngine;
-using System.Collections;
-using TMPro;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlotSlot : MonoBehaviour
 {
-    // Conectado via CropData.asset
     public CropData cropData;
-
     [Header("Slot State")]
-    [SerializeField] private int daysSincePlanted;
-    [SerializeField] private bool isPlanted = false;
-    [SerializeField] private bool isWatered = false;
-    [SerializeField] private bool isHarvestable = false;
-
-    // Componentes para UI
+    [SerializeField] int daysSincePlanted;
+    [SerializeField] bool isPlanted;
+    [SerializeField] bool isWatered;
+    [SerializeField] bool isHarvestable;
     public GameObject interactionPrompt;
     public GameObject waterPrompt;
-
-    // Componentes de Jogo
-    private SpriteRenderer _spriteRenderer;
-    private bool _isPlayerInside = false;
-
-    void Start()
+    SpriteRenderer cropRenderer;
+    bool selected;
+    public event System.Action OnStateChanged;
+    public bool IsPlanted => isPlanted;
+    public bool IsWatered => isWatered;
+    public bool IsHarvestable => isHarvestable;
+    public string ActionName => !isPlanted ? "Plantar" : isHarvestable ? "Colher" : !isWatered ? "Regar" : "Regado";
+    void Awake() { cropRenderer = GetComponent<SpriteRenderer>(); RefreshVisual(); }
+    void OnEnable() { FarmInteraction.EnsureExists(); SetSelected(false); }
+    void OnDisable() { SetSelected(false); }
+    public void SetSelected(bool value)
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.sprite = null;
-
-        // Inicializa prompts como invisíveis
-        if (interactionPrompt != null) interactionPrompt.SetActive(false);
-        if (waterPrompt != null) waterPrompt.SetActive(false);
+        selected = value;
+        if (interactionPrompt != null) interactionPrompt.SetActive(value && (!isPlanted || isHarvestable));
+        if (waterPrompt != null) waterPrompt.SetActive(value && isPlanted && !isHarvestable && !isWatered);
     }
-
-    void Update()
+    public void Interact()
     {
-        if (HotbarUi.IsInventoryOpen) return;
-
-        var eventSystem = UnityEngine.EventSystems.EventSystem.current;
-
-        if (eventSystem != null)
+        if (!isActiveAndEnabled) return;
+        if (!isPlanted)
         {
-            var pointer = new UnityEngine.EventSystems.PointerEventData(eventSystem)
-            {
-                position = Input.mousePosition
-            };
-
-            var hits = new System.Collections.Generic.List<
-                UnityEngine.EventSystems.RaycastResult>();
-
-            eventSystem.RaycastAll(pointer, hits);
-
-            foreach (var hit in hits)
-            {
-                if (hit.gameObject.GetComponentInParent<GroveSlotView>() != null)
-                    return;
-            }
+            Item item = InventoryManager.instance != null ? InventoryManager.instance.GetSelectedItem() : null;
+            if (item == null || item.itemData == null || item.itemData.itemType != ItemType.Seed || item.itemData.relatedCropData == null)
+            { Debug.Log("Selecione uma semente na hotbar."); return; }
+            CropData crop = item.itemData.relatedCropData;
+            if (!ValidCrop(crop)) { Debug.LogWarning("CropData sem sprites de crescimento ou produto de colheita.",this); return; }
+            // Consume the selected seed type, even if CropData.seedItem is misconfigured.
+            if (InventoryManager.instance.TryRemoveItem(item.itemData,1)) Plant(crop);
         }
-        if (_isPlayerInside)
-        {
-            // Lógica para mostrar o prompt de regar
-            if (isPlanted && !isWatered && !isHarvestable)
-            {
-                if (waterPrompt != null) waterPrompt.SetActive(true);
-            }
-            else
-            {
-                if (waterPrompt != null) waterPrompt.SetActive(false);
-            }
-        }
-
-        // --- INTERAÇÃO COM 'E' (PLANTIO/REGA) ---
-        if (Input.GetKeyDown(KeyCode.E) && _isPlayerInside)
-        {
-            if (!isPlanted)
-        {
-            // 1. Tenta obter o item selecionado na Hotbar
-            Item selectedItem = InventoryManager.instance?.GetSelectedItem();
-
-            // 2. Se houver um item e for uma semente...
-            if (selectedItem != null && selectedItem.itemData.itemType == ItemType.Seed) // Supondo que você tem um Enum ItemType
-            {
-                // ... tenta plantar o CropData relacionado à semente
-                CropData cropToPlant = selectedItem.itemData.relatedCropData;
-                
-                if (cropToPlant != null)
-                {
-                    TryPlanting(cropToPlant); 
-                }
-            }
-            else
-            {
-                Debug.Log("Você não está segurando uma semente na Hotbar.");
-            }
-        }
-            else if (isPlanted && !isWatered)
-            {
-                Water();
-            }
-        }
-
-        // --- INTERAÇÃO COM ATAQUE (COLHEITA) ---
-        if (Input.GetMouseButtonDown(0) && _isPlayerInside && isHarvestable)
-        {
-            Harvest();
-        }
+        else if (isHarvestable) Harvest();
+        else if (!isWatered) Water();
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInside = true;
-            if (interactionPrompt != null) interactionPrompt.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInside = false;
-            if (interactionPrompt != null) interactionPrompt.SetActive(false);
-            if (waterPrompt != null) waterPrompt.SetActive(false); // Esconde o balde ao sair
-        }
-    }
-
+    static bool ValidCrop(CropData data) => data != null && data.growthSprites != null && data.growthSprites.Length > 0 && data.yieldItem != null && data.yieldAmount > 0;
     public void Plant(CropData data)
     {
-        this.cropData = data;
-        isPlanted = true;
-        daysSincePlanted = 0;
-        isWatered = false;
-
-        // Exibe o sprite da semente (primeiro sprite do array)
-        if (cropData.growthSprites.Length > 0)
-        {
-            _spriteRenderer.sprite = cropData.growthSprites[0];
-        }
-    }
-
-    public void Water()
-    {
-        isWatered = true;
-        // Adicione um efeito visual de rega aqui, se desejar
-    }
-
-    public void Harvest()
-    {
-        if (!isPlanted || !isHarvestable || cropData == null || InventoryManager.instance == null) return;
-        if (!InventoryManager.instance.TryAddItem(cropData.yieldItem, cropData.yieldAmount))
-        {
-            Debug.Log("Inventário cheio. Libere espaço para colher.");
-            return;
-        }
-
-        // Reseta o slot para estado vazio
-        isPlanted = false;
-        isHarvestable = false;
-        _spriteRenderer.sprite = null;
-    }
-
-    public void AdvanceDay()
-    {
-        Debug.Log($"Slot {gameObject.name}: Recebeu a ordem de avanço. isWatered: {isWatered}"); // <--- ADICIONE ISTO
-    
-    // A planta só cresce se estiver plantada E regada E não estiver para colheita.
-        if (isPlanted && isWatered && !isHarvestable)
-        {
-            daysSincePlanted++; // AUMENTA O CONTADOR DE CRESCIMENTO!
-            UpdateGrowthVisual();
-        }
-    
-    // NOVO: Reseta a flag de rega para o novo dia,
-    // independentemente de a planta ter crescido ou não.
-    if (isPlanted)
-    {
-        isWatered = false;
-        // Opcional: Se a planta não foi regada por X dias, ela morre aqui.
-    }
-}
-
-    private void UpdateGrowthVisual()
-    {
-        // Verifica se chegou à maturidade
-        if (daysSincePlanted >= cropData.daysToGrow)
-        {
-            isHarvestable = true;
-            _spriteRenderer.sprite = cropData.growthSprites[cropData.growthSprites.Length - 1]; // Último sprite
-            // O prompt de colheita agora será o botão de ataque, então o prompt de E pode sumir
-            if (interactionPrompt != null) interactionPrompt.SetActive(false);
-        }
-        // Se ainda estiver crescendo
-        else if (cropData.growthSprites.Length > daysSincePlanted)
-        {
-            _spriteRenderer.sprite = cropData.growthSprites[daysSincePlanted];
-        }
+        if (isPlanted || !ValidCrop(data)) return;
+        cropData = data; daysSincePlanted = 0; isPlanted = true; isWatered = false; isHarvestable = false;
+        RefreshVisual(); SetSelected(selected);
     }
     public void TryPlanting(CropData data)
-{
-    // Verifica se o Inventário tem a semente antes de plantar
-    if (InventoryManager.instance != null && InventoryManager.instance.HasItem(data.seedItem, 1))
     {
-        InventoryManager.instance.RemoveItem(data.seedItem, 1);
-        Plant(data); 
+        if (isPlanted || !ValidCrop(data) || InventoryManager.instance == null) return;
+        if (InventoryManager.instance.TryRemoveItem(data.seedItem,1)) Plant(data);
     }
-    else
+    public void Water()
     {
-        Debug.Log("Você não tem a semente para plantar!");
+        if (!isPlanted || isHarvestable) return;
+        isWatered = true; SetSelected(selected); OnStateChanged?.Invoke();
     }
-}
-
-// O campo cropData público agora pode ser removido ou usado internamente:
-// [SerializeField] private CropData currentCropData; 
-// public CropData cropData; // REMOVA ESTA LINHA OU MUDE PARA private/SerializeField
+    public void Harvest()
+    {
+        if (!isPlanted || !isHarvestable || !ValidCrop(cropData) || InventoryManager.instance == null) return;
+        if (!InventoryManager.instance.TryAddItem(cropData.yieldItem,cropData.yieldAmount))
+        { Debug.Log("Inventário cheio: libere espaço para colher."); return; }
+        isPlanted = false; isWatered = false; isHarvestable = false; daysSincePlanted = 0;
+        cropData = null; RefreshVisual(); SetSelected(selected);
+    }
+    public void AdvanceDay()
+    {
+        if (!isPlanted) return;
+        if (isWatered && !isHarvestable)
+        {
+            daysSincePlanted++;
+            isHarvestable = daysSincePlanted >= Mathf.Max(1,cropData.daysToGrow);
+        }
+        isWatered = false; RefreshVisual(); SetSelected(selected);
+    }
+    void RefreshVisual()
+    {
+        OnStateChanged?.Invoke();
+        if (cropRenderer == null) cropRenderer = GetComponent<SpriteRenderer>();
+        if (!isPlanted || cropData == null || cropData.growthSprites == null || cropData.growthSprites.Length == 0)
+        { cropRenderer.sprite = null; return; }
+        int index = isHarvestable ? cropData.growthSprites.Length-1 : Mathf.Clamp(daysSincePlanted,0,cropData.growthSprites.Length-1);
+        cropRenderer.sprite = cropData.growthSprites[index];
+    }
 }

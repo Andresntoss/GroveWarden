@@ -2,66 +2,39 @@ using UnityEngine;
 
 public class BuildSign : MonoBehaviour
 {
-    [Header("Configurações do Módulo")]
-    public GameObject modulePrefab; // O PlotModulePrefab para esta placa (arrastado do Inspector)
+    public GameObject modulePrefab;
+    [Tooltip("Legado: o preço agora é calculado no FarmManager.")]
     public int moduleCost;
     public string moduleName = "Canteiro de Plantio";
-
-    [Header("UI de Interação")]
-    public GameObject interactionPrompt; // Ícone 'E'
-
-    private bool _isPlayerInTrigger = false;
-    private FarmManager _farmManager;
-
-    void Start()
+    public GameObject interactionPrompt;
+    bool purchased;
+    public int CurrentPrice => FarmManager.instance != null ? FarmManager.instance.CurrentPrice : moduleCost;
+    void OnEnable() { FarmInteraction.EnsureExists(); SetSelected(false); }
+    void OnDisable() { SetSelected(false); }
+    public void SetSelected(bool selected)
     {
-        _farmManager = FarmManager.instance;
-        if (interactionPrompt != null)
+        if (interactionPrompt == null) return;
+        var zone = GetComponentInParent<FarmZone>();
+        if (zone != null)
         {
-            interactionPrompt.SetActive(false);
+            // A permanent purchase marker must not be hidden as a hover prompt.
+            if (zone.purchaseSign == interactionPrompt) return;
+            if (zone.purchaseVisuals != null)
+                foreach (var visual in zone.purchaseVisuals) if (visual == interactionPrompt) return;
         }
+        interactionPrompt.SetActive(selected && !purchased);
     }
-
-    void Update()
+    public bool Purchase()
     {
-        if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
+        if (purchased || !isActiveAndEnabled || FarmManager.instance == null) return false;
+        FarmZone zone = GetComponentInParent<FarmZone>();
+        if (zone != null)
         {
-            if (_farmManager != null)
-            {
-                // Tenta construir o módulo
-                bool success = _farmManager.TryBuildModule(transform.position, modulePrefab, moduleCost);
-                
-                if (success)
-                {
-                    // Se a construção for bem-sucedida, a placa deve desaparecer
-                    Destroy(gameObject);
-                }
-                // Adicione uma lógica de feedback visual (UI text) aqui se quiser.
-            }
+            bool success = FarmManager.instance.TryPurchase(zone);
+            if (success) purchased = true;
+            return success;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInTrigger = true;
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(true);
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _isPlayerInTrigger = false;
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(false);
-            }
-        }
+        if (!FarmManager.instance.TryBuildModule(transform.position,modulePrefab,moduleCost)) return false;
+        purchased = true; gameObject.SetActive(false); Destroy(gameObject); return true;
     }
 }

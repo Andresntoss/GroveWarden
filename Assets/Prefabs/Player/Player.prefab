@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4895827024278729709}
   - component: {fileID: 7881679717234827471}
   - component: {fileID: 7769360848150035787}
+  - component: {fileID: 1880937409138524590}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95644784624250054}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.13010001, y: 1.7291512, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40,6 +41,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &104127592610340874
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -85,6 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -2023923573111878767, guid: 661225fe9d64d434ba904c2120e62f3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,7 +97,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8985288560978604668
 MonoBehaviour:
@@ -129,10 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 50
-  currentHealth: 0
   invulnerabilityDuration: 1
   invulnerableColor: {r: 1, g: 1, b: 1, a: 0.78039217}
   coinDropAmount: 0
+  itemToDrop: {fileID: 0}
+  dropAmount: 1
+  deathCleanupDelay: 5
 --- !u!50 &4895827024278729709
 Rigidbody2D:
   serializedVersion: 5
@@ -219,6 +223,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1880937409138524590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95644784624250054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1758ce2f15125642b3a8ad0d8e74c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotbarInput
 --- !u!1 &7639798021562744517
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58bbdf3f6439d489c2d6767e475a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackArea
-  damageAmount: 20
+  damageAmount: 50
   knockbackForce: 10
 --- !u!61 &7719821659751491559
 BoxCollider2D:

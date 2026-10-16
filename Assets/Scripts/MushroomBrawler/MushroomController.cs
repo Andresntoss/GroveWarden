@@ -16,12 +16,15 @@ public class MushroomController : MonoBehaviour
     [Tooltip("Intervalo mínimo após terminar um ataque.")]
     public float attackDelay = 1f;
     public float stunDuration = 3f;
+    [Tooltip("Tempo após se recuperar durante o qual não pode receber outro stun.")]
+    public float stunImmunityDuration = 2f;
+    private float stunImmuneUntil;
     public Collider2D attackCollider;
     [Tooltip("Limite de segurança caso o evento final da animação não chegue.")]
     public float attackTimeout = 2.5f;
 
     enum State { Idle, Wander, Chase, Attack, Stun, Dead }
-    State state;
+    [SerializeField] private State state;
     Rigidbody2D body;
     Animator animator;
     SpriteRenderer sprite;
@@ -31,7 +34,8 @@ public class MushroomController : MonoBehaviour
     MushroomAttackArea attackArea;
     Vector2 wanderDirection;
     Vector3 attackScale;
-    float timer, nextAttack, nextPlayerSearch, knockbackUntil;
+    [SerializeField] private float timer;
+    private float nextAttack, nextPlayerSearch, knockbackUntil;
     bool windowOpened;
     public bool IsAttacking => isActiveAndEnabled && state == State.Attack && (health == null || !health.IsDead);
     public bool IsAttackWindowOpen => IsAttacking && windowOpened && attackCollider != null && attackCollider.enabled;
@@ -74,14 +78,25 @@ public class MushroomController : MonoBehaviour
         if (health != null && health.IsDead) { StopForDeath(); return; }
         FindPlayer();
         timer -= Time.deltaTime;
+
         if (state == State.Stun)
         {
-            if (timer <= 0) ChangeState(State.Idle);
+            if (timer <= 0)
+            {
+                stunImmuneUntil =
+                    Time.time + Mathf.Max(0f, stunImmunityDuration);
+
+                ChangeState(State.Idle);
+            }
+
             return;
         }
+
         if (state == State.Attack)
         {
-            if (!HasTarget || timer <= 0) AttackAnimationFinished();
+            if (!HasTarget || timer <= 0)
+                AttackAnimationFinished();
+
             return;
         }
         if (Time.time < knockbackUntil) return;
@@ -164,7 +179,18 @@ public class MushroomController : MonoBehaviour
         if (!isActiveAndEnabled || (health != null && health.IsDead)) return;
         float dx = attackerPosition.x - transform.position.x;
         bool behind = sprite.flipX ? dx < -.05f : dx > .05f;
-        if (behind) { ChangeState(State.Stun); return; }
+        if (behind)
+        {
+            // Golpes durante o stun não reiniciam sua duração.
+            if (state == State.Stun) return;
+
+            // Após recuperar, continua recebendo dano,
+            // mas fica temporariamente imune a outro stun.
+            if (Time.time < stunImmuneUntil) return;
+
+            ChangeState(State.Stun);
+            return;
+        }
         // Preserve facing and current animation; use a short physical recoil.
         if (state != State.Attack && state != State.Stun)
         {

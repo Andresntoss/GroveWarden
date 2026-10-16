@@ -58,9 +58,10 @@ MonoBehaviour:
   detectionRadius: 5
   wanderTimeMax: 3
   idleTimeMax: 5
-  attackRadius: 1.5
+  attackRadius: 3.5
   attackDelay: 1
-  stunDuration: 3.5
+  stunDuration: 3
+  stunImmunityDuration: 2
   attackCollider: {fileID: 6022842004723003880}
   attackTimeout: 2.5
 --- !u!114 &4019446587540939638
@@ -75,12 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6847c94471f4f42b24a83e82b3d59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 370
+  maxHealth: 755
   invulnerabilityDuration: 1.5
   invulnerableColor: {r: 1, g: 1, b: 1, a: 1}
-  coinDropAmount: 5
+  coinDropAmount: 70
   itemToDrop: {fileID: 11400000, guid: f7d5390558d44eb4eb6124c0d1754062, type: 2}
-  dropAmount: 1
+  dropAmount: 2
   deathCleanupDelay: 5
 --- !u!95 &6472157229081632335
 Animator:
