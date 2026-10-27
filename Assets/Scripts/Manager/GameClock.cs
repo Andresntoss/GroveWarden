@@ -10,6 +10,8 @@ public class GameClock : MonoBehaviour
     public TextMeshProUGUI clockText;
 
     private float _currentTime;
+    public float SaveTime => _currentTime;
+    public void RestoreTime(float value) { _currentTime = Mathf.Max(0,value); UpdateClockDisplay(); }
 
     private void Awake()
     {

@@ -12,6 +12,7 @@ public class FarmManager : MonoBehaviour
     public GameObject plotModulePrefab;
     bool purchasing;
     public int PurchasedAreas => purchasedAreas;
+    public void RestorePurchasedAreas(int count) { purchasedAreas = Mathf.Max(0,count); }
     public int CurrentPrice => (int)System.Math.Min(int.MaxValue,(long)Mathf.Max(0,plotCost)+(long)Mathf.Max(0,priceIncrease)*Mathf.Max(0,purchasedAreas));
     void Awake()
     {

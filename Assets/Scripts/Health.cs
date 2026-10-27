@@ -38,6 +38,10 @@ public class Health : MonoBehaviour
         initialColliderStates = new bool[colliders.Length];
         for (int i = 0; i < colliders.Length; i++) initialColliderStates[i] = colliders[i].enabled;
     }
+    public void RestoreSavedHealth(float value)
+    {
+        if (CompareTag("Player") && value > 0) { IsDead = false; currentHealth = Mathf.Clamp(value, 1, Mathf.Max(1,maxHealth)); }
+    }
     // Compatibility for existing enemy scripts and UI.
     public void TakeDamage(float amount) { TryTakeDamage(amount); }
     public bool TryTakeDamage(float amount)

@@ -97,7 +97,7 @@ public class HotbarUi : MonoBehaviour
     {
         var focus = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
         bool typing = focus != null && (focus.GetComponent<TMP_InputField>() != null || focus.GetComponent<InputField>() != null);
-        if (!typing && (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab))) SetOpen(!IsInventoryOpen);
+        if (!GroveSaveSystem.MenuOpen && !NpcAlbum.IsOpen && !typing && (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab))) SetOpen(!IsInventoryOpen);
         if (Input.GetKeyDown(KeyCode.Escape)) SetOpen(false);
     }
     void SetOpen(bool value)

@@ -14,6 +14,12 @@ public class PlotSlot : MonoBehaviour
     SpriteRenderer cropRenderer;
     bool selected;
     public event System.Action OnStateChanged;
+    public int DaysSincePlanted => daysSincePlanted;
+    public void RestorePlot(CropData crop, int days, bool planted, bool watered, bool harvestable)
+    {
+        cropData = crop; daysSincePlanted = days; isPlanted = planted; isWatered = watered; isHarvestable = harvestable;
+        RefreshVisual(); SetSelected(false);
+    }
     public bool IsPlanted => isPlanted;
     public bool IsWatered => isWatered;
     public bool IsHarvestable => isHarvestable;
@@ -63,7 +69,8 @@ public class PlotSlot : MonoBehaviour
     public void Harvest()
     {
         if (!isPlanted || !isHarvestable || !ValidCrop(cropData) || InventoryManager.instance == null) return;
-        if (!InventoryManager.instance.TryAddItem(cropData.yieldItem,cropData.yieldAmount))
+        int amount = (int)System.Math.Min(int.MaxValue, (long)cropData.yieldAmount + NpcProgress.TotalHarvestBonus());
+        if (!InventoryManager.instance.TryAddItem(cropData.yieldItem,amount))
         { Debug.Log("Inventário cheio: libere espaço para colher."); return; }
         isPlanted = false; isWatered = false; isHarvestable = false; daysSincePlanted = 0;
         cropData = null; RefreshVisual(); SetSelected(selected);

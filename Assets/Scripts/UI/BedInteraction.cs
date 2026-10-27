@@ -24,7 +24,7 @@ public class BedInteraction : MonoBehaviour
     void Update()
     {
         // Se a tecla for pressionada e o jogador estiver na área
-        if (Input.GetKeyDown(KeyCode.E) && _isPlayerInTrigger && _canSleep)
+        if (Input.GetKeyDown(KeyCode.E) && _isPlayerInTrigger && _canSleep && !GroveSaveSystem.MenuOpen && !HotbarUi.IsInventoryOpen && !NpcAlbum.IsOpen)
         {
             if (_fadeManager != null)
             {
@@ -41,8 +41,11 @@ public class BedInteraction : MonoBehaviour
 
     private IEnumerator SleepRoutine()
     {
-        // Espera a animação de fade + avanço de dia terminar
+        // Só salva se o dia realmente avançou.
+        int before = GameManager.instance != null ? GameManager.instance.SaveDay : -1;
         yield return StartCoroutine(_fadeManager.FadeAndPassDay());
+        if (GameManager.instance != null && GameManager.instance.SaveDay > before)
+            GroveSaveSystem.SaveAtBed();
 
         // Libera novamente para permitir dormir no próximo dia
         _canSleep = true;

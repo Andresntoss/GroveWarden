@@ -10,6 +10,11 @@ public class InventoryManager : MonoBehaviour
     public int selectedSlotIndex;
     [SerializeField] private Item[] _inventorySlots = new Item[MAX_SLOTS];
     public Item[] InventorySlots => _inventorySlots;
+    public void RestoreSlots(Item[] values, int selected)
+    {
+        _inventorySlots = values; selectedSlotIndex = Mathf.Clamp(selected,0,HOTBAR_SLOTS-1);
+        OnInventoryChanged?.Invoke(); OnSlotSelected?.Invoke(selectedSlotIndex);
+    }
     public event Action OnInventoryChanged;
     public event Action<int> OnSlotSelected;
 

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 112}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 10388
+  controlID: 263
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 10389
+  controlID: 264
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 56}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 10390
+  controlID: 265
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -913,9 +913,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -1040.9615, y: -0.31405577, z: -0.123406105}
+    m_Target: {x: -969.9268, y: -22.128328, z: -0.029323397}
     speed: 2
-    m_Value: {x: -1040.9615, y: -0.31405577, z: -0.123406105}
+    m_Value: {x: -969.9268, y: -22.128328, z: -0.029323397}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -965,9 +965,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.037181
+    m_Target: 12.931937
     speed: 2
-    m_Value: 13.037181
+    m_Value: 12.931937
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1041,7 +1041,7 @@ MonoBehaviour:
     m_DynamicPanelBehavior: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 64412
+  m_LastSelectedObjectID: 0
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1305,18 +1305,13 @@ MonoBehaviour:
     m_DynamicPanelBehavior: 0
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 192}
-      m_SelectedIDs:
-      - m_Data: 64412
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: 64412
+        m_Data: 0
       m_ExpandedIDs:
       - m_Data: -1364
-      - m_Data: 64512
-      - m_Data: 64684
-      - m_Data: 64762
-      - m_Data: 64870
-      - m_Data: 64996
+      - m_Data: 64808
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1366,7 +1361,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 10471
+  controlID: 383
   draggingID: 0
 --- !u!114 &15
 MonoBehaviour:
@@ -1443,7 +1438,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/FunctionPrefabs
+    - Assets/M Studio/Colourful Hierarchy Category GameObject/Editor
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1453,26 +1448,26 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs/FunctionPrefabs
+  - Assets/M Studio/Colourful Hierarchy Category GameObject/Editor
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Projetos Unity\GroveWarden
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 53}
+    scrollPos: {x: 0, y: 165}
     m_SelectedIDs:
-    - m_Data: 75466
+    - m_Data: 75738
     m_LastClickedID:
-      m_Data: 75466
+      m_Data: 75738
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 75272
-    - m_Data: 75274
-    - m_Data: 75276
-    - m_Data: 75278
-    - m_Data: 75280
-    - m_Data: 75282
+    - m_Data: 75572
+    - m_Data: 75574
+    - m_Data: 75576
+    - m_Data: 75578
+    - m_Data: 75700
+    - m_Data: 75740
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1506,12 +1501,10 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 75272
-    - m_Data: 75274
-    - m_Data: 75276
-    - m_Data: 75278
-    - m_Data: 75280
-    - m_Data: 75282
+    - m_Data: 75572
+    - m_Data: 75574
+    - m_Data: 75576
+    - m_Data: 75578
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1539,9 +1532,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: 64412
-    m_LastClickedInstanceID: 64412
+    m_SelectedInstanceIDs: []
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:

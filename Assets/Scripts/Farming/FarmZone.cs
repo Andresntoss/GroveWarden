@@ -10,6 +10,7 @@ public class FarmZone : MonoBehaviour
     public GameObject[] purchaseVisuals = new GameObject[0];
     [Tooltip("Somente os colliders de compra, não os colliders dos Slot1...Slot6.")]
     public Collider2D[] purchaseColliders = new Collider2D[0];
+    [SerializeField, HideInInspector] public string saveId;
     public bool startsUnlocked;
     public bool IsUnlocked { get; private set; }
     public bool IsConfigured
@@ -43,6 +44,10 @@ public class FarmZone : MonoBehaviour
         IsUnlocked = true;
         ApplyState();
         return true;
+    }
+    public void RestoreUnlocked(bool value)
+    {
+        IsUnlocked = value; ApplyState();
     }
     void ApplyState()
     {

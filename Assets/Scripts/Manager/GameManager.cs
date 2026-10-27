@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
 
     private float tempoAtual;
     private int diaAtual = 1;
+    public int SaveDay => diaAtual;
+    public float SaveElapsed => tempoAtual;
+    public bool SaveTimeRunning => podeAvancarTempo;
+    public void RestoreClock(int day, float elapsed, bool running)
+    {
+        diaAtual = Mathf.Max(1, day); tempoAtual = Mathf.Max(0,elapsed); podeAvancarTempo = running; AtualizarUI();
+    }
     private int horas = 6;
     private int minutos = 0;
     private bool podeAvancarTempo = true;

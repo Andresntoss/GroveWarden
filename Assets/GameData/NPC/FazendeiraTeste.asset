@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be88633c425b4ef589778c5e41860537, type: 3}
+  m_Name: FazendeiraTeste
+  m_EditorClassIdentifier: Assembly-CSharp::NpcProfile
+  npcId: fazendeira_01
+  displayName: Fazendeira
+  description: Cuida da fazenda e ajuda a melhorar as colheitas.
+  portrait: {fileID: -6552843917330368855, guid: 9b8f00ca1d96a154994bcdd110fc7aa4, type: 3}
+  fullArt: {fileID: -6552843917330368855, guid: 9b8f00ca1d96a154994bcdd110fc7aa4, type: 3}
+  dialogue:
+  - "Ol\xE1! Posso ajudar voc\xEA a cuidar da fazenda."
+  - Traga cenouras para conhecer mais sobre mim.
+  requestedItem: {fileID: 11400000, guid: 59b33fa60ee6c1e4d984df70353fbedf, type: 2}
+  galleryTarget: 50
+  galleryTitle: Uma tarde na fazenda
+  galleryArt: {fileID: -6552843917330368855, guid: 9b8f00ca1d96a154994bcdd110fc7aa4, type: 3}
+  upgradeCoinCost: 100
+  upgradeItemCost: 10
+  harvestBonus: 1

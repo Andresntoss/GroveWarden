@@ -8,7 +8,7 @@ public class HotbarInput : MonoBehaviour
     void Update()
     {
         var manager = InventoryManager.instance;
-        if (manager == null || Time.timeScale == 0) return;
+        if (manager == null || Time.timeScale == 0 || NpcAlbum.IsOpen) return;
         var focus = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
         if (focus != null && (focus.GetComponent<TMP_InputField>() != null || focus.GetComponent<InputField>() != null)) return;
         for (int i = 0; i < 9; i++)

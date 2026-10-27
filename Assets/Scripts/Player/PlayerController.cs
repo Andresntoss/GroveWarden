@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (HotbarUi.IsInventoryOpen)
+        if (HotbarUi.IsInventoryOpen || NpcAlbum.IsOpen || GroveSaveSystem.MenuOpen)
         {
             _playerDirection = Vector2.zero;
             _PlayerAnimator.SetInteger("Movimento", 0);

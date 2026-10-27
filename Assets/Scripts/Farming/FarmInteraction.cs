@@ -48,7 +48,7 @@ public class FarmInteraction : MonoBehaviour
         }
         if (worldCamera == null) worldCamera = Camera.main;
         ClearSelection();
-        if (player == null || worldCamera == null || HotbarUi.IsInventoryOpen || Time.timeScale == 0 || PointerBlocked()) return;
+        if (player == null || worldCamera == null || (HotbarUi.IsInventoryOpen || NpcAlbum.IsOpen) || Time.timeScale == 0 || PointerBlocked()) return;
         var health = player.GetComponent<Health>();
         if (health != null && health.IsDead) return;
         // Intersect camera ray with the player's XY plane (also supports perspective).

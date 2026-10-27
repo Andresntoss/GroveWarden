@@ -28,6 +28,12 @@ public class CurrencyManager : MonoBehaviour
         UpdateCoinsUI();
     }
 
+    public static void RestoreCoins(int value)
+    {
+        coins = Mathf.Max(0,value);
+        if (instance != null) instance.UpdateCoinsUI();
+    }
+
     // Adiciona moedas
     public static void AddCoins(int amount)
     {

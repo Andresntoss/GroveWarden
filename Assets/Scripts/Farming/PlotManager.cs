@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlotManager : MonoBehaviour
 {
+    [SerializeField, HideInInspector] public string saveId;
     public PlotSlot[] plotSlots;
     public GameObject plotSign; // A placa para interagir
 
